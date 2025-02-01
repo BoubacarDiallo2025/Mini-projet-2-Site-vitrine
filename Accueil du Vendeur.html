@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'Accueil du Vendeur</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        .seller-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .products-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .category {
+            flex: 1;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .product-list li {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-list img {
+            max-width: 50px;
+            margin-right: 10px;
+        }
+
+        .product-list button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .form-container input, .form-container button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Accueil Vendeur</h1>
+
+    <!-- Section Présentation du Vendeur -->
+    <div class="seller-container">
+        <h2>Présentation du Vendeur</h2>
+        <p id="sellerPresentation"></p>
+    </div>
+
+    <!-- Section Gestion des Produits -->
+    <div class="form-container">
+        <h2>Gérer vos Produits</h2>
+        <input type="text" id="productName" placeholder="Nom du Produit">
+        <input type="text" id="productCategory" placeholder="Catégorie du Produit">
+        <input type="text" id="productPrice" placeholder="Prix du Produit">
+        <input type="file" id="productImage" accept="image/*">
+        <button onclick="addOrUpdateProduct()">Ajouter / Modifier Produit</button>
+    </div>
+
+    <!-- Section Affichage des Produits par Catégorie -->
+    <div class="products-container" id="productsContainer">
+        <!-- Les catégories et produits seront affichés ici -->
+    </div>
+
+    <script>
+        // Simuler les informations du vendeur
+        let seller = {
+            name: "Vendeur Pro",
+            presentation: "Bienvenue sur ma boutique ! Je vends des articles de qualité dans plusieurs catégories."
+        };
+
+        // Charger les produits depuis le localStorage ou initialiser un tableau vide
+        let products = JSON.parse(localStorage.getItem('products')) || [];
+
+        // Afficher la présentation du vendeur
+        function displaySellerInfo() {
+            document.getElementById('sellerPresentation').textContent = seller.presentation;
+        }
+
+        // Fonction pour afficher les produits par catégorie
+        function displayProducts() {
+            const categories = [...new Set(products.map(product => product.category))]; // Obtenir les catégories uniques
+            const productsContainer = document.getElementById('productsContainer');
+            productsContainer.innerHTML = ''; // Réinitialiser le conteneur
+
+            categories.forEach(category => {
+                // Créer une section pour chaque catégorie
+                const categoryContainer = document.createElement('div');
+                categoryContainer.className = 'category';
+                categoryContainer.innerHTML = `<h3>${category}</h3><ul class="product-list"></ul>`;
+                const productList = categoryContainer.querySelector('.product-list');
+
+                // Ajouter les produits dans chaque catégorie
+                products.filter(product => product.category === category).forEach((product, index) => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        <img src="${product.image}" alt="${product.name}">
+                        ${product.name} - ${product.price}
+                        <div>
+                            <button onclick="editProduct(${index})">Modifier</button>
+                            <button onclick="deleteProduct(${index})">Supprimer</button>
+                        </div>
+                    `;
+                    productList.appendChild(li);
+                });
+
+                // Ajouter la catégorie avec ses produits au conteneur principal
+                productsContainer.appendChild(categoryContainer);
+            });
+        }
+
+        // Fonction pour ajouter ou modifier un produit
+        function addOrUpdateProduct() {
+            const productName = document.getElementById('productName').value;
+            const productCategory = document.getElementById('productCategory').value;
+            const productPrice = document.getElementById('productPrice').value;
+            const productImage = document.getElementById('productImage').files[0];
+
+            if (productName && productCategory && productPrice) {
+                const existingProductIndex = products.findIndex(p => p.name === productName);
+                
+                // Si une image est sélectionnée, utiliser FileReader pour la convertir en Base64
+                const reader = new FileReader();
+                reader.onloadend = function () {
+                    const imageUrl = reader.result; // URL Base64 de l'image
+
+                    if (existingProductIndex !== -1) {
+                        // Si le produit existe, on le modifie
+                        products[existingProductIndex].category = productCategory;
+                        products[existingProductIndex].price = productPrice;
+                        if (productImage) {
+                            products[existingProductIndex].image = imageUrl;
+                        }
+                        alert("Produit modifié avec succès.");
+                    } else {
+                        // Si le produit n'existe pas, on l'ajoute
+                        products.push({ name: productName, category: productCategory, price: productPrice, image: imageUrl });
+                        alert("Produit ajouté avec succès.");
+                    }
+
+                    // Enregistrer les produits dans localStorage
+                    localStorage.setItem('products', JSON.stringify(products));
+
+                    // Réinitialiser les champs de formulaire
+                    document.getElementById('productName').value = '';
+                    document.getElementById('productCategory').value = '';
+                    document.getElementById('productPrice').value = '';
+                    document.getElementById('productImage').value = '';
+
+                    displayProducts(); // Mettre à jour l'affichage des produits
+                };
+
+                if (productImage) {
+                    reader.readAsDataURL(productImage); // Convertir l'image en Base64
+                } else {
+                    // Si aucune image n'est sélectionnée, continuer sans changer l'image
+                    if (existingProductIndex !== -1) {
+                        products[existingProductIndex].category = productCategory;
+                        products[existingProductIndex].price = productPrice;
+                        alert("Produit modifié avec succès.");
+                    } else {
+                        products.push({ name: productName, category: productCategory, price: productPrice, image: '' });
+                        alert("Produit ajouté avec succès.");
+                    }
+                    localStorage.setItem('products', JSON.stringify(products));
+                    displayProducts();
+                }
+            } else {
+                alert("Veuillez remplir tous les champs.");
+            }
+        }
+
+        // Fonction pour modifier un produit (pré-remplir le formulaire)
+        function editProduct(index) {
+            const product = products[index];
+            document.getElementById('productName').value = product.name;
+            document.getElementById('productCategory').value = product.category;
+            document.getElementById('productPrice').value = product.price;
+            document.getElementById('productImage').value = ''; // Ne pas pré-remplir le champ d'image
+        }
+
+        // Fonction pour supprimer un produit
+        function deleteProduct(index) {
+            products.splice(index, 1); // Supprimer le produit du tableau
+            localStorage.setItem('products', JSON.stringify(products)); // Mettre à jour le localStorage
+            displayProducts(); // Mettre à jour l'affichage des produits
+        }
+
+        // Initialiser l'affichage
+        displaySellerInfo();
+        displayProducts();
+    </script>
+</body>
+
+</html>

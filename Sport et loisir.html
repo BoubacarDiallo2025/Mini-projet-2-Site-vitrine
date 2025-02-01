@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport et loisir</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>SenJaba</h1>
+    <nav>
+        <a href="Accueil.html">Accueil</a>
+        <a href="Catégories.html">Catégories</a>
+        <a href="Connexion.html">Connexion</a>
+        <a href="Contact.html">Contact</a>
+    </nav>
+
+    <meta name="description" content="Formation HTML"/>
+    <h2>Bienvenue chez SenJaba - Votre partenaire technologique de confiance</h2>
+    <header>
+        <h3><a href="Électronique.html">Électronique</a></h3>
+        <h3><a href="Vêtements et accessoires.html">Vêtements et accessoires</a></h3>
+        <h3><a href="Maison et Jardin.html">Maison et jardin</a></h3>
+        <h3><a href="Beauté et santé.html">Beauté et santé</a></h3>
+        <h3><a href="Sport et loisir.html">Sport et loisir</a></h3>
+    </header>
+
+    <h4>Sport et loisir</h4>
+
+    <aside class="filters">
+        <h2>Filtres</h2>
+        <form id="filterForm" onsubmit="applyFilters(event)">
+            <div>
+                <label for="priceRange">Plage de prix :</label>
+                <input type="range" id="priceRange" name="priceRange" min="0" max="100" step="10" value="0" oninput="updatePriceValue(this.value)">
+                <span id="priceValue">0 - 100</span>
+            </div>
+            <div>
+                <label for="brand">Marque :</label>
+                <select id="brand" name="brand">
+                    <option value="">Toutes</option>
+                    <option value="activelife">ActiveLife</option>
+                    <option value="fitpro">FitPro</option>
+                    <option value="zenflex">ZenFlex</option>
+                    <option value="haltèresactivelife">Haltères ActiveLife</option>
+                    <option value="haltèresProFit">Haltères ProFit</option>
+                    <option value="profootball">ProFootball</option>
+                    <option value="ballonadidas">Ballon Adidas</option>
+                    <option value="chaussuresadidas">Chaussures Adidas</option>
+                    <option value="chaussuresnike">Chaussures Nike</option>
+                    <option value="puma">Puma</option>
+                    <option value="reebok">Reebok</option>
+                    <option value="wilson">Wilson</option>
+                    <option value="babolat">Babolat</option>
+                    <option value="winmau">Winmau</option>
+                    <option value="harrows">Harrows</option>
+                </select>
+            </div>
+            <button type="submit">Appliquer les filtres</button>
+        </form>
+    </aside>
+
+    <script>
+        function updatePriceValue(value) {
+            document.getElementById('priceValue').textContent = value + ' - 100';
+        }
+
+        function applyFilters(event) {
+            event.preventDefault(); // Empêche le rechargement de la page
+            const priceRange = document.getElementById('priceRange').value;
+            const brand = document.getElementById('brand').value;
+
+            // Logique pour filtrer les produits
+            const products = document.querySelectorAll('.product-item');
+            products.forEach(product => {
+                const productPrice = parseFloat(product.getAttribute('data-price'));
+                const productBrand = product.getAttribute('data-brand');
+
+                if ((productPrice <= priceRange) && (brand === "" || productBrand === brand)) {
+                    product.style.display = 'block'; // Affiche le produit
+                } else {
+                    product.style.display = 'none'; // Cache le produit
+                }
+            });
+        }
+    </script>
+
+    <section class="product-list">
+        <table>
+            <tr>
+                <th><h4><a href="produit.html?produit=activelife">ActiveLife</a></h4></th>
+                <th><h4><a href="produit.html?produit=fitpro">FitPro</a></h4></th>
+                <th><h4><a href="produit.html?produit=zenflex">ZenFlex</a></h4></th>
+                <th><h4><a href="produit.html?produit=haltèresactivelife">Haltères ActiveLife</a></h4></th>
+                <th><h4><a href="produit.html?produit=haltèresProFit">Haltères ProFit</a></h4></th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="product-item" data-price="34.99" data-brand="activelife">
+                        <img src="istockphoto-636191848-612x612.webp" alt="Produit 1"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="29.99" data-brand="fitpro">
+                        <img src="istockphoto-1371680911-612x612.webp" alt="Produit 2"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="24.99" data-brand="zenflex">
+                        <img src="istockphoto-1248661954-612x612.webp" alt="Produit 3"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="19.99" data-brand="haltèresactivelife">
+                        <img src="istockphoto-173926553-612x612.webp" alt="Produit 4"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="39.99" data-brand="haltèresProFit">
+                        <img src="istockphoto-185285227-612x612.webp" alt="Produit 5"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><p>Prix: 34,99 €</p></td>
+                <td><p>Prix : 29,99 €</p></td>
+                <td><p>Prix: 24,99 €</p></td>
+                <td><p>Prix: 19,99 €</p></td>
+                <td><p>Prix: 39,99 €</p></td>
+            </tr>
+
+            <tr>
+                <th><h4><a href="produit.html?produit=profootball">ProFootball</a></h4></th>
+                <th><h4><a href="produit.html?produit=ballonadidas">Ballon Adidas</a></h4></th>
+                <th><h4><a href="produit.html?produit=chaussuresadidas">Chaussures Adidas</a></h4></th>
+                <th><h4><a href="produit.html?produit=chaussuresnike">Chaussures Nike</a></h4></th>
+                <th><h4><a href="produit.html?produit=puma">Puma</a></h4></th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="product-item" data-price="29.99" data-brand="profootball">
+                        <img src="istockphoto-1137996375-612x612.webp" alt="Produit 6"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="39.99" data-brand="ballonadidas">
+                        <img src="peter-glaser-qWs_Wa1JrKM-unsplash.jpg" alt="Produit 7"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="89.99" data-brand="chaussuresadidas">
+                        <img src="istockphoto-178457302-612x612.webp" alt="Produit 8"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="99.99" data-brand="chaussuresnike">
+                        <img src="istockphoto-671028562-612x612.webp" alt="Produit 9"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="79.99" data-brand="puma">
+                        <img src="istockphoto-1475387990-612x612.webp" alt="Produit 10"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><p>Prix: 29,99 €</p></td>
+                <td><p>Prix: 39,99 €</p></td>
+                <td><p>Prix: 89,99 €</p></td>
+                <td><p>Prix: 99,99 €</p></td>
+                <td><p>Prix: 79,99 €</p></td>
+            </tr>
+
+            <tr>
+                <th><h4><a href="produit.html?produit=reebok">Reebok</a></h4></th>
+                <th><h4><a href="produit.html?produit=wilson">Wilson</a></h4></th>
+                <th><h4><a href="produit.html?produit=babolat">Babolat</a></h4></th>
+                <th><h4><a href="produit.html?produit=winmau">Winmau</a></h4></th>
+                <th><h4><a href="produit.html?produit=harrows">Harrows</a></h4></th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="product-item" data-price="89.99" data-brand="reebok">
+                        <img src="istockphoto-1436061606-612x612.webp" alt="Produit 11"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="39.99" data-brand="wilson">
+                        <img src="istockphoto-172147072-612x612.webp" alt="Produit 12"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="89.99" data-brand="babolat">
+                        <img src="istockphoto-1505246595-612x612.webp" alt="Produit 13"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="49.99" data-brand="winmau">
+                        <img src="istockphoto-181875530-612x612.webp" alt="Produit 14"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="29.99" data-brand="harrows">
+                        <img src="istockphoto-899732010-612x612.webp" alt="Produit 15"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><p>Prix: 89,99 €</p></td>
+                <td><p>Prix: 39,99 €</p></td>
+                <td><p>Prix: 89,99 €</p></td>
+                <td><p>Prix: 49,99 €</p></td>
+                <td><p>Prix: 29,99 €</p></td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Section des catégories -->
+    <div class="categories">
+        <h2>CATEGORIES</h2>
+        <ul>
+            <li><a href="Électronique.html">Électronique</a></li>
+            <li><a href="Vêtements et accessoires.html">Vêtements et accessoires</a></li>
+            <li><a href="Maison et Jardin.html">Maison et Jardin</a></li>
+            <li><a href="Beauté et santé.html">Beauté et santé</a></li>
+            <li><a href="Sport et loisir.html">Sport et loisir</a></li>
+        </ul>
+    </div>
+
+    <!-- Menu de navigation -->
+    <div class="menu">
+        <ul>
+            <li><a href="Accueil.html">Accueil</a></li>
+            <li><a href="Catégories.html">Catégories</a></li>
+            <li><a href="Connexion.html">Connexion</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </div>
+    
+</body>
+</html>

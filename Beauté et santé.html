@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauté et santé</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>SenJaba</h1>
+    <nav>
+        <a href="Accueil.html">Accueil</a>
+        <a href="Catégories.html">Catégories</a>
+        <a href="Connexion.html">Connexion</a>
+        <a href="Contact.html">Contact</a>
+    </nav>
+
+    <meta name="description" content="Formation HTML"/>
+    <h2>Bienvenue chez SenJaba - Votre partenaire technologique de confiance</h2>
+    <header>
+        <h3><a href="Électronique.html">Électronique</a></h3>
+        <h3><a href="Vêtements et accessoires.html">Vêtements et accessoires</a></h3>
+        <h3><a href="Maison et Jardin.html">Maison et jardin</a></h3>
+        <h3><a href="Beauté et santé.html">Beauté et santé</a></h3>
+        <h3><a href="Sport et loisir.html">Sport et loisir</a></h3>
+    </header>
+
+    <h4>Beauté et santé</h4>
+
+    <aside class="filters">
+        <h2>Filtres</h2>
+        <form id="filterForm" onsubmit="applyFilters(event)">
+            <div>
+                <label for="priceRange">Plage de prix :</label>
+                <input type="range" id="priceRange" name="priceRange" min="0" max="200" step="10" value="0" oninput="updatePriceValue(this.value)">
+                <span id="priceValue">0 - 200</span>
+            </div>
+            <div>
+                <label for="brand">Marque :</label>
+                <select id="brand" name="brand">
+                    <option value="">Toutes</option>
+                    <option value="éclatnaturel">Éclat Naturel</option>
+                    <option value="gucciguiltypourfemme">Gucci Guilty pour Femme</option>
+                    <option value="sauvageparfumdior">Sauvage Parfum Dior</option>
+                    <option value="guccimémoireduneodeur">Gucci Mémoire d'une Odeur</option>
+                    <option value="saltetstone">Salt & Stone</option>
+                    <option value="curology">Curology</option>
+                    <option value="colorpop">ColorPop</option>
+                    <option value="luxelip">LuxeLip</option>
+                    <option value="everdrop">Everdrop</option>
+                    <option value="violetglass">Violet Glass</option>
+                    <option value="mossetfern">Moss & Fern</option>
+                    <option value="jomalonelondon">Jo Malone London</option>
+                    <option value="aromaluxe">Aroma Luxe</option>
+                    <option value="berrybliss">Berry Bliss</option>
+                    <option value="dailyc">Daily-C</option>
+                </select>
+            </div>
+            <button type="submit">Appliquer les filtres</button>
+        </form>
+    </aside>
+
+    <script>
+        function updatePriceValue(value) {
+            document.getElementById('priceValue').textContent = value + ' - 200';
+        }
+
+        function applyFilters(event) {
+            event.preventDefault(); // Empêche le rechargement de la page
+            const priceRange = document.getElementById('priceRange').value;
+            const brand = document.getElementById('brand').value;
+
+            // Logique pour filtrer les produits
+            const products = document.querySelectorAll('.product-item');
+            products.forEach(product => {
+                const productPrice = parseFloat(product.getAttribute('data-price'));
+                const productBrand = product.getAttribute('data-brand');
+
+                if ((productPrice <= priceRange) && (brand === "" || productBrand === brand)) {
+                    product.style.display = 'block'; // Affiche le produit
+                } else {
+                    product.style.display = 'none'; // Cache le produit
+                }
+            });
+        }
+    </script>
+
+    <section class="product-list">
+        <table>
+            <tr>
+                <th><h4><a href="produit.html?produit=éclatnaturel">Éclat Naturel</a></h4></th>
+                <th><h4><a href="produit.html?produit=gucciguiltypourfemme">Gucci Guilty pour Femme</a></h4></th>
+                <th><h4><a href="produit.html?produit=sauvageparfumdior">Sauvage Parfum Dior</a></h4></th>
+                <th><h4><a href="produit.html?produit=guccimémoireduneodeur">Gucci Mémoire d'une Odeur</a></h4></th>
+                <th><h4><a href="produit.html?produit=saltetstone">Salt & Stone</a></h4></th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="product-item" data-price="49.90" data-brand="éclatnaturel">
+                        <img src="DALL·E 2024-08-25 21.43.30 - A single skincare product prominently displayed, such as a sleek glass bottle of serum, placed on a clean, min.webp" alt="Produit 1"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="89.90" data-brand="gucciguiltypourfemme">
+                        <img src="andrey-ilkevich-7aUb9PSKmc8-unsplash.jpg" alt="Produit 2"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="110" data-brand="sauvageparfumdior">
+                        <img src="pavlo-t-56YB6Ycu1C4-unsplash.jpg" alt="Produit 3"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="100" data-brand="guccimémoireduneodeur">
+                        <img src="anna-keibalo-iu4FHgqxOzI-unsplash.jpg" alt="Produit 4"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="30" data-brand="saltetstone">
+                        <img src="valeriia-miller-sBqXnldQ9ak-unsplash.jpg" alt="Produit 5"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><p>Prix: 49,90 €</p></td>
+                <td><p>Prix: 89,90 €</p></td>
+                <td><p>Prix: 110 €</p></td>
+                <td><p>Prix: 100 €</p></td>
+                <td><p>Prix: 30 €</p></td>
+            </tr>
+
+            <tr>
+                <th><h4><a href="produit.html?produit=curology">Curology</a></h4></th>
+                <th><h4><a href="produit.html?produit=colorpop">ColorPop</a></h4></th>
+                <th><h4><a href="produit.html?produit=luxelip">LuxeLip</a></h4></th>
+                <th><h4><a href="produit.html?produit=everdrop">Everdrop</a></h4></th>
+                <th><h4><a href="produit.html?produit=violetglass">Violet Glass</a></h4></th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="product-item" data-price="20" data-brand="curology">
+                        <img src="curology-j7pKVQrTUsM-unsplash.jpg" alt="Produit 6"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="35" data-brand="colorpop">
+                        <img src="istockphoto-529952559-612x612.webp" alt="Produit 7"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="15" data-brand="luxelip">
+                        <img src="brittney-weng-CSquI0aw_Rg-unsplash.jpg" alt="Produit 8"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="18.99" data-brand="everdrop">
+                        <img src="everdrop-gmbh-tos0a8Fh3lc-unsplash.jpg" alt="Produit 9"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="24.99" data-brand="violetglass">
+                        <img src="pmv-chamara-KqHNWdP4pWg-unsplash.jpg" alt="Produit 10"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><p>Prix: 20 €</p></td>
+                <td><p>Prix: 35 €</p></td>
+                <td><p>Prix: 15 €</p></td>
+                <td><p>Prix: 18,99 €</p></td>
+                <td><p>Prix: 24,99 €</p></td>
+            </tr>
+
+            <tr>
+                <th><h4><a href="produit.html?produit=mossetfern">Moss & Fern</a></h4></th>
+                <th><h4><a href="produit.html?produit=jomalonelondon">Jo Malone London</a></h4></th>
+                <th><h4><a href="produit.html?produit=aromaluxe">Aroma Luxe</a></h4></th>
+                <th><h4><a href="produit.html?produit=berrybliss">Berry Bliss</a></h4></th>
+                <th><h4><a href="produit.html?produit=dailyc">Daily-C</a></h4></th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="product-item" data-price="19.99" data-brand="mossetfern">
+                        <img src="mockup-free-PbGC2COjWgA-unsplash.jpg" alt="Produit 11"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="75" data-brand="jomalonelondon">
+                        <img src="hyunwon-jang-t8ueo1LnzEU-unsplash.jpg" alt="Produit 12"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="19.99" data-brand="aromaluxe">
+                        <img src="tron-le-warqmZejUn4-unsplash.jpg" alt="Produit 13"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="14.99" data-brand="berrybliss">
+                        <img src="supliful-supplements-on-demand-571ysEZSMFU-unsplash.jpg" alt="Produit 14"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="2.50" data-brand="dailyc">
+                        <img src="duc-van-TMrKHQRvO4E-unsplash.jpg" alt="Produit 15"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><p>Prix: 19,99 €</p></td>
+                <td><p>Prix: 75,00 €</p></td>
+                <td><p>Prix: 19,99 €</p></td>
+                <td><p>Prix: 14,99 €</p></td>
+                <td><p>Prix: 2,50 €</p></td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Section des catégories -->
+    <div class="categories">
+        <h2>CATEGORIES</h2>
+        <ul>
+            <li><a href="Électronique.html">Électronique</a></li>
+            <li><a href="Vêtements et accessoires.html">Vêtements et accessoires</a></li>
+            <li><a href="Maison et Jardin.html">Maison et Jardin</a></li>
+            <li><a href="Beauté et santé.html">Beauté et santé</a></li>
+            <li><a href="Sport et loisir.html">Sport et loisir</a></li>
+        </ul>
+    </div>
+
+    <!-- Menu de navigation -->
+    <div class="menu">
+        <ul>
+            <li><a href="Accueil.html">Accueil</a></li>
+            <li><a href="Catégories.html">Catégories</a></li>
+            <li><a href="Connexion.html">Connexion</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </div>
+    
+</body>
+</html>

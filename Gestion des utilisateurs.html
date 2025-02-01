@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des utilisateurs</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gestion des Utilisateurs</h1>
+    
+    <!-- Importer le fichier CSV -->
+    <input type="file" id="csvFileInput" accept=".csv" onchange="importCSV()">
+    
+    <!-- Section pour afficher les utilisateurs -->
+    <div id="userTable"></div>
+
+    <!-- Formulaire pour ajouter ou modifier un utilisateur -->
+    <div class="form-container">
+        <h2 id="formTitle">Ajouter un Utilisateur</h2>
+        <input type="text" id="userId" placeholder="Identifiant" required>
+        <input type="password" id="userPassword" placeholder="Mot de Passe" required>
+        <input type="text" id="userRole" placeholder="Rôle" required>
+        <button id="submitButton" onclick="addUser()">Ajouter</button>
+    </div>
+
+    <script>
+        let users = []; // Stocker les utilisateurs
+
+        // Fonction pour importer le fichier CSV
+        function importCSV() {
+            const fileInput = document.getElementById('csvFileInput');
+            const file = fileInput.files[0];
+            Papa.parse(file, {
+                complete: function(results) {
+                    users = results.data;
+                    displayUsers(users);
+                },
+                header: true
+            });
+        }
+
+        // Fonction pour afficher les utilisateurs dans une table
+        function displayUsers(data) {
+            const userTable = document.getElementById('userTable');
+            userTable.innerHTML = ''; // Réinitialiser la table
+
+            const table = document.createElement('table');
+            table.innerHTML = `
+                <tr>
+                    <th>Identifiant</th>
+                    <th>Mot de Passe</th>
+                    <th>Rôle</th>
+                    <th>Actions</th>
+                </tr>
+            `;
+            data.forEach((user, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${user.identifiant}</td>
+                    <td>${user.mot_de_passe}</td>
+                    <td>${user.role}</td>
+                    <td>
+                        <button onclick="editUser(${index})">Modifier</button>
+                        <button onclick="deleteUser(${index})">Supprimer</button>
+                    </td>
+                `;
+                table.appendChild(row);
+            });
+            userTable.appendChild(table);
+        }
+
+        // Fonction pour ajouter un utilisateur
+        function addUser() {
+            const id = document.getElementById('userId').value;
+            const password = document.getElementById('userPassword').value;
+            const role = document.getElementById('userRole').value;
+
+            if (id && password && role) {
+                users.push({ identifiant: id, mot_de_passe: password, role: role });
+                displayUsers(users);
+                resetForm();
+            } else {
+                alert("Veuillez remplir tous les champs.");
+            }
+        }
+
+        // Fonction pour modifier un utilisateur
+        function editUser(index) {
+            const user = users[index];
+            document.getElementById('userId').value = user.identifiant;
+            document.getElementById('userPassword').value = user.mot_de_passe;
+            document.getElementById('userRole').value = user.role;
+            document.getElementById('formTitle').innerText = "Modifier un Utilisateur";
+            document.getElementById('submitButton').onclick = function() {
+                updateUser(index);
+            };
+        }
+
+        // Fonction pour mettre à jour un utilisateur
+        function updateUser(index) {
+            const id = document.getElementById('userId').value;
+            const password = document.getElementById('userPassword').value;
+            const role = document.getElementById('userRole').value;
+
+            if (id && password && role) {
+                users[index] = { identifiant: id, mot_de_passe: password, role: role };
+                displayUsers(users);
+                resetForm();
+            } else {
+                alert("Veuillez remplir tous les champs.");
+            }
+        }
+
+        // Fonction pour supprimer un utilisateur
+        function deleteUser(index) {
+            users.splice(index, 1); // Supprimer l'utilisateur du tableau
+            displayUsers(users); // Mettre à jour l'affichage
+        }
+
+        // Fonction pour réinitialiser le formulaire
+        function resetForm() {
+            document.getElementById('userId').value = '';
+            document.getElementById('userPassword').value = '';
+            document.getElementById('userRole').value = '';
+            document.getElementById('formTitle').innerText = "Ajouter un Utilisateur";
+            document.getElementById('submitButton').onclick = addUser;
+        }
+    </script>
+
+</body>
+</html>

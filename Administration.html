@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'Administration</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1,
+        h2 {
+            color: #333;
+        }
+
+        .admin-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-container,
+        .messages-container,
+        .seller-list {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 30%;
+        }
+
+        .form-container input,
+        .form-container button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+
+        .seller-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .seller-list ul li {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .seller-list button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .messages-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .messages-container ul li {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-left: 3px solid #007bff;
+            position: relative; /* Pour positionner le bouton de suppression */
+        }
+
+        .messages-container button {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Page d'Administration</h1>
+
+    <div class="admin-container">
+        <!-- Section pour la gestion des vendeurs -->
+        <div class="form-container">
+            <h2>Ajouter / Modifier un Vendeur</h2>
+            <input type="text" id="sellerName" placeholder="Nom du vendeur">
+            <input type="text" id="sellerPassword" placeholder="Mot de passe">
+            <button onclick="addOrUpdateSeller()">Ajouter / Modifier Vendeur</button>
+        </div>
+
+        <!-- Liste des vendeurs -->
+        <div class="seller-list">
+            <h2>Liste des Vendeurs</h2>
+            <ul id="sellerList"></ul>
+        </div>
+
+        <!-- Section pour visualiser les messages -->
+        <div class="messages-container">
+            <h2>Messages de Contact</h2>
+            <ul id="messageList"></ul>
+        </div>
+    </div>
+
+    <script>
+        let sellers = []; // Stocker les vendeurs
+        let messages = []; // Stocker les messages
+
+        // Charger les vendeurs depuis le fichier CSV
+        function loadSellersFromCSV() {
+            fetch('utilisateurs.csv')
+                .then(response => response.text())
+                .then(data => {
+                    Papa.parse(data, {
+                        header: true,
+                        complete: function (results) {
+                            sellers = results.data;
+                            displaySellers();
+                        }
+                    });
+                });
+        }
+
+        // Fonction pour afficher les vendeurs
+        function displaySellers() {
+            const sellerList = document.getElementById('sellerList');
+            sellerList.innerHTML = ''; // Réinitialiser la liste
+            sellers.forEach((seller, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `${seller.identifiant} <button onclick="deleteSeller(${index})">Supprimer</button>`;
+                sellerList.appendChild(li);
+            });
+        }
+
+        // Fonction pour ajouter ou modifier un vendeur
+        function addOrUpdateSeller() {
+            const sellerName = document.getElementById('sellerName').value;
+            const sellerPassword = document.getElementById('sellerPassword').value;
+
+            if (sellerName && sellerPassword) {
+                const existingSellerIndex = sellers.findIndex(s => s.identifiant === sellerName);
+                if (existingSellerIndex !== -1) {
+                    // Si le vendeur existe déjà, on le modifie
+                    sellers[existingSellerIndex].mot_de_passe = sellerPassword;
+                    alert("Vendeur modifié avec succès.");
+                } else {
+                    // Si le vendeur n'existe pas, on l'ajoute
+                    sellers.push({ identifiant: sellerName, mot_de_passe: sellerPassword, role: "vendeur" });
+                    alert("Vendeur ajouté avec succès.");
+                }
+                saveSellersToCSV(); // Enregistrer les vendeurs dans le CSV
+                displaySellers(); // Mettre à jour l'affichage des vendeurs
+                document.getElementById('sellerName').value = '';
+                document.getElementById('sellerPassword').value = '';
+
+                // Sauvegarder les données dans le localStorage
+                localStorage.setItem('lastSellerName', sellerName);
+                localStorage.setItem('lastSellerPassword', sellerPassword);
+            } else {
+                alert("Veuillez remplir tous les champs.");
+            }
+        }
+
+        // Fonction pour supprimer un vendeur
+        function deleteSeller(index) {
+            sellers.splice(index, 1); // Supprimer le vendeur du tableau
+            saveSellersToCSV(); // Enregistrer les changements
+            displaySellers(); // Mettre à jour l'affichage
+        }
+
+        // Fonction pour sauvegarder les vendeurs dans un fichier CSV
+        function saveSellersToCSV() {
+            const csvContent = "data:text/csv;charset=utf-8,"
+                + sellers.map(seller => `${seller.identifiant},${seller.mot_de_passe},${seller.role}`).join("\n");
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "utilisateurs.csv");
+            document.body.appendChild(link);
+            link.click(); // Télécharger le fichier
+            document.body.removeChild(link);
+        }
+
+        // Fonction pour charger les messages de contact depuis le localStorage
+        function loadMessages() {
+            messages = JSON.parse(localStorage.getItem('contactMessages')) || [];
+            displayMessages();
+        }
+
+        // Fonction pour afficher les messages
+        function displayMessages() {
+            const messageList = document.getElementById('messageList');
+            messageList.innerHTML = ''; // Réinitialiser la liste
+            messages.forEach((message, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `<strong>${message.sender}</strong><br>${message.phone}<br>${message.email}<br>${message.message} 
+                                <button onclick="deleteMessage(${index})">Supprimer</button>`;
+                messageList.appendChild(li);
+            });
+        }
+
+        // Fonction pour supprimer un message
+        function deleteMessage(index) {
+            messages.splice(index, 1); // Supprimer le message du tableau
+            localStorage.setItem('contactMessages', JSON.stringify(messages)); // Enregistrer les changements
+            displayMessages(); // Mettre à jour l'affichage
+        }
+
+        // Fonction pour charger les données du vendeur depuis le localStorage
+        function loadLastSeller() {
+            const lastSellerName = localStorage.getItem('lastSellerName');
+            const lastSellerPassword = localStorage.getItem('lastSellerPassword');
+
+            if (lastSellerName) {
+                document.getElementById('sellerName').value = lastSellerName;
+            }
+            if (lastSellerPassword) {
+                document.getElementById('sellerPassword').value = lastSellerPassword;
+            }
+        }
+
+        // Initialisation
+        loadSellersFromCSV();
+        loadMessages();
+        loadLastSeller(); // Charger les dernières informations du vendeur
+    </script>
+
+</body>
+</html>

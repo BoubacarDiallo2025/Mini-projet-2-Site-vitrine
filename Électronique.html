@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Électronique</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>SenJaba</h1>
+    <a href="Accueil.html">Accueil</a>
+    <a href="Catégories.html">Catégories</a>
+    <a href="Contact.html">Contact</a>
+    <a href="Connexion.html">Connexion</a>
+    <meta name="description" content="Formation HTML"/>
+    <h2>Bienvenue chez SenJaba - Votre partenaire technologique de confiance</h2>
+    <header>
+        <h3><a href="Électronique.html">Électronique</a></h3>
+        <h3><a href="Vêtements et accessoires.html">Vêtements et accessoires</a></h3>
+        <h3><a href="Maison et Jardin.html">Maison et jardin</a></h3>
+        <h3><a href="Beauté et santé.html">Beauté et santé</a></h3>
+        <h3><a href="Sport et loisir.html">Sport et loisir</a></h3>
+    </header>
+
+    <h4>Électronique</h4>
+    <main>
+        <aside class="filters">
+            <h2>Filtres</h2>
+            <form id="filterForm" onsubmit="applyFilters(event)">
+                <div>
+                    <label for="priceRange">Plage de prix :</label>
+                    <input type="range" id="priceRange" name="priceRange" min="0" max="5000" step="10" value="0" oninput="updatePriceValue(this.value)">
+                    <span id="priceValue">0 - 5000</span>
+                </div>
+                <div>
+                    <label for="brand">Marque :</label>
+                    <select id="brand" name="brand">
+                        <option value="">Toutes</option>
+                        <option value="macbook16">MacBook Pro 16 pouces</option>
+                        <option value="hp">HP</option>
+                        <option value="ldlc">LDLC</option>
+                        <option value="apple">Apple</option>
+                        <option value="hpProBook">HP ProBook 450 G6</option>
+                        <option value="asus">ASUS</option>
+                        <option value="iphone15">iPhone 15 Pro</option>
+                        <option value="iphone14">iPhone 14 Pro</option>
+                        <option value="galaxyS24">Samsung Galaxy S24 Ultra</option>
+                        <option value="appleWatch">Apple Watch</option>
+                        <option value="galaxyWatchActive">Samsung Galaxy Watch Active</option>
+                        <option value="appleWatchSeries7">Apple Watch Series 7</option>
+                        <option value="sandisk">SanDisk</option>
+                        <option value="airpodsPro">AirPods Pro d'Apple</option>
+                        <option value="airTag">Apple AirTag</option>
+                    </select>
+                </div>
+                <button type="submit">Appliquer les filtres</button>
+            </form>
+        </aside>
+    
+        <script>
+            function updatePriceValue(value) {
+                document.getElementById('priceValue').textContent = value + ' - 5000';
+            }
+
+            function applyFilters(event) {
+                event.preventDefault(); // Empêche le rechargement de la page
+                const priceRange = document.getElementById('priceRange').value;
+                const brand = document.getElementById('brand').value;
+
+                // Logique pour filtrer les produits
+                const products = document.querySelectorAll('.product-item');
+                products.forEach(product => {
+                    const productPrice = parseInt(product.getAttribute('data-price'));
+                    const productBrand = product.getAttribute('data-brand');
+
+                    if ((productPrice <= priceRange) && (brand === "" || productBrand === brand)) {
+                        product.style.display = 'block'; // Affiche le produit
+                    } else {
+                        product.style.display = 'none'; // Cache le produit
+                    }
+                });
+            }
+        </script>
+ </main>
+        <section class="product-list">
+            <table>
+                <tr>
+                    <th><h4><a href="produit.html?produit=macbookpro16">MacBook Pro 16 pouces</a></h4></th>
+                    <th><h4><a href="produit.html?produit=hpspectrex360">HP Spectre x360</a></h4></th>
+                    <th><h4> <a href="produit.html?produit=ldlc">LDLC</a></h4></th>
+                    <th><h4> <a href="produit.html?produit=apple">Apple</a></h4></th>
+                    <th><h4> <a href="produit.html?produit=hpprobook450g6">HP ProBook 450 G6</a></h4></th>
+                </tr>
+                <tr>
+                    <td>
+                       <div class="product-item" data-price="2499" data-brand="macbook16">
+                       <img src="DALL·E 2024-08-24 17.12.52 - A sleek and high-performance MacBook Pro displayed on a minimalist desk, featuring a 16-inch Retina display, a th.webp" alt="Produit 1"/>
+                    </td>
+                    <td>
+                        <div class="product-item" data-price="1799" data-brand="hp">
+                        <img src="hp_spectre_x360_15_01_tcm245_2542751_tcm245_2543548_tcm245-2542751.webp" alt="Produit 2"/>
+                     </td>
+                     <td>
+                        <div class="product-item" data-price="499" data-brand="ldlc">
+                        <img src="LD0004456869_2.jpg" alt="Produit 3"/>
+                     </td>
+                     <td>
+                        <div class="product-item" data-price="2699" data-brand="apple">
+                        <img src="mac-book.jpg" alt="Produit 4"/>
+                     </td>
+                     <td>
+                        <div class="product-item" data-price="849" data-brand="hpProBook">
+                        <img src="HP-ProBook-450-G6_1.jpg" alt="Produit 5"/>
+                     </td>
+                </tr>
+                <tr>
+                   <td><p>Prix : 2 499 €</p></td>
+                   <td><p>Prix : 1 799,00 €</p></td>
+                   <td><p>Prix : 499,00 €</p></td>
+                   <td><p>Prix : 2 699,00 €</p></td>
+                   <td><p>Prix : 849,00 €</p></td>
+                </tr>
+                <tr>
+                    <th><h4> <a href="produit.html?produit=asus">ASUS</a></h4></th>
+                    <th><h4> <a href="produit.html?produit=iphone15pro">iPhone 15 Pro</a></h4></th>
+                    <th><h4> <a href="produit.html?produit=iphone14pro">iPhone 14 Pro</a></h4></th>
+                    <th><h4> <a href="produit.html?produit=samsunggalaxys24ultra">Samsung Galaxy S24 Ultra</a></h4></th>
+                    <th><h4> <a href="produit.html?produit=applewatch">Apple Watch</a></h4></th>
+                </tr>
+                <tr>
+                     <td>
+                        <div class="product-item" data-price="999" data-brand="asus">
+                        <img src="R.jpeg" alt="Produit 6"/>
+                     </td>
+                     <td>
+                        <div class="product-item" data-price="1200" data-brand="iphone15">
+                        <img src="thai-nguyen-AtYWWis5ZDM-unsplash.jpg" alt="Produit 7"/>
+                     </td>
+                     <td>
+                        <div class="product-item" data-price="1099" data-brand="iphone14">
+                        <img src="2w1uqs21.jpg" alt="Produit 8"/>
+                     </td>
+                     <td>
+                        <div class="product-item" data-price="1199" data-brand="galaxyS24">
+                        <img src="DALL·E 2024-08-26 01.40.48 - The Samsung Galaxy S24 Ultra smartphone, featuring a sleek design with a titanium frame and flat display. It has .webp" alt="Produit 9"/>
+                     </td>
+                     <td>
+                        <div class="product-item" data-price="399" data-brand="appleWatch">
+                        <img src="ankush-minda-Gz0B_k5vQgQ-unsplash.jpg" alt="Produit 10"/>
+                    </td>
+                </tr>
+                <tr> 
+                    <td><p>Prix : 999,00 €</p></td>
+                    <td><p>Prix : 1 200 €</p></td>
+                    <td><p>Prix : 1 099 €</p></td>
+                    <td><p>Prix : 1 199 €</p></td>
+                    <td><p>Prix : 399 €</p></td>
+                </tr>
+
+                <tr> 
+                    <th><h4> <a href="produit.html?produit=samsunggalaxywatchactive">Samsung Galaxy Watch Active</a></h4></th>
+                    <th><h4> <a href="produit.html?produit=applewatchseries7">Apple Watch Series 7</a></h4></th>
+                    <th><h4> <a href="produit.html?produit=sandisk">SanDisk</a></h4></th>
+                    <th><h4> <a href="produit.html?produit=airpodsproapple">AirPods Pro d'Apple</a></h4></th>
+                    <th><h4> <a href="produit.html?produit=appleairtag">Apple AirTag</a></h4></th>  
+                </tr>
+                <tr>
+                    <td>
+                        <div class="product-item" data-price="229" data-brand="galaxyWatchActive">
+                        <img src="emiliano-cicero-OKZqs-Vseko-unsplash.jpg" alt="Produit 11"/>
+                    </td>
+                    <td>
+                        <div class="product-item" data-price="429" data-brand="appleWatchSeries7">
+                        <img src="saul-flores-cTU5fFSzdxE-unsplash.jpg" alt="Produit 12"/>
+                    </td>
+                    <td>
+                        <div class="product-item" data-price="25" data-brand="sandisk">
+                        <img src="sara-kurfess-9Eid2zc_Veo-unsplash.jpg" alt="Produit 13"/>
+                     </td>
+                     <td>
+                        <div class="product-item" data-price="279" data-brand="airpodsPro">
+                        <img src="daniel-romero-_i0-GBQIVXI-unsplash.jpg" alt="Produit 14"/>
+                    </td>
+                    <td>
+                        <div class="product-item" data-price="35" data-brand="airTag">
+                        <img src="daniel-romero-7Oxnu9lcVD0-unsplash.jpg" alt="Produit 15"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><p>Prix : 229,99 €</p></td>
+                    <td><p>Prix : 429 €</p></td>
+                    <td><p>Prix : 25 €</p></td>
+                    <td><p>Prix : 279 €</p></td>
+                    <td><p>Prix : 35 €</p></td>
+                </tr>
+            </table>
+        </section>
+   
+
+    <!-- Section des catégories -->
+    <div class="categories">
+        <h2>CATEGORIES</h2>
+        <ul>
+            <li><a href="Électronique.html">Électronique</a></li>
+            <li><a href="Vêtements et accessoires.html">Vêtements et accessoires</a></li>
+            <li><a href="Maison et Jardin.html">Maison et jardin</a></li>
+            <li><a href="Beauté et santé.html">Beauté et santé</a></li>
+            <li><a href="Sport et loisir.html">Sport et loisir</a></li>
+        </ul>
+    </div>
+
+    <!-- Menu de navigation -->
+    <div class="menu">
+        <ul>
+            <li><a href="Accueil.html">Accueil</a></li>
+            <li><a href="Catégories.html">Catégories</a></li>
+            <li><a href="Connexion.html">Connexion</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </div>
+    
+</body>
+</html>

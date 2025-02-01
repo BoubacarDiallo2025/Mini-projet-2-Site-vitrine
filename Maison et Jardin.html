@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison et Jardin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>SenJaba</h1>
+    <nav>
+        <a href="Accueil.html">Accueil</a>
+        <a href="Catégories.html">Catégories</a>
+        <a href="Connexion.html">Connexion</a>
+        <a href="Contact.html">Contact</a>
+    </nav>
+
+    <meta name="description" content="Formation HTML"/>
+    <h2>Bienvenue chez SenJaba - Votre partenaire technologique de confiance</h2>
+    <header>
+        <h3><a href="Électronique.html">Électronique</a></h3>
+        <h3><a href="Vêtements et accessoires.html">Vêtements et accessoires</a></h3>
+        <h3><a href="Maison et Jardin.html">Maison et jardin</a></h3>
+        <h3><a href="Beauté et santé.html">Beauté et santé</a></h3>
+        <h3><a href="Sport et loisir.html">Sport et loisir</a></h3>
+    </header>
+
+    <h4>Maison et Jardin</h4>
+
+    <aside class="filters">
+        <h2>Filtres</h2>
+        <form id="filterForm" onsubmit="applyFilters(event)">
+            <div>
+                <label for="priceRange">Plage de prix :</label>
+                <input type="range" id="priceRange" name="priceRange" min="0" max="4000" step="10" value="0" oninput="updatePriceValue(this.value)">
+                <span id="priceValue">0 - 4000</span>
+            </div>
+            <div>
+                <label for="brand">Marque :</label>
+                <select id="brand" name="brand">
+                    <option value="">Toutes</option>
+                    <option value="blueWater">BlueWater</option>
+                    <option value="freshkeeper">FreshKeeper</option>
+                    <option value="cuisinemoderne">Cuisine Moderne</option>
+                    <option value="lumineux">Lumineux</option>
+                    <option value="elegance">Elegance</option>
+                    <option value="lg">LG</option>
+                    <option value="propretéplus">Propreté Plus</option>
+                    <option value="scandihome">ScandiHome</option>
+                    <option value="confortluxe">Confort Luxe</option>
+                    <option value="chicrelax">Chic Relax</option>
+                    <option value="hydrangeaéclat">Hydrangea Éclat</option>
+                    <option value="verteévasion">Verte Évasion</option>
+                    <option value="terraforce">TerraForce</option>
+                    <option value="terrarake">TerraRake</option>
+                    <option value="gardenpro">GardenPro</option>
+                </select>
+            </div>
+            <button type="submit">Appliquer les filtres</button>
+        </form>
+    </aside>
+
+    <script>
+        function updatePriceValue(value) {
+            document.getElementById('priceValue').textContent = value + ' - 4000';
+        }
+
+        function applyFilters(event) {
+            event.preventDefault(); // Empêche le rechargement de la page
+            const priceRange = document.getElementById('priceRange').value;
+            const brand = document.getElementById('brand').value;
+
+            // Logique pour filtrer les produits
+            const products = document.querySelectorAll('.product-item');
+            products.forEach(product => {
+                const productPrice = parseFloat(product.getAttribute('data-price'));
+                const productBrand = product.getAttribute('data-brand');
+
+                if ((productPrice <= priceRange) && (brand === "" || productBrand === brand)) {
+                    product.style.display = 'block'; // Affiche le produit
+                } else {
+                    product.style.display = 'none'; // Cache le produit
+                }
+            });
+        }
+    </script>
+
+    <section class="product-list">
+        <table>
+            <tr>
+                <th><h4><a href="produit.html?produit=blueWater">BlueWater</a></h4></th>
+                <th><h4><a href="produit.html?produit=freshkeeper">FreshKeeper</a></h4></th>
+                <th><h4><a href="produit.html?produit=cuisinemoderne">Cuisine Moderne</a></h4></th>
+                <th><h4><a href="produit.html?produit=lumineux">Lumineux</a></h4></th>
+                <th><h4><a href="produit.html?produit=elegance">Elegance</a></h4></th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="product-item" data-price="299" data-brand="blueWater">
+                        <img src="bluewater-sweden-8u8roj5KKDU-unsplash.jpg" alt="Produit 1"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="899" data-brand="freshkeeper">
+                        <img src="_273fdfeb-f524-4609-88c5-a53c9a5a9bb3.jpeg" alt="Produit 2"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="3499" data-brand="cuisinemoderne">
+                        <img src="istockphoto-171589331-612x612.webp" alt="Produit 3"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="899" data-brand="lumineux">
+                        <img src="christian-kaindl-4uD9w-pxBTA-unsplash.jpg" alt="Produit 4"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="1299" data-brand="elegance">
+                        <img src="hal-gatewood-Vfml26Iy4mI-unsplash.jpg" alt="Produit 5"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><p>Prix: 299 €</p></td>
+                <td><p>Prix: 899 €</p></td>
+                <td><p>Prix: 3 499 €</p></td>
+                <td><p>Prix: 899 €</p></td>
+                <td><p>Prix: 1 299 €</p></td>                
+            </tr>
+
+            <tr>
+                <th><h4><a href="produit.html?produit=lg">LG</a></h4></th>
+                <th><h4><a href="produit.html?produit=propretéplus">Propreté Plus</a></h4></th>
+                <th><h4><a href="produit.html?produit=scandihome">ScandiHome</a></h4></th>
+                <th><h4><a href="produit.html?produit=confortluxe">Confort Luxe</a></h4></th>
+                <th><h4><a href="produit.html?produit=chicrelax">Chic Relax</a></h4></th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="product-item" data-price="550" data-brand="lg">
+                        <img src="istockphoto-157603055-612x612.webp" alt="Produit 6"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="599" data-brand="propretéplus">
+                        <img src="istockphoto-1358299579-612x612.webp" alt="Produit 7"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="89.99" data-brand="scandihome">
+                        <img src="istockphoto-1250026682-612x612.webp" alt="Produit 8"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="349" data-brand="confortluxe">
+                        <img src="istockphoto-175454174-612x612.webp" alt="Produit 9"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="299" data-brand="chicrelax">
+                        <img src="istockphoto-869078270-612x612.webp" alt="Produit 10"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><p>Prix: 550 €</p></td>
+                <td><p>Prix: 599 €</p></td>
+                <td><p>Prix: 89,99 €</p></td>
+                <td><p>Prix: 349 €</p></td>
+                <td><p>Prix: 299 €</p></td>
+            </tr>
+
+            <tr>
+                <th><h4><a href="produit.html?produit=hydrangeaéclat">Hydrangea Éclat</a></h4></th>
+                <th><h4><a href="produit.html?produit=verteévasion">Verte Évasion</a></h4></th>
+                <th><h4><a href="produit.html?produit=terraforce">TerraForce</a></h4></th>
+                <th><h4><a href="produit.html?produit=terrarake">TerraRake</a></h4></th>
+                <th><h4><a href="produit.html?produit=gardenpro">GardenPro</a></h4></th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="product-item" data-price="29.90" data-brand="hydrangeaéclat">
+                        <img src="istockphoto-155161126-612x612.webp" alt="Produit 11"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="49.90" data-brand="verteévasion">
+                        <img src="annie-spratt-JruJFy08KB8-unsplash.jpg" alt="Produit 12"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="39.90" data-brand="terraforce">
+                        <img src="DALL·E 2024-08-27 10.35.57 - A sturdy shovel with a durable metal blade and a strong wooden handle, designed for heavy-duty digging and li.webp" alt="Produit 13"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="29.90" data-brand="terrarake">
+                        <img src="DALL·E 2024-08-27 10.35.12 - A sturdy rake with a strong metal head and a durable wooden handle, ideal for heavy-duty gardening work. The .webp" alt="Produit 14"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="24.90" data-brand="gardenpro">
+                        <img src="istockphoto-2027778015-612x612.webp" alt="Produit 15"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><p>Prix: 29,90 €</p></td>
+                <td><p>Prix: 49,90 €</p></td>
+                <td><p>Prix: 39,90 €</p></td>
+                <td><p>Prix: 29,90 €</p></td>
+                <td><p>Prix: 24,90 €</p></td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Section des catégories -->
+    <div class="categories">
+        <h2>CATEGORIES</h2>
+        <ul>
+            <li><a href="Électronique.html">Électronique</a></li>
+            <li><a href="Vêtements et accessoires.html">Vêtements et accessoires</a></li>
+            <li><a href="Maison et Jardin.html">Maison et Jardin</a></li>
+            <li><a href="Beauté et santé.html">Beauté et santé</a></li>
+            <li><a href="Sport et loisir.html">Sport et loisir</a></li>
+        </ul>
+    </div>
+
+    <!-- Menu de navigation -->
+    <div class="menu">
+        <ul>
+            <li><a href="Accueil.html">Accueil</a></li>
+            <li><a href="Catégories.html">Catégories</a></li>
+            <li><a href="Connexion.html">Connexion</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </div>
+    
+</body>
+</html>

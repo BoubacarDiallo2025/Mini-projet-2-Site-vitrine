@@ -1,0 +1,302 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    text-align: center;
+    text-transform: capitalize;
+    border: 2px solid teal;
+    border-radius: 20px;
+    color: blue;
+    background-color: yellow;
+}
+
+h4 {
+    text-align: center;
+    color: red;
+    font-family: sans-serif;
+}
+
+a:active { 
+    text-align: right;
+    font: 20px verdana, sans-serif;
+    color: black; 
+}
+
+p {
+    text-align: justify;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.container img {
+    width: 40%;
+    margin-right: 20px;
+}
+
+.container .text {
+    width: 55%;
+}
+
+.container h2 {
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.container p {
+    font-size: 18px;
+    color: #333;
+}
+
+.promotion-item, .popular-item, .recommendation-item {
+    width: 50%; 
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.promotion-item img, .popular-item img, .recommendation-item img {
+    width: 100%;
+    height: auto;
+    max-width: 400px; 
+}
+
+.text {
+    margin-top: 10px;
+}
+
+h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: yellow;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 20px;
+    color: red;
+    border: 2px solid teal;
+}
+
+.catégories-list {
+    width: 40%;
+    padding: 10px;
+}
+
+.catégories-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.catégories-item img {
+    max-width: 400px;
+    margin-right: 10px;
+}
+
+main {
+    display: flex;
+    padding: 20px;
+}
+
+.filters {
+    width: 100%;
+    padding: 10px;
+    border-right: 1px solid #ddd;
+}
+
+.filters form {
+    display: flex;
+    flex-direction: column;
+}
+
+.filters form div {
+    margin-bottom: 15px;
+}
+
+.product-list {
+    width: 40%;
+    padding: 10px;
+}
+
+.product-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.product-item img {
+    max-width: 250px;
+    margin-right: 10px;
+}
+
+/* Style pour l'image */
+#productImage {
+    max-width: 50%;
+    height: 500px; /* Ajout de 'px' à la valeur de height */
+    margin-bottom: 20px;
+}
+
+/* Style pour la description longue */
+#productDescription {
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-size: 1rem;
+    text-align: left;
+}
+
+/* Bouton de retour */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: blue;
+    font-weight: bold;
+}
+
+
+
+
+
+/* Style général pour le corps */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Conteneur des catégories */
+.categories {
+    background-color: #f8f8f8;
+    padding: 20px;
+}
+
+/* Liste des catégories */
+.categories ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Style des éléments de catégorie */
+.categories ul li {
+    padding: 10px 0;
+    font-size: 18px;
+}
+
+/* Liens dans les catégories */
+.categories ul li a {
+    text-decoration: none;
+    color: blue;
+    font-weight: bold;
+}
+
+.categories ul li a:hover {
+    color: #007bff;
+}
+
+/* Menu de navigation */
+.menu {
+    background-color: #333;
+    padding: 15px 20px;
+    color: white;
+}
+
+/* Liste du menu de navigation */
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+/* Style des éléments du menu de navigation */
+.menu ul li {
+    margin-right: 20px;
+}
+
+/* Liens du menu de navigation */
+.menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+.menu ul li a:hover {
+    color: #f1c40f;
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.contact-info {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    margin: 5px 0;
+}
+
+.form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container input, .form-container textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-container button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.form-container button:hover {
+    background-color: #0056b3;
+}

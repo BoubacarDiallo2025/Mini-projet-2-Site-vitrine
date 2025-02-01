@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de Contact - SenJava</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Ajoutez vos styles ici */
+    </style>
+</head>
+
+<body>
+    <h1>SenJaba</h1>
+    <a href="Accueil.html">Accueil</a>
+    <a href="Catégories.html">Catégories</a>
+    <a href="Connexion.html">Connexion</a>
+    <a href="Contact.html">Contact</a>
+
+    <meta name="description" content="Formation HTML" />
+    <h2>Bienvenue chez SenJaba - Votre partenaire technologique de confiance</h2>
+    <header>
+        <h3><a href="Électronique.html">Électronique</a></h3>
+        <h3><a href="Vêtements et accessoires.html">Vêtements et accessoires</a></h3>
+        <h3><a href="Maison et Jardin.html">Maison et Jardin</a></h3>
+        <h3><a href="Beauté et santé.html">Beauté et santé</a></h3>
+        <h3><a href="Sport et loisir.html">Sport et loisir</a></h3>
+    </header>
+
+    <h1>Contactez SenJaba</h1>
+
+    <!-- Informations de contact -->
+    <div class="contact-info">
+        <h2>Informations de Contact</h2>
+        <p><strong>Adresse :</strong> Colobane, Dakar, Sénégal</p>
+        <p><strong>Téléphone :</strong> +221 76 830 13 33</p>
+        <p><strong>Email :</strong> contact@senjaba.com</p>
+        <p><strong>Google Map :</strong> <a href="https://www.google.com/maps" target="_blank">Voir sur Google Maps</a></p>
+    </div>
+
+    <!-- Formulaire de contact -->
+    <div class="form-container">
+        <h2>Formulaire de Contact</h2>
+        <form id="contactForm" onsubmit="return submitForm()">
+            <input type="text" id="firstName" name="firstName" placeholder="Prénom" required>
+            <input type="text" id="lastName" name="lastName" placeholder="Nom" required>
+            <input type="tel" id="phone" name="phone" placeholder="Numéro de téléphone" required pattern="^(\(\d{3}\)\s?|\d{3}[-\s]?)?\d{3}[-\s]?\d{4}$" title="Veuillez entrer un numéro de téléphone valide">
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <input type="text" id="address" name="address" placeholder="Adresse">
+            <textarea id="message" name="message" placeholder="Votre message" rows="5" required></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+    </div>
+
+    <script>
+        // Fonction de validation et de soumission du formulaire
+        function submitForm() {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const message = document.getElementById('message').value;
+
+            // Vérification basique
+            if (firstName && lastName && phone && email && message) {
+                // Créer un objet message
+                const newMessage = {
+                    sender: firstName + " " + lastName,
+                    phone: phone,
+                    email: email,
+                    address: address,
+                    message: message
+                };
+
+                // Récupérer les messages existants depuis le localStorage
+                let messages = JSON.parse(localStorage.getItem('contactMessages')) || [];
+
+                // Ajouter le nouveau message à la liste
+                messages.push(newMessage);
+
+                // Sauvegarder la liste mise à jour dans le localStorage
+                localStorage.setItem('contactMessages', JSON.stringify(messages));
+
+                alert("Merci, " + firstName + "! Votre message a été envoyé avec succès.");
+                document.getElementById('contactForm').reset(); // Réinitialiser le formulaire après soumission
+                return false; // Empêche la soumission réelle
+            } else {
+                alert("Veuillez remplir tous les champs requis.");
+                return false;
+            }
+        }
+    </script>
+
+    <!-- Section des catégories -->
+    <div class="categories">
+        <h2>CATEGORIES</h2>
+        <ul>
+            <li><a href="Électronique.html">Électronique</a></li>
+            <li><a href="Vêtements et accessoires.html">Vêtements et accessoires</a></li>
+            <li><a href="Maison et Jardin.html">Maison et Jardin</a></li>
+            <li><a href="Beauté et santé.html">Beauté et santé</a></li>
+            <li><a href="Sport et loisir.html">Sport et loisir</a></li>
+        </ul>
+    </div>
+
+    <!-- Menu de navigation -->
+    <div class="menu">
+        <ul>
+            <li><a href="Accueil.html">Accueil</a></li>
+            <li><a href="Catégories.html">Catégories</a></li>
+            <li><a href="Connexion.html">Connexion</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>

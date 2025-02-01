@@ -1,0 +1,2130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produit</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        // Fonction pour obtenir les paramètres de l'URL
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                  results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Fonction pour afficher les détails du produit
+        function displayProductDetails() {
+            const produitId = getParameterByName('produit');
+            const produits = {
+                macbookpro16: {
+                    nom: 'MacBook Pro 16 pouces',
+                    image: 'DALL·E 2024-08-24 17.12.52 - A sleek and high-performance MacBook Pro displayed on a minimalist desk, featuring a 16-inch Retina display, a th.webp',
+                    prix: 'Prix : 2 499 €',
+                    description: `
+                        <p>Voici le <strong>MacBook Pro 16 pouces</strong> : un ordinateur portable signé Apple, conçu pour offrir des performances exceptionnelles et une expérience utilisateur haut de gamme. Reconnu pour son design élégant en aluminium et son écran Retina haute définition, ce modèle allie puissance, sophistication, et polyvalence, idéal pour les créateurs de contenu, les développeurs, et les professionnels exigeants.</p>
+                        <strong>Caractéristiques clés :</strong>
+                        <ul>
+                            <li> Marque : Apple</li>
+                            <li>Modèle : MacBook Pro (16 pouces, Puce M2 Pro/Max)</li>
+                            <li>Écran Retina : 16 pouces, avec une résolution époustouflante pour des images plus nettes et des couleurs plus vives.</li>
+                            <li>Puce M2 Pro/Max : La puce M2 repousse les limites des performances, avec des vitesses de traitement impressionnantes pour la productivité et la créativité.</li>
+                            <li>Autonomie de la batterie : Jusqu'à 22 heures d'utilisation, vous permettant de travailler sans interruptions.</li>
+                            <li>Stockage SSD ultra-rapide : Jusqu'à 8 To, avec des vitesses de lecture/écriture améliorées pour des transferts de données instantanés.</li>
+                            <li>Connectivité : Thunderbolt 4, HDMI, carte SD et prise casque pour plus de flexibilité.</li>
+                        </ul>
+                        <p>Pourquoi le choisir ? Le <strong>MacBook Pro</strong> est l'outil ultime pour ceux qui cherchent un ordinateur portable performant et fiable. Ses performances graphiques avancées, ses capacités de traitement multitâches et son design léger en font un choix parfait pour les professionnels en déplacement ou les créateurs de contenu exigeant une qualité irréprochable.</p>
+                        <p>C'est un investissement sûr pour toute personne cherchant à allier productivité, innovation, et luxe avec la fiabilité inégalée d'Apple.</p>`
+                                  
+
+                },
+                hpspectrex360: {
+                    nom: 'HP Spectre x360',
+                    image: 'hp_spectre_x360_15_01_tcm245_2542751_tcm245_2543548_tcm245-2542751.webp',
+                    prix: 'Prix : 1 799,00 €',
+                    description:  `
+                        <p>Découvrez le <strong>HP Spectre x360 15</strong>, l'ordinateur portable 2-en-1 qui allie puissance, élégance et polyvalence. Doté d'un design sophistiqué avec une finition en aluminium noir et or cuivré, ce laptop est conçu pour les utilisateurs exigeants qui cherchent à allier performance et style.</p>
+                        <ul>
+                            <li>Marque : HP</li>
+                            <li>Modèle : Spectre x360 15</li>
+                            <li>Écran : 15.6 pouces 4K UHD (3840 x 2160), avec technologie tactile pour une expérience immersive, idéal pour les créateurs de contenu.</li>
+                            <li>Processeur : Intel Core i7 de 11ème génération, offrant des performances rapides pour le multitâche, la création de contenu ou le gaming léger.</li>
+                            <li>Mémoire : Jusqu'à 16 Go de RAM, permettant une fluidité sans compromis même avec des applications lourdes.</li>
+                            <li>Stockage : SSD de 512 Go ou 1 To, assurant des temps de chargement ultrarapides.</li>
+                            <li>Autonomie : Jusqu'à 12 heures d'autonomie, parfait pour une journée de travail ou de divertissement sans interruption.</li>
+                            <li>Inclus : Stylet numérique HP pour des interactions précises et une créativité sans limites.</li>
+                            <li>Le HP Spectre x360 se démarque également par sa sécurité avec un lecteur d'empreintes digitales et une caméra infrarouge compatible Windows Hello. Sa charnière rotative à 360 degrés permet une utilisation flexible en mode tablette, chevalet ou ordinateur.</li>
+                            <li>Ce laptop est parfait pour les professionnels créatifs, les étudiants et tous ceux qui recherchent un appareil à la pointe de la technologie avec un design élégant.</li>
+                            <li>Offre : Profitez d'une remise de 15% jusqu'à la fin du mois ! N'attendez plus pour vivre une expérience informatique premium avec le HP Spectre x360.</li>
+                            <li>Garantie : Garantie constructeur de 2 ans, avec service après-vente inclus.</li>
+                        </ul>`
+                },
+                ldlc: {
+                    nom: 'LDLC',
+                    image: 'LD0004456869_2.jpg',
+                    prix: 'Prix : 499,00 €',
+                    description: `
+                        <p>L'ordinateur portable <strong>LDLC Aurore</strong> est un choix idéal pour ceux qui cherchent à allier efficacité et élégance à un prix compétitif. Avec un design épuré en aluminium brossé, il se distingue par sa légèreté et sa portabilité, parfait pour les utilisateurs en déplacement, que ce soit pour le travail, les études ou les loisirs.</p>
+                        <ul>
+                            <li>Marque : LDLC</li>
+                            <li>Modèle : Aurore</li>
+                            <li>Écran : 14 pouces Full HD (1920 x 1080), offrant des couleurs éclatantes et une netteté exceptionnelle pour une expérience visuelle immersive, idéale pour le multimédia.</li>
+                            <li>Processeur : Intel Core i5 de 8ème génération, puissant et fiable pour gérer efficacement les tâches quotidiennes, du traitement de texte à la navigation web, en passant par la diffusion de vidéos en streaming.</li>
+                            <li>Mémoire : 8 Go de RAM, garantissant une fluidité optimale même avec plusieurs applications ouvertes simultanément.</li>
+                            <li>Stockage : SSD de 256 Go, permettant des démarrages ultra-rapides et une grande capacité de stockage pour vos fichiers personnels, documents ou multimédias.</li>
+                            <li>Connectivité : Doté d'une connectique complète avec ports USB 3.0, HDMI, et un lecteur de cartes SD, facilitant les transferts de données et la connexion à des périphériques externes.</li>
+                            <li>Avec son autonomie allant jusqu'à 10 heures, le LDLC Aurore est conçu pour vous accompagner toute la journée sans avoir à vous soucier de recharger constamment. De plus, son clavier ergonomique et son pavé tactile précis offrent un confort d'utilisation inégalé, même après plusieurs heures d'utilisation.</li>
+                            <li>Offre Spéciale : En ce moment, profitez d'une réduction de 10% sur votre commande en utilisant le code AURORE10 à la caisse ! Ne manquez pas cette occasion d'acquérir un ordinateur portable performant à un prix imbattable.</li>
+                                            <li>Garantie : Ce produit est livré avec une garantie de 2 ans, avec un service après-vente dédié pour assurer votre tranquillité d'esprit.</li>  
+                        </ul>
+                        <p>Laissez-vous séduire par la qualité et la performance du LDLC Aurore, un excellent rapport qualité-prix pour tous vos besoins informatiques !</p>`   
+                },
+                apple:{
+                    nom: 'Apple',
+                    image: 'mac-book.jpg',
+                    prix: 'Prix : 2 699,00 €',
+                    description: `
+                        <p>Le <strong>MacBook Pro 16 pouces</strong> est l'ordinateur portable ultime conçu par Apple, alliant des performances de pointe avec un design moderne et épuré. Cet appareil est parfait pour les professionnels de la création, les développeurs, ou toute personne à la recherche de puissance et d'élégance dans un ordinateur portable.</p>
+                        <ul>
+                            <li>Marque : Apple</li>
+                            <li>Modèle : MacBook Pro (16 pouces)</li>
+                            <li>Écran : Le magnifique écran Retina de 16 pouces avec technologie True Tone offre des couleurs éclatantes et une clarté inégalée, parfait pour les retouches photo, la production vidéo ou la conception graphique.</li>
+                            <li>Processeur : Puissance garantie avec un processeur Intel Core i9 de 9ème génération, idéal pour les tâches intensives telles que le montage vidéo 4K, la modélisation 3D ou le développement d'applications.</li>
+                            <li>Mémoire : 16 Go de RAM DDR4, pour une multitâche fluide et rapide, même avec des applications gourmandes en ressources.</li>
+                            <li>Stockage : SSD ultrarapide de 512 Go, garantissant des temps de démarrage quasi instantanés et une capacité de stockage suffisante pour tous vos fichiers et projets professionnels.</li>
+                            <li>Graphiques : Carte graphique AMD Radeon Pro 5500M avec 4 Go de mémoire GDDR6, idéale pour les créatifs exigeants qui nécessitent des performances graphiques élevées pour le rendu vidéo ou la conception 3D.</li>
+                            <li>En plus de sa puissance brute, le MacBook Pro est également un bijou de design. Son clavier rétroéclairé Magic Keyboard assure une frappe plus agréable et silencieuse, tandis que le grand trackpad permet une navigation fluide et précise.</li>
+                            <li>Autonomie : Profitez d'une autonomie exceptionnelle allant jusqu'à 11 heures, idéale pour travailler toute la journée sans devoir vous soucier de recharger votre appareil.</li>
+                            <li>Offre Spéciale : En ce moment, une remise exceptionnelle de 200€ est offerte sur ce modèle, portant son prix à 2 499,00€ au lieu de 2 699,00€. Une occasion à ne pas manquer !</li>
+                            <li>Garantie : Bénéficiez d'une garantie de 2 ans avec la possibilité d'étendre cette couverture avec AppleCare+ pour plus de tranquillité d'esprit.</li>
+                        </ul>
+                        <p>Investissez dans la performance et le style avec ce MacBook Pro, l'ordinateur portable qui redéfinit l'efficacité et l'élégance au quotidien.</p>
+                    `
+                },
+
+                hpprobook450g6:{
+                    nom: 'HP ProBook 450 G6',
+                    image: 'HP-ProBook-450-G6_1.jpg',
+                    prix: 'Prix : 849,00 €',
+                    description: `
+                        <p>Le HP ProBook 450 G6 est un ordinateur portable de qualité professionnelle, conçu pour offrir puissance, polyvalence et sécurité aux entreprises et aux utilisateurs professionnels. Son design élégant et robuste en fait un compagnon idéal pour les personnes toujours en déplacement.</p>
+                        <ul>
+                            <li>Marque : HP</li>
+                            <li>Modèle : ProBook 450 G6</li>
+                            <li>Écran : Écran Full HD de 15,6 pouces offrant une résolution nette et des couleurs vives, parfait pour travailler avec des documents détaillés, des présentations, et des supports visuels.</li>
+                            <li>Processeur : Équipé d'un processeur Intel Core i7 de 8ème génération, il offre des performances exceptionnelles, capables de gérer des tâches lourdes avec facilité, y compris la modélisation, le développement logiciel et le multitâche.</li>
+                            <li>Mémoire : 16 Go de RAM DDR4 garantissent une expérience fluide et sans ralentissement, même avec plusieurs applications ouvertes simultanément.</li>
+                            <li>Stockage : Un SSD rapide de 512 Go assure un démarrage instantané de votre système ainsi que des temps de chargement rapides pour vos fichiers et applications.</li>
+                            <li>Sécurité : Sécurité renforcée avec des fonctionnalités avancées telles que le lecteur d'empreintes digitales, la puce TPM (Trusted Platform Module) et des outils de cryptage pour protéger vos données confidentielles.</li>
+                            <li>Connectivité : Port USB 3.1, HDMI, RJ-45, et un lecteur de cartes SD pour une connectivité complète, idéale pour les environnements professionnels.</li>
+                            <li>Autonomie: Avec une autonomie de batterie allant jusqu'à 14 heures, ce laptop vous accompagne tout au long de votre journée de travail sans interruption, que vous soyez au bureau ou en déplacement.</li>
+                            <li>Garantie: Profitez d'une garantie standard de 2 ans avec des options d'extension pour plus de sérénité.</li>
+                            <li>Offre Spéciale: En ce moment, bénéficiez d'une réduction de 50 € sur le prix d'origine. Disponible à 799,00€ au lieu de 849,00€.</li>
+                        </ul>
+                        <p>Ce HP ProBook 450 G6 combine des performances puissantes et une sécurité renforcée dans un châssis élégant. Il est le choix parfait pour les professionnels recherchant un appareil fiable pour mener à bien leurs tâches quotidiennes et optimiser leur productivité.</p>`                   
+                },
+
+                asus:{
+                    nom: 'ASUS',
+                    image: 'R.jpeg',
+                    prix: 'Prix : 999,00 €',
+                    description: `
+                         <p>L'ASUS All-in-One PC est un ordinateur tout-en-un polyvalent et élégant, idéal pour les utilisateurs à la recherche d'une machine puissante, mais sans encombrement. Ce modèle regroupe tout le nécessaire dans un design compact, offrant une expérience informatique simple et épurée, tout en maintenant des performances de pointe.</p>
+                         <ul>
+                            <li>Marque: ASUS</li>
+                            <li>Modèle: All-in-One PC</li>
+                            <li>Écran : Écran large de 23,8 pouces avec résolution Full HD, offrant des images nettes et des couleurs éclatantes, parfait pour les tâches quotidiennes comme la navigation sur Internet, les présentations ou encore la visualisation de vidéos en haute définition.</li>
+                            <li>Processeur : Intel Core i5 de 10e génération, qui assure fluidité et réactivité pour des tâches multiples, qu'il s'agisse de bureautique, de navigation ou de retouche d'images légères.</li>
+                            <li>Mémoire Vive : 8 Go de RAM, assurant un multitâche fluide, permettant de basculer rapidement entre plusieurs applications sans ralentissement.</li>
+                            <li>Stockage : Disque dur SSD de 512 Go pour des démarrages rapides et un accès instantané à vos fichiers et logiciels. Cet espace de stockage est suffisant pour contenir vos documents, photos, vidéos et logiciels professionnels.</li>
+                            <li>Design Compact : Avec son écran et son unité centrale intégrés dans un seul boîtier élégant, ce modèle libère de l'espace sur votre bureau et évite l'encombrement de câbles inutiles.</li>
+                            <li>Connectivité : L'ordinateur est équipé de ports USB 3.0 et HDMI pour faciliter la connexion de vos périphériques, ainsi qu'une connexion Bluetooth et Wi-Fi pour une intégration sans fil sans effort.</li>
+                            <li>Périphériques Inclus : Il est livré avec un clavier et une souris ASUS sans fil, assurant une productivité optimale dès la première utilisation.</li>
+                            <li>Autonomie et Évolutivité : Grâce à sa conception tout-en-un, ce PC est économe en énergie, ce qui le rend parfait pour une utilisation domestique ou au bureau. Vous pouvez également ajouter de la mémoire vive ou du stockage si nécessaire pour répondre à vos besoins futurs.</li>
+                            <li>Garantie : 2 ans de garantie standard incluse, avec la possibilité de l'étendre selon vos besoins.</li>
+                            <li>Offre spéciale : En ce moment, bénéficiez de 100 € de réduction pour tout achat, disponible au prix exceptionnel de 899,00€ au lieu de 999,00€.</li>
+                         </ul>
+                         <p>L'ASUS All-in-One PC est la solution idéale pour les utilisateurs cherchant un design élégant, des performances solides et une facilité d'utilisation. Cet ordinateur s'adresse aux professionnels, aux étudiants ou à toute personne souhaitant une station de travail complète et esthétiquement agréable.</p>
+                       `   
+                },
+
+                iphone15pro:{
+                    nom: 'IPhone 15 Pro',
+                    image: 'thai-nguyen-AtYWWis5ZDM-unsplash.jpg',
+                    prix: 'Prix : 1 200 €',
+                    description: `
+                         <ul>
+                            <li><strong>Marque : Apple</strong></li>
+                            <li><strong>Modèle : iPhone 15 Pro</strong></li>
+                            <li><strong>Design et Esthétique :</strong></li>
+                            <p>L’iPhone 15 Pro arbore un design sophistiqué en titane qui allie légèreté et robustesse. Son élégance se distingue non seulement par son apparence, mais aussi par la sensation premium qu’il procure en main. Vous serez immédiatement captivé par son aspect épuré et moderne, parfait pour ceux qui souhaitent allier technologie et style.</p>
+                            <li><strong>Performance Excellente :</strong></li>
+                            <p>Grâce à la puce A17 Pro, la plus puissante jamais créée par Apple, l’iPhone 15 Pro est capable d’offrir des performances inégalées. Vous pourrez profiter d'une fluidité exceptionnelle, que ce soit pour le multitâche, les applications les plus gourmandes en ressources ou même les jeux vidéos avec des graphismes dignes d’une console.</p>
+                            <li><strong>Photographie de Qualité Professionnelle :</strong></li>
+                            <p>L’iPhone 15 Pro est équipé d’un système de caméra triple de 48MP, comprenant un ultra grand-angle, un téléobjectif et une capacité de zoom optique 3x. Ce téléphone capture chaque détail avec une clarté stupéfiante, même dans des conditions de faible luminosité. Pour les amateurs de photos ou de vidéos, c’est un compagnon idéal.</p>
+                            <li><strong>Écologie et Innovation :</strong></li>
+                            <p>Ce modèle marque aussi une avancée dans l’engagement environnemental d’Apple. En adoptant le titanium recyclable et en intégrant un port USB-C plus universel, l’iPhone 15 Pro n’est pas seulement innovant, il est aussi écoresponsable. Il reflète un effort conscient pour réduire l’impact écologique sans compromis sur la qualité.</p>
+                            <strong>Pourquoi Choisir l’iPhone 15 Pro ?</strong>
+                            <li>Un appareil polyvalent : Que ce soit pour un usage professionnel ou personnel, l'iPhone 15 Pro se distingue par ses performances, son design et ses fonctionnalités haut de gamme.</li>
+                            <li>Durabilité et protection : Construit pour durer avec des matériaux premium et une résistance aux chocs améliorée.</li>
+                            <li>Écosystème Apple : Synchronisation parfaite avec tous vos appareils Apple pour une continuité fluide dans votre vie numérique.</li>
+                        </ul>
+                        <p>Si vous cherchez un smartphone qui allie à la fois puissance, élégance et innovation, l’iPhone 15 Pro est l’option idéale. Non seulement il vous offrira une expérience utilisateur inégalée, mais il vous permettra également de rester à la pointe de la technologie pour les années à venir.</p>
+                     `
+                },
+
+                iphone14pro:{
+                    nom: 'IPhone 14 Pro',
+                    image: '2w1uqs21.jpg',
+                    prix: 'Prix : 1 099 €',
+                    description: `
+                        <ul>
+                            <li>Marque : Apple</li>
+                            <li>Modèle : iPhone 14 Pro</li>                        
+                            <strong>Caractéristiques Principales :</strong>
+                            <p>Écran :</p>
+                            <li>Taille : 6,1 pouces</li>
+                            <li>Type : Super Retina XDR</li>
+                            <li>Résolution : 2556 x 1179 pixels</li>
+                            <p>Caméra :</p>
+                            <li>Système de triple caméra (grand-angle, ultra grand-angle, téléobjectif)</li>
+                            <li>Photographies en faible lumière améliorées</li>
+                            <li>Enregistrement vidéo en 4K</li>
+                            <p>Processeur :</p>
+                            <li>Puce A16 Bionic pour des performances ultra-rapides</li>
+                            <li>Efficacité énergétique optimisée</li>
+                            <p>Batterie :</p>
+                            <li>Autonomie d'une journée complète</li>
+                            <li>Chargement rapide et sans fil</li>
+                            <p>Stockage :</p>
+                            <li>Options : 128 Go, 256 Go, 512 Go, 1 To</li>
+                            <p>Système d'exploitation :</p>
+                            <li>iOS 16 avec des fonctionnalités avancées de confidentialité et de sécurité</li>
+                            <p>Design :</p>
+                            <li>Couleur : Violet, avec une finition en verre et en aluminium</li>
+                            <li>Poids : Léger et ergonomique pour une prise en main confortable</li>
+                            <li>Résistance : Certifié IP68 pour la résistance à l'eau et à la poussière</li>
+                            <strong>Pourquoi Choisir l'iPhone 14 Pro ?</strong>
+                            <ol>
+                                <li>Innovation Technologique : Profitez des dernières avancées en matière de photographie et de performances.</li>
+                                <li>Écosystème Apple : Intégration fluide avec d'autres appareils Apple (Mac, iPad, Apple Watch).</li>
+                                <li>Support et Service : Accès à un support client exceptionnel et à des mises à jour régulières.</li>
+                            </ol>
+                        </ul>
+                        <p>L'iPhone 14 Pro est le choix idéal pour ceux qui recherchent une combinaison parfaite de design, de performance et d'innovation. Ne manquez pas l'opportunité de faire l'expérience de la technologie de pointe d'Apple !</p>
+                    `
+                },
+
+                samsunggalaxys24ultra:{
+                    nom: 'Samsung Galaxy S24 Ultra',
+                    image: 'DALL·E 2024-08-26 01.40.48 - The Samsung Galaxy S24 Ultra smartphone, featuring a sleek design with a titanium frame and flat display. It has .webp',
+                    prix: 'Prix: 1 199 €',
+                    description: `
+                         <ul>
+                            <p>Le <strong>Samsung Galaxy S24 Ultra</strong> est le dernier smartphone phare de Samsung, alliant technologie de pointe et design élégant.</p>
+                            <li>Marque : Samsung</li>
+                            <strong>Caractéristiques Principales :</strong>
+                            <p>Écran :</p>
+                            <li>Taille : 6,8 pouces</li>
+                            <li>Type : Dynamic AMOLED avec des bords ultra-fins</li>
+                            <li>Résolution : Affichage exceptionnel pour une expérience immersive</li>
+                            <p>Caméra :</p>
+                            <li>Système de quadruple caméra, incluant un objectif principal de 200 MP</li>
+                            <li>Prise en charge de la photographie en faible lumière et fonctionnalités avancées de prise de vue</li>
+                            <p>Processeur :</p>
+                            <li>Puce de dernière génération pour des performances rapides et efficaces</li>
+                            <p>Batterie :</p>
+                            <li>Autonomie prolongée avec chargement rapide et sans fil</li>
+                            <p>Design :</p>
+                            <li>Finition en titane de couleur gris foncé, offrant une esthétique premium</li>
+                            <li>Protégé par du Gorilla Glass pour une durabilité accrue</li>
+                            <p><strong>Pourquoi Choisir le Samsung Galaxy S24 Ultra ?</strong></p>
+                            <ol>
+                                <li>Performances Inégalées : Idéal pour les utilisateurs exigeants, que ce soit pour le travail ou le divertissement.</li>
+                                <li>Qualité Photographique : Capturez des images d'une clarté exceptionnelle grâce à son système de caméra avancé.</li>
+                                <li> Design Élégant : Un smartphone qui attire tous les regards avec sa finition haut de gamme.</li>
+                            </ol>
+                        </ul>
+                        <p>Le <strong>Samsung Galaxy S24 Ultra</strong> est le choix parfait pour ceux qui recherchent un smartphone alliant innovation, puissance et style. Ne manquez pas l'occasion de découvrir ce bijou technologique !</p>
+                    `
+                },
+
+                applewatch:{
+                    nom: 'Apple Watch',
+                    image: 'ankush-minda-Gz0B_k5vQgQ-unsplash.jpg',
+                    prix: 'Prix : 399 €',
+                    description: `
+                          <ul>
+                            <li>Marque :  Apple (Apple Watch)</li>
+                          </ul>
+                          <p>Découvrez l'Apple Watch, une montre connectée alliant technologie avancée et design élégant, parfaite pour suivre votre santé et rester connecté.</p>
+                          <strong>Caractéristiques Principales :</strong>
+                          <ul>
+                            <p>Écran :</p>
+                            <li>Écran tactile haute résolution avec affichage clair et coloré</li>
+                            <p>Fonctionnalités :</p>
+                            <li>Suivi de la santé : fréquence cardiaque, suivi du sommeil, et notifications de santé</li>
+                            <li>Notifications intelligentes : appels, messages, et alertes d'applications</li>
+                            <li>Modes sportifs variés pour les amateurs de fitness</li>
+                            <p>Batterie :</p>
+                            <li>Autonomie d'une journée avec chargement rapide</li>
+                            <p>Design :</p>
+                            <li>Finition moderne avec un bracelet en silicone perforé pour le confort</li>
+                            <li>Résistant à l'eau pour une utilisation quotidienne</li>
+                            <strong>Pourquoi Choisir l'Apple Watch ?</strong>
+                            <ol>
+                                <li>Intégration Parfaite : Fonctionne parfaitement avec les produits Apple pour une expérience utilisateur fluide.</li>
+                                <li>Fonctionnalités Avancées : Idéale pour ceux qui souhaitent suivre leur santé et rester connectés.</li>
+                                <li>Style Élégant : Un accessoire qui s'adapte à toutes les occasions, du sport à la vie quotidienne.</li>
+                            </ol>
+                          </ul>
+                          <p>L'Apple Watch est le choix parfait pour ceux qui recherchent une combinaison de style, de technologie et de fonctionnalité. Ne manquez pas l'opportunité d'améliorer votre quotidien avec cette montre innovante !</p>
+                    `
+                },
+
+                samsunggalaxywatchactive:{
+                    nom: 'Samsung Galaxy Watch Active',
+                    image: 'emiliano-cicero-OKZqs-Vseko-unsplash.jpg',
+                    prix: 'Prix: 229,99 €',
+                    description: `
+                         <ul>
+                            <li>Marque : <strong>Samsung Galaxy Watch Active</strong></li>
+                            <p>Design et Caractéristiques :</p>
+                            <li>La Samsung Galaxy Watch Active est conçue pour les utilisateurs au style de vie actif tout en conservant un design élégant et épuré. Son boîtier en aluminium léger et son bracelet en silicone assurent un confort optimal, même lors d'activités physiques intenses. L'écran AMOLED rond offre des couleurs vives et des contrastes profonds, parfaits pour une utilisation quotidienne.</li>
+                            <li>Écran : AMOLED 1.1 pouces avec une résolution de 360 x 360 pixels.</li>
+                            <li>Matériaux : Boîtier en aluminium léger avec bracelet en silicone interchangeable.</li>
+                            <li>Fonctionnalités : Suivi avancé de la santé (fréquence cardiaque, suivi du sommeil, suivi des activités physiques, mesure de la VO2 max), notifications intelligentes (appels, messages, alertes), suivi GPS, et détection automatique des entraînements.</li>
+                            <li>Autonomie : Jusqu'à 2 jours d'autonomie avec un usage normal.</li>
+                            <li>Compatibilité : Android et iOS via Bluetooth 4.2 et Wi-Fi.</li>
+                            <li>Étanchéité : Résistante à l'eau jusqu'à 50 mètres, idéale pour la natation.</li>
+                            <strong>Pourquoi l'acheter ?</strong>
+                            <li>La Samsung Galaxy Watch Active est l'accessoire idéal pour les amateurs de fitness et les professionnels en quête d'un appareil connecté discret et performant. Ses fonctionnalités avancées de suivi de la santé et son design léger la rendent indispensable pour les utilisateurs qui veulent rester en forme tout en gardant un style moderne.</li>
+                            </ul>
+                    `
+
+                },
+
+                applewatchseries7:{
+                    nom: 'Apple Watch Series 7',
+                    image: 'saul-flores-cTU5fFSzdxE-unsplash.jpg',
+                    prix: 'Prix: 429 €',
+                    description: `
+                       <ul>
+                          <li>Marque : Apple</li>
+                          <p>L'Apple Watch Series 7 est la montre connectée ultime, alliant élégance, fonctionnalités avancées et technologie de pointe. Conçue pour améliorer votre quotidien, elle est idéale pour les amateurs de fitness, les professionnels et ceux qui souhaitent rester connectés.</p>
+                          <strong>Caractéristiques Principales :</strong>
+                          <p>Écran :</p>
+                          <li>Écran Retina toujours actif, 20 % plus grand que les modèles précédents, offrant une lisibilité optimale.</li>
+                          <p>Fonctionnalités de Santé :</p>
+                          <li>Suivi de la fréquence cardiaque, détection de chutes, ECG (électrocardiogramme) et suivi du sommeil.</li>
+                          <li>Notifications de santé personnalisées pour vous aider à rester en forme et en sécurité.</li>
+                          <p>Connectivité :</p>
+                          <li>Notifications en temps réel pour appels, messages et applications.</li>
+                          <li>Intégration parfaite avec l'iPhone et les autres appareils Apple.</li>
+                          <p>Modes Sportifs :</p>
+                          <li>Plus de 75 modes d'entraînement, y compris la course, le cyclisme et le yoga.</li>
+                          <li>Suivi GPS intégré pour des données précises sur vos activités en extérieur.</li>
+                          <p>Autonomie :</p>
+                          <li>Autonomie d'environ 18 heures avec chargement rapide, vous permettant de rester actif toute la journée sans interruption.</li>
+                          <p>Design :</p>
+                          <li>Finition en aluminium, verre résistant et bracelet en silicone confortable, disponible en plusieurs couleurs.</li>
+                          <strong>Pourquoi Choisir l'Apple Watch Series 7 ?</strong>
+                          <ol>
+                             <li>Technologie de Pointe : Profitez des dernières innovations en matière de santé et de connectivité.</li>
+                             <li>Style et Élégance : Un design moderne qui s'adapte à toutes les occasions, du sport au bureau.</li>
+                             <li>Écosystème Apple : Fonctionne parfaitement avec tous vos appareils Apple pour une expérience fluide et intégrée.</li>
+                          </ol>
+                        </ul>
+                        <p>Ne manquez pas l'opportunité de transformer votre quotidien avec l'Apple Watch Series 7. Que ce soit pour suivre vos activités physiques, gérer vos notifications ou surveiller votre santé, cette montre est un indispensable. Visitez le site officiel d'Apple ou rendez-vous dans un magasin près de chez vous pour découvrir toutes ses fonctionnalités et passer commande dès aujourd'hui !</p>
+                    `
+                },
+                 sandisk:{
+                    nom:'SanDisk',
+                    image: 'sara-kurfess-9Eid2zc_Veo-unsplash.jpg',
+                    prix: 'Prix: 25 €',
+                    description: `
+                        <p>La clé USB SanDisk Extreme Pro est l'outil parfait pour tous ceux qui cherchent à stocker et transférer des données rapidement et en toute sécurité. Avec des performances exceptionnelles et une conception robuste, elle répond aux besoins des professionnels comme des utilisateurs quotidiens.</p>
+                        <ul>
+                            <li>Marque : SanDisk</li>
+                            <strong>Caractéristiques Principales :</strong>
+                            <p>Capacité :</p>
+                            <li>Disponible en plusieurs capacités allant jusqu'à 1 To, offrant amplement d'espace pour vos fichiers, photos, vidéos et plus.</li>
+                            <p>Vitesse de Transfert :</p>
+                            <li>Vitesse de lecture allant jusqu'à 420 Mo/s et vitesse d'écriture jusqu'à 380 Mo/s, permettant des transferts de fichiers ultra-rapides.</li>
+                            <p>Connectivité :</p>
+                            <li>Port USB 3.2 Gen 2 pour une compatibilité optimale avec les appareils modernes, tout en étant rétrocompatible avec les ports USB 3.0 et 2.0.</li>
+                            <p>Sécurité :</p>
+                            <li>Fonctionnalité de protection par mot de passe et cryptage AES 256 bits pour garantir la sécurité de vos données sensibles.</li>
+                            <p>Design :</p>
+                            <li>Boîtier en métal durable et élégant, conçu pour résister aux chocs et à l'usure quotidienne.</li>
+                            <p>Logiciel Inclus :</p>
+                            <li>SanDisk SecureAccess™ pour un stockage sécurisé et facile de vos fichiers privés.</li>
+                            <strong>Pourquoi Choisir la Clé USB SanDisk Extreme Pro ?</strong>
+                            <ol>
+                               <li>Performance Inégalée : Profitez de vitesses de transfert rapides qui vous font gagner du temps, que ce soit pour le travail ou le divertissement.</li>
+                               <li>Sécurité Renforcée : Protégez vos données les plus précieuses avec des options de sécurité avancées.</li>
+                               <li>Polyvalence : Idéale pour les photographes, vidéastes et professionnels ayant besoin d'une solution de stockage fiable et rapide.</li>
+                            </ol>
+                        </ul>
+                        <p>Ne laissez pas vos fichiers importants entre les mains du hasard. Optez pour la clé USB SanDisk Extreme Pro, le choix idéal pour ceux qui recherchent performance, sécurité et fiabilité. Visitez votre revendeur local ou le site web de SanDisk pour découvrir toutes les options disponibles et faire votre achat dès aujourd'hui !</p>
+                        `
+                },
+
+                airpodsproapple:{
+                    nom:'AirPods Pro Apple',
+                    image: 'daniel-romero-_i0-GBQIVXI-unsplash.jpg',
+                    prix: 'Prix: 279 €',
+                    description: `
+                        <p>Découvrez les AirPods Pro : l'expérience audio ultime !</p>
+                        <strong>Caractéristiques principales :</strong>
+                        <p>Marque : <strong>Apple</strong> est synonyme d'innovation et de qualité. Avec des décennies d'expérience dans la conception de produits électroniques de pointe, Apple continue de redéfinir les normes de l'industrie.</p>
+                        <ul>
+                            <li>Qualité sonore exceptionnelle : Les AirPods Pro offrent un son riche et immersif, grâce à leur technologie audio avancée et à des haut-parleurs de haute qualité.</li>
+                            <li>Réduction de bruit active : Plongez dans votre musique sans distractions. La réduction de bruit active bloque les bruits environnants, vous permettant de profiter pleinement de chaque note.</li>
+                            <li>Mode Transparence : Restez connecté à votre environnement. Avec le mode Transparence, vous pouvez entendre ce qui se passe autour de vous tout en écoutant votre musique.</li>
+                            <li>Confort personnalisé : Les embouts en silicone souple sont disponibles en trois tailles pour un ajustement parfait, garantissant un confort optimal même pendant de longues sessions d'écoute.</li>
+                            <li>Autonomie impressionnante : Profitez jusqu'à 4,5 heures d'écoute sur une seule charge, avec un boîtier de recharge sans fil offrant plusieurs recharges supplémentaires.</li>
+                            <li>Résistance à l'eau et à la transpiration : Conçus pour résister aux intempéries, les AirPods Pro sont parfaits pour les séances d'entraînement ou les jours de pluie.</li>
+                            <li>Intégration avec l'écosystème Apple : Connectez-vous facilement à tous vos appareils Apple. Les AirPods Pro se synchronisent instantanément avec votre iPhone, iPad ou Mac.</li>
+                        </ul>    
+                            <strong>Pourquoi choisir les AirPods Pro ?</strong>
+                            <P>Les AirPods Pro ne sont pas seulement des écouteurs, ils sont une déclaration de style et de technologie. Que vous soyez en déplacement, à la salle de sport ou simplement chez vous, ces écouteurs vous offrent une liberté sans fil et une qualité sonore inégalée.</P>
+                            <P>Ne manquez pas l’occasion de vivre une expérience audio révolutionnaire ! Commandez vos AirPods Pro dès aujourd'hui et découvrez la différence par vous-même.</P>
+                    `
+
+                },
+
+                appleairtag:{
+                    nom:'Apple AirTag',
+                    image: 'daniel-romero-7Oxnu9lcVD0-unsplash.jpg',
+                    prix: 'Prix: 35 €',
+                    description: `
+                         <p>Ne perdez plus jamais vos objets précieux grâce à l'Apple AirTag !</p>
+                         <p>Marque : <strong>Apple</strong>, synonyme d'innovation et de qualité, vous propose l'AirTag, un dispositif de localisation intelligent qui transforme la façon dont vous gérez vos affaires.</p>
+                         <strong>Caractéristiques principales :</strong>
+                         <ul>
+                            <li>Localisation Ultra Précise : Utilisez la technologie Ultra Wideband pour retrouver vos objets avec une précision inégalée. Suivez vos clés, sacs ou tout autre objet en un clin d'œil.</li>
+                            <li>Intégration avec l'Écosystème Apple : L'AirTag fonctionne parfaitement avec l'application <strong>Localiser</strong> sur votre iPhone ou iPad. Recevez des notifications instantanées si vous oubliez un objet.</li>
+                            <li>Design Élégant et Pratique : Avec son format compact et léger, l'AirTag s'intègre facilement dans vos accessoires du quotidien.</li>
+                            <li>Résistance à l'Eau et à la Poussière : Grâce à sa certification IP67, l'AirTag est conçu pour résister aux éclaboussures et à la poussière, garantissant sa durabilité.</li>
+                            <li>Batterie Remplaçable : Profitez d'une autonomie d'un an avec une batterie CR2032 facilement remplaçable, sans besoin de recharge.</li>
+                            <li>Fonctionnalité de Recherche Sonore : Faites sonner votre AirTag pour le retrouver rapidement, même lorsqu'il est caché.</li>
+                         </ul>
+                         <strong>Pourquoi choisir l'Apple AirTag ?</strong>
+                         <p>L'<strong>Apple AirTag</strong> est bien plus qu'un simple accessoire ; c'est un outil essentiel pour une vie sans stress. Ne laissez pas le désordre vous submerger. Avec l'AirTag, vous aurez la tranquillité d'esprit de savoir exactement où se trouvent vos objets les plus importants.</p>
+                         <p>Commandez dès maintenant ! Investissez dans l'<strong>Apple AirTag</strong> et simplifiez votre quotidien en gardant vos objets à portée de main. Ne laissez pas la perte de vos affaires vous gâcher la vie !</p>
+                         `
+                },
+
+                sneakersmodernes:{
+                    nom: 'Sneakers Modernes',
+                    image: "DALL·E 2024-08-24 18.25.26 - A stylish and trendy pair of sneakers named 'ABC', designed for both comfort and fashion-forward individuals. The.webp",
+                    prix: 'Prix: 89,99 €',
+                    description: `
+                         <p>Découvrez les Sneakers Modernes : le style et le confort réunis !</p>
+                         <ul>
+                            <li>Marque : reconnue pour son innovation dans le domaine de la mode sportive, vous présente ces sneakers qui allient performance, confort et esthétique.</li>
+                            <strong>Caractéristiques principales :</strong>
+                            <li>Design Élégant et Tendance : Ces sneakers se distinguent par leur palette de couleurs modernes et leur silhouette dynamique, parfaites pour compléter n'importe quelle tenue.</li>
+                            <li>Confort Optimal : Équipées d'une semelle intérieure rembourrée et d'une tige en mesh respirant, elles assurent un confort tout au long de la journée, que ce soit pour une promenade ou une séance de sport.</li>
+                            <li>Légèreté et Flexibilité : Conçues pour être légères, ces chaussures permettent une grande liberté de mouvement, idéales pour les activités sportives et le quotidien.</li>
+                            <li>Adhérence et Stabilité : La semelle en caoutchouc offre une excellente traction, vous permettant de vous déplacer en toute sécurité sur différentes surfaces.</li>
+                            <li>Facilité d'Entretien : Les matériaux utilisés sont faciles à nettoyer et résistent à l'usure, garantissant que vos sneakers restent comme neuves plus longtemps.</li>
+                         </ul>
+                         <strong>Pourquoi choisir ces Sneakers ?</strong>
+                         <p>Opter pour ces sneakers, c'est faire le choix d'un produit qui allie style et fonctionnalité. Que vous soyez en déplacement, à la salle de gym ou simplement en train de profiter d'une journée décontractée, ces chaussures sont conçues pour vous offrir le meilleur.</p>
+                         <p>Commandez dès maintenant ! Ne manquez pas l'occasion de rehausser votre style tout en bénéficiant d'un confort inégalé. Faites le choix de la qualité et de l'élégance avec nos sneakers modernes !</p>
+                    `
+                },
+
+                sneakersabc:{
+                    nom:'Sneakers ABC',
+                    image: 'DALL·E 2024-08-25 20.11.00 - A pair of trendy sneakers called ABC, featuring a sleek and modern design. The sneakers have a clean and minim.webp',
+                    prix: 'Prix: 99,99 €',
+                    description: `
+                         <p>Découvrez les <strong>sneakers ABC</strong>, le choix parfait pour allier style moderne et confort au quotidien. Conçues pour ceux qui recherchent à la fois une esthétique tendance et une performance optimale, ces sneakers s'adaptent à toutes les occasions.</p>
+                    
+                         <ul>
+                            <li>Marque : <strong>ABC</strong></li>
+                                <strong>Caractéristiques :</strong>
+                            <li>Design Élégant : Avec leur mélange de couleurs neutres et leur silhouette contemporaine, ces sneakers ajoutent une touche sophistiquée à n'importe quelle tenue.</li>
+                            <li>Confort Inégalé : Dotées d'une semelle intermédiaire rembourrée et d'un soutien optimal de la voûte plantaire, elles garantissent un confort tout au long de la journée, que ce soit pour une promenade en ville ou une séance de sport.</li>
+                            <li>Matériaux de Qualité : Fabriquées à partir de matériaux durables et respirants, ces sneakers assurent une excellente ventilation et une longévité accrue.</li>
+                            <li>Polyvalence : Parfaites pour le sport, les sorties décontractées ou même les occasions plus habillées, elles se marient facilement avec jeans, joggings ou robes.</li>
+                            <p>Un investissement raisonnable pour une paire de sneakers qui combine qualité, confort et style.</p>
+                            <strong>Pourquoi Choisir les Sneakers ABC ?</strong>
+                            <ol>
+                                <li>Style Unique : Soyez à la pointe de la mode avec un design qui attire l'attention.</li>
+                                <li>Confort Optimal : Ne sacrifiez jamais le confort pour le style. Avec ABC, vous avez les deux.</li>
+                                <li>Durabilité : Conçues pour résister à l'épreuve du temps, ces sneakers vous accompagneront dans toutes vos aventures.</li>
+                                <li>Satisfaction Client : Rejoignez une communauté de clients satisfaits qui adorent leurs sneakers ABC.</li>
+                            </ol>
+                        </ul>
+                         <p>Ne manquez pas l'occasion de posséder une paire de sneakers qui allie style, confort et durabilité. Offrez-vous les sneakers ABC aujourd'hui et faites une déclaration de mode tout en profitant d'un confort exceptionnel. Commandez maintenant et marchez avec confiance !</p>                         
+                         `    
+                },
+                
+
+                lessneakersgucci:{
+                    nom:'Les Sneakers Gucci',
+                    image: '404937_KU210_8960.jpg',
+                    prix: 'Prix: 650,00 €',
+                    description: `
+                        <p>Découvrez les sneakers Gucci, un incontournable pour les amateurs de mode qui souhaitent allier luxe et originalité. Avec leur design audacieux et leur qualité artisanale, ces sneakers sont bien plus qu'une simple paire de chaussures.</p>
+                        <ul>
+                            <li>Marque : <strong>Gucci</strong></li>
+                            <strong>Caractéristiques :</strong>
+                            <li>Design Floral Unique : Ornées d'un motif floral vibrant sur une toile emblématique de Gucci, ces sneakers se distinguent par leur esthétique raffinée et audacieuse, parfaite pour faire une déclaration de style.</li>
+                            <li>Confort Supérieur : Conçues pour un port prolongé, elles offrent un excellent soutien grâce à leur semelle rembourrée et leur tige en cuir de qualité.</li>
+                            <li>Matériaux Haut de Gamme : Fabriquées avec des matériaux soigneusement sélectionnés, ces sneakers allient durabilité et élégance, garantissant une longévité exceptionnelle.</li>
+                            <li>Polyvalence : Idéales pour compléter une tenue décontractée ou pour ajouter une touche chic à un look plus habillé, elles s'adaptent à toutes les occasions.</li>
+                            <p>Un investissement pour ceux qui apprécient l'artisanat de luxe et le design distinctif de Gucci.</p>
+                            <strong>Pourquoi Choisir les Sneakers Gucci ?</strong>
+                            <ol>
+                               <li>Élégance et Style : Affichez votre sens du style avec une pièce unique qui attire les regards.</li>
+                               <li>Qualité Artisanale : Chaque paire est fabriquée avec soin, garantissant un produit de haute qualité.</li>
+                               <li>Confort Optimal : Ne sacrifiez jamais le confort pour le style. Ces sneakers sont conçues pour vous accompagner tout au long de la journée.</li>
+                               <li>Satisfaction Client : Rejoignez une communauté d'amateurs de mode qui apprécient l'exclusivité et le savoir-faire de Gucci.</li>
+                            </ol>
+                            <p>Ne manquez pas l'opportunité de posséder une paire de sneakers qui allie luxe, confort et design unique. Offrez-vous les sneakers Gucci aujourd'hui et marchez avec assurance et élégance. Commandez maintenant pour ajouter une pièce maîtresse à votre collection de chaussures !</p>
+                        </ul>     
+                    `
+                },
+
+                sneakersgucci:{
+                    nom:'Sneakers Gucci',
+                    image: 'max-anderson-0fv6PAfj4p4-unsplash.jpg',
+                    prix: 'Prix: 750,00 €',
+                    description: `
+                            <p>Découvrez les sneakers Gucci, une fusion parfaite de style contemporain et de luxe. Conçues pour ceux qui apprécient l'élégance tout en recherchant le confort, ces sneakers sont un véritable must-have dans toute garde-robe moderne.</p>
+                        <ul>
+                            <li>Marque : <strong>Gucci</strong></li>
+                            <strong>Caractéristiques :</strong>
+                            <li>Design Élégant : Arborant le logo emblématique de Gucci avec des accents de couleur verte et rouge, ces sneakers se démarquent par leur esthétique raffinée et audacieuse.</li>
+                            <li>Confort Optimal : Avec une semelle rembourrée et une tige en cuir de qualité, ces chaussures offrent un soutien exceptionnel, idéales pour un usage quotidien.</li>
+                            <li>Matériaux de Haute Qualité : Fabriquées à partir de matériaux durables et luxueux, elles garantissent une longévité remarquable tout en conservant leur allure.</li>
+                            <li>Polyvalence : Parfaites pour compléter une tenue décontractée ou pour apporter une touche chic à un look plus habillé, elles s'adaptent à toutes les occasions.</li>
+                            <p>Un investissement dans une paire de sneakers qui allie qualité, design distinctif et prestige.</p>
+                            <strong>Pourquoi Choisir les Sneakers Gucci ?</strong>
+                            <ol>
+                               <li>Style Incontournable : Affichez votre sens du style avec une pièce qui attire l'attention et suscite l'admiration.</li>
+                               <li>Artisanat de Luxe : Chaque paire est fabriquée avec soin, témoignant du savoir-faire exceptionnel de Gucci.</li>
+                               <li>Confort et Élégance : Ne sacrifiez jamais le confort pour le style ; ces sneakers sont conçues pour vous accompagner tout au long de la journée.</li>
+                               <li>Satisfaction Client : Rejoignez une communauté d'amateurs de mode qui apprécient l'exclusivité et l'originalité de Gucci.</li>
+                            </ol>
+                            <p>Ne manquez pas l'opportunité de posséder une paire de sneakers qui allie luxe, confort et design unique. Offrez-vous les sneakers Gucci aujourd'hui et marchez avec assurance et élégance. Commandez maintenant pour enrichir votre collection avec cette pièce maîtresse !</p>
+                        </ul> 
+                    `
+                },
+
+                blazergucci:{
+                    nom:'Blazer Gucci',
+                    image: 'OIP (1).jpeg',
+                    prix: 'Prix: 1 800,00 €',
+                    description: `
+                         <p>Découvrez le blazer Gucci, une pièce emblématique qui incarne le luxe et l'élégance intemporelle. Parfait pour ceux qui souhaitent affirmer leur style avec sophistication, ce blazer est un incontournable de toute garde-robe raffinée.</p>
+                         <ul>
+                            <li>Marque : <strong>Gucci</strong></li>
+                            <strong>Caractéristiques :</strong>
+                            <li>Design Distinctif : Confectionné dans un tissu orné du motif emblématique de Gucci, ce blazer se distingue par son allure chic et moderne, tout en restant fidèle à l'héritage de la maison.</li>
+                            <li>Coupe Élégante : Avec sa coupe ajustée et ses épaules structurées, ce blazer met en valeur la silhouette tout en offrant un confort optimal.</li>
+                            <li>Détails Soignés : Doté d'un bouton doré, il ajoute une touche de luxe et de raffinement. Les finitions sont impeccables, témoignant du savoir-faire artisanal de Gucci.</li>
+                            <li>Polyvalence : Idéal pour des occasions formelles ou décontractées, il peut être porté avec un t-shirt, un pull ou une chemise, s'adaptant facilement à votre style personnel.</li>
+                            <p>Un investissement dans une pièce de mode qui allie qualité, design et prestige.</p>
+                            <strong>Pourquoi Choisir le Blazer Gucci ?</strong>
+                            <ol>
+                                <li>Style Inégalé : Affichez votre sens du style avec une pièce qui attire les regards et suscite l'admiration.</li>
+                                <li>Artisanat de Luxe : Chaque blazer est fabriqué avec des matériaux de haute qualité et un savoir-faire exceptionnel.</li>
+                                <li>Confort et Élégance : Une coupe conçue pour le confort tout en conservant une allure sophistiquée.</li>
+                                <li>Satisfaction Client : Rejoignez une communauté d'amateurs de mode qui apprécient l'exclusivité et l'originalité de Gucci.</li>
+                            </ol>
+                         </ul>
+                         <p>Ne manquez pas l'opportunité de posséder un blazer qui allie luxe, confort et design unique. Offrez-vous le blazer Gucci aujourd'hui et faites une déclaration de mode audacieuse. Commandez maintenant pour enrichir votre collection avec cette pièce maîtresse !</p>
+
+                    `
+                },
+
+                éléganceroyale:{
+                    nom:'Élégance Royale',
+                    image: 'DALL·E 2024-08-27 12.03.45 - Elegant ceremonial clothing, featuring a formal suit for men with a tuxedo, bowtie, and polished shoes alongsi.webp',
+                    prix: 'Prix: 1 200 €',
+                    description: `
+                         <p>Produit : <strong>Costume de Cérémonie - Collection Luxe</strong></p>
+                         <ul>
+                            <li>Marque : <strong>Élégance Royale</strong></li>
+                            <strong>Caractéristiques :</strong>
+                            <li>Tissu de qualité supérieure : Ce costume de cérémonie est fabriqué à partir de tissus premium, mélange de laine mérinos et de soie pour un confort exceptionnel et une élégance naturelle.</li>
+                            <li>Design raffiné : La coupe ajustée met en valeur la silhouette tout en conservant une liberté de mouvement. Le costume est décoré de finitions subtiles qui ajoutent une touche de sophistication, notamment des boutons en nacre et des broderies fines sur les revers.</li>
+                            <li>Couleur : Le costume est disponible dans plusieurs coloris classiques et intemporels tels que le noir, le bleu nuit et le gris anthracite, parfaits pour des événements formels et cérémonieux.</li>
+                            <li>Doublure en soie : L'intérieur est entièrement doublé en soie douce, assurant confort et respirabilité tout au long de la journée.</li>
+                            <li>Polyvalence : Parfait pour les mariages, les galas, les remises de prix ou toute occasion nécessitant une tenue de grande classe.</li>
+                            <li>Détails supplémentaires : Le costume est accompagné d'une cravate en satin de soie et d'une pochette assortie. Il peut être personnalisé selon les besoins avec des options pour ajouter un gilet ou des boutons de manchette.</li>
+                            <li>Options personnalisées : disponibles à partir de 200 € supplémentaires pour des broderies spéciales, un choix de boutons ou des tissus sur-mesure.</li>
+                         </ul>
+                         <p><strong>Élégance Royale</strong> propose un service sur mesure pour chaque client, garantissant un ajustement parfait et un look unique pour les moments les plus importants de votre vie. Optez pour l'excellence et marquez vos événements avec style et prestance.</p>
+
+                    `
+                },
+
+                urbanflair:{
+                    nom:'UrbanFlair',
+                    image: 'DALL·E 2024-08-27 12.11.21 - A stylish and modern T-shirt displayed against a clean background. The T-shirt has a simple, minimalis.webp',
+                    prix: 'Prix: 35,99 €',
+                    description: `
+                          <p>Ce T-shirt de la marque <strong>UrbanFlair</strong> est un incontournable pour tous ceux qui souhaitent allier simplicité et élégance. Fabriqué à partir de coton biologique de haute qualité, il offre un confort inégalé tout au long de la journée. Avec son design épuré, il se marie parfaitement à toutes les tenues, que ce soit pour une sortie décontractée ou un look urbain sophistiqué.</p>
+                          <ul>
+                            <li>Marque : <strong>UrbanFlair</strong></li>
+                            <strong>Caractéristiques :</strong>
+                            <li>Matière : 100% coton biologique</li>
+                            <li>Couleurs disponibles : Blanc, noir, gris, et bleu marine</li>
+                            <li>Taille : S, M, L, XL</li>
+                          </ul>
+                          <p><strong>UrbanFlair</strong>, la marque qui allie confort et style avec une touche de modernité.</p>
+
+                    `
+                },
+
+                diorangeles:{
+                    nom:'DIORANGELES',
+                    image: 'OIP.jpeg',
+                    prix: 'Prix: 350 €',
+                    description: `
+                      <p>Cette magnifique veste en cuir noir allie style intemporel et confort moderne. Avec son design élégant et son lettrage distinctif au dos, elle est parfaite pour ceux qui souhaitent se démarquer tout en restant chic.</p>
+                      <ul>
+                         <li>Marque :<strong> DIORANGELES</strong></li>
+                         <strong>Caractéristiques :</strong>
+                         <li>Matériau : Cuir véritable de haute qualité, offrant durabilité et confort.</li>
+                         <li>Couleur : Noir classique, facile à assortir avec n'importe quelle tenue.</li>
+                         <li>Fermeture : Zip avant robuste pour une sécurité optimale.</li>
+                         <li>Détails : Lettrage "DIORANGELES" en strass, ajoutant une touche de glamour.</li>
+                         <li>Tailles disponibles : S, M, L, XL.</li>
+                         <li>Entretien : Nettoyage à sec recommandé pour préserver la texture du cuir.</li>
+                         <strong>Pourquoi choisir cette veste ?</strong>
+                         <ol>
+                           <li>Polyvalence : Idéale pour des sorties décontractées comme pour des occasions plus habillées.</li>
+                           <li>Style unique : Le design audacieux attire les regards et fait de vous le centre d’attention.</li>
+                           <li>Confort : Conçue pour s'adapter parfaitement à votre silhouette tout en offrant une liberté de mouvement.</li>
+                        </ol>
+                      </ul>
+
+                    `
+                },
+
+                modearabe:{
+                    nom: 'Mode Arabe',
+                    image: 'Muslim-Abaya-Arab-Robes-for-women-round-collar-Ladies-Robe-with-Embroidery-muslim-women-dress-TH902.webp',
+                    prix: 'Prix: 150 €',
+                    description: ` 
+                          <p>Découvrez la robe <strong>Mode Arabe</strong>, une pièce élégante qui allie tradition et modernité. Conçue pour les femmes qui souhaitent exprimer leur style tout en restant confortables, cette robe est parfaite pour toutes les occasions, des événements formels aux sorties décontractées.</p>
+                          <ul>                             
+                             <li>Marque :<strong> Mode Arabe</strong></li>
+                             <strong>Caractéristiques :</strong>
+                             <li>Matériau : Tissu léger et respirant, idéal pour toutes les saisons.</li>
+                             <li>Couleur : Noir classique, offrant une base élégante qui se marie avec n'importe quel accessoire.</li>
+                             <li>Design : Longueur maxi avec des détails brodés sur les manches et le devant, ajoutant une touche de sophistication.</li>
+                             <li>Accessoires : Inclus un hijab en voile léger de couleur lilas pour compléter le look.</li>
+                             <li>Tailles disponibles : S, M, L, XL.</li>
+                             <li>Entretien : Lavage à la main recommandé pour préserver la qualité des broderies.</li>
+                             <strong>Pourquoi choisir la robe Mode Arabe ?</strong>
+                             <ol>
+                               <li>Polyvalence : Parfaite pour des occasions variées, que ce soit un mariage, une fête ou une sortie quotidienne.</li>
+                               <li>Style unique : Le design élégant et les détails raffinés assurent que vous vous démarquerez à chaque occasion.</li>
+                               <li>Confort optimal : La coupe fluide permet une grande liberté de mouvement tout en étant chic.</li>                        
+                             </ol>  
+                          </ul>
+                    `
+                },
+
+
+                elegancehijab:{
+                    nom:'Elegance Hijab',
+                    image: 'DALL·E 2024-08-27 23.10.35 - A beautifully folded hijab placed neatly on a surface, with intricate fabric details visible. The hija.webp',
+                    prix: 'Prix: 49,99 €',
+                    description: `
+                          <p>Offre spéciale : -20% pour les nouveaux clients sur le premier achat.</p>
+                          <p>Produit : Hijab en Soie Pashmina</p>
+                          <ul>
+                            <li>Marque : <strong>Elegance Hijab</strong></li>
+                            <strong>Caractéristiques :</strong>
+                            <li>Matériau : 100% Soie Pashmina de haute qualité, douce et légère.</li>
+                            <li>Dimensions : 180 cm x 70 cm, offrant une couverture ample pour divers styles.</li>
+                            <li>Couleurs disponibles : Beige, Gris Perle, Noir Classique, Rose Pâle.</li>
+                            <li>Texture : Surface lisse avec un léger brillant, confortable à porter toute la journée.</li>
+                            <li>Entretien : Lavage à la main recommandé pour préserver la qualité du tissu.</li>
+                            <strong>Avantages :</strong>
+                            <li>Style intemporel : Idéal pour toutes les occasions, que ce soit pour un événement formel ou une sortie décontractée.</li>
+                            <li>Polyvalence : Peut être porté de différentes façons, adapté à toutes les saisons.</li>
+                            <li>Qualité supérieure : Fabriqué à partir de soie pashmina, offrant un confort inégalé.</li>
+                            <strong>Garantie :</strong>
+                            <li>Satisfaction garantie à 100% : Retour gratuit sous 30 jours si le produit ne répond pas à vos attentes.</li>
+                          </ul>
+                          <p><strong>Elegance Hijab</strong> - Où la mode rencontre la modestie avec style et confort.</p>
+
+                    `
+                },
+
+                ankaraessence:{
+                    nom: 'Ankara Essence',
+                    image: 'R.png',
+                    prix: 'Prix: 69,99 €',
+                    description: ` 
+                         <ul>
+                            <li>Marque : <strong>Ankara Essence</strong></li>
+                            <li>Produit : Jupe Longue en Wax "Peacock Mosaic"</li>
+                            <strong></strong>
+                            <li>Caractéristiques :</li>
+                            <li>Matériau : Tissu wax 100% coton de qualité supérieure, doux et résistant.</li>
+                            <li>Design : Motif vibrant "Peacock Mosaic", inspiré par les motifs traditionnels africains, avec des couleurs éclatantes comme l'orange, le bleu, et le rouge.</li>
+                            <li>Coupe : Jupe longue ajustée, taille haute, qui épouse parfaitement les formes tout en offrant confort et élégance.</li>
+                            <li>Taille disponible : XS, S, M, L, XL.</li>
+                            <li>Longueur : 110 cm, idéale pour un style raffiné et modeste.</li>
+                            <li>Entretien : Lavage à la main ou en machine à basse température, éviter le sèche-linge pour préserver les couleurs.</li>
+                            <strong>Avantages :</strong>
+                            <li>Unique et authentique : Chaque jupe est fabriquée en édition limitée pour garantir l’exclusivité de chaque pièce.</li>
+                            <li>Polyvalente : Idéale pour les occasions spéciales, les sorties décontractées, ou même les événements formels.</li>
+                            <li>Qualité artisanale : Confectionnée avec soin par des artisans spécialisés dans le travail du wax.</li>
+                            <strong>Garantie :</strong>
+                            <li>Satisfait ou remboursé : Retour gratuit sous 14 jours si la taille ou la coupe ne vous conviennent pas.</li>
+                         </ul>
+                         <p><strong>Ankara Essence</strong> - Où la tradition rencontre la modernité pour une élégance intemporelle.</p>
+                    
+                    `
+                },
+                vintagecraft:{
+                    nom:'Vintage Craft',
+                    image:'OIP (5).jpeg',
+                    prix: 'Prix: 149,99 €',
+                    description: `
+                         <ul>
+                            <li>Marque : <strong>Vintage Craft</strong></li>
+                            <li>Produit : Sac à dos en cuir véritable "Urban Explorer"</li>
+                            <strong>Caractéristiques :</strong>
+                            <li>Matériau : Cuir véritable de haute qualité, tanné à l’ancienne pour une finition vintage élégante et durable.</li>
+                            <li>Design : Design rétro avec des poches extérieures multiples pour un accès facile et pratique aux objets du quotidien.</li>
+                            <li>Compartiments : </li>
+                            <ol>
+                                <li>Un grand compartiment principal avec une doublure en coton doux, idéal pour un ordinateur portable (jusqu'à 15 pouces), des livres ou des vêtements.</li>
+                                <li>Deux poches avant avec fermetures à rabat pour ranger un téléphone, un portefeuille ou des accessoires.</li>
+                                <li>Petite poche zippée supérieure pour les clés ou objets personnels.</li>
+                            </ol>
+                            <li>Couleur : Marron chocolat avec coutures contrastantes pour un effet artisanal.</li>
+                            <li>Dimensions : 42 cm x 30 cm x 15 cm, parfait pour une utilisation quotidienne ou des petites escapades.</li>
+                            <strong>Avantages :</strong>
+                            <li>Durabilité : Cuir épais et résistant, conçu pour durer des années tout en se patinant avec élégance au fil du temps.</li>
+                            <li>Praticité : Plusieurs compartiments intelligents pour une organisation facile des affaires personnelles.</li>
+                            <li>Polyvalence : Style intemporel, parfait pour les déplacements professionnels ou les aventures urbaines.</li>
+                            <strong>Garantie :</strong>
+                            <li>Garantie de satisfaction : Retour gratuit sous 30 jours si le produit ne correspond pas à vos attentes.</li>
+                         </ul>
+                        <p><strong>Vintage Craft</strong> - Alliant tradition et fonctionnalité pour un sac à dos qui traverse le temps avec style et fiabilité.</p>
+                    
+                    `
+                },
+
+                luxeauréole:{
+                    nom: 'Luxe Auréole',
+                    image: 'istockphoto-1279696100-612x612.webp',
+                    prix: 'Prix: 250 €',
+                    description: `
+                         <p>Découvrez la collection <strong>Luxe Auréole</strong>, une gamme de colliers en or qui allie élégance et sophistication. Conçue pour les femmes modernes, chaque pièce est un hommage à l'artisanat traditionnel, tout en intégrant des designs contemporains.</p>
+                         <ul>
+                            <li>Marque : <strong>Luxe Auréole</strong></li>
+                            <strong>Caractéristiques :</strong>
+                            <li>Matériau : Or 18 carats, offrant éclat et durabilité.</li>
+                            <li>Design : Disponibles en plusieurs styles : chaînes délicates, maillons audacieux et motifs torsadés.</li>
+                            <li>Longueur : Varie de 40 cm à 60 cm, permettant de superposer les colliers pour un look unique.</li>
+                            <li>Fermoir : Fermoir sécurisé en or, garantissant un maintien optimal.</li>
+                            <li>Entretien : Nettoyage facile avec un chiffon doux pour préserver l'éclat de l'or.</li>
+                            <strong>Pourquoi choisir la collection Luxe Auréole ?</strong>
+                            <ol>
+                            <li>Polyvalence : Parfaits pour toutes les occasions, des soirées élégantes aux tenues de tous les jours.</li>
+                            <li>Style intemporel : Chaque pièce est conçue pour transcender les tendances, vous garantissant un look chic à tout moment.</li>
+                            <li>Cadeau idéal : Emballage luxueux, parfait pour offrir à vos proches ou pour vous faire plaisir.</li>
+                            </ol>
+                         </ul>
+                    `
+                },
+
+                élégancesportive:{
+                    nom: 'Élégance Sportive',
+                    image: 'istockphoto-497040301-612x612.webp',
+                    prix: 'Prix: 25 €',
+                    description: `
+                        <p>Découvrez la casquette <strong>Élégance Sportive</strong>, un accessoire incontournable pour allier style et confort. Conçue pour les amateurs de mode et de sport, cette casquette est parfaite pour vos activités en plein air ou pour apporter une touche décontractée à votre tenue.</p>
+                        <ul>
+                            <li>Marque : <strong>Élégance Sportive</strong></li>
+                            <strong>Caractéristiques :</strong>
+                            <li>Matériau : Tissu en polyester léger et respirant, idéal pour une utilisation prolongée.</li>
+                            <li>Couleur : Blanc classique, facile à assortir avec n'importe quelle tenue.</li>
+                            <li>Design : Style à six panneaux avec une visière incurvée pour une protection optimale contre le soleil.</li>
+                            <li>Confort : Système de réglage à l'arrière pour un ajustement parfait à toutes les tailles.</li>
+                            <li>Entretien : Lavable à la main pour maintenir sa propreté et son éclat.</li>
+                            <strong>Pourquoi choisir la casquette Élégance Sportive ?</strong>
+                            <li>Polyvalence : Parfaite pour le sport, les sorties décontractées ou même les voyages</li>
+                            <li>Style moderne : Un design épuré qui s'adapte à tous les looks, du streetwear au casual.</li>
+                            <li>Cadeau pratique : Un excellent choix pour les amis et la famille, à offrir pour toutes les occasions.</li>
+                        </ul>
+                    `
+                },
+
+                chicombre: {
+                    nom: 'Chic Ombre',
+                    image: 'R (1).jpeg',
+                    prix: 'Prix: 45 €',
+                    description: `
+                        <p>Découvrez les lunettes de soleil <strong>Chic Ombre</strong>, l'accessoire parfait pour ajouter une touche de glamour à votre style. Avec leur design audacieux et moderne, ces lunettes sont idéales pour protéger vos yeux tout en restant à la mode.</p>
+                        <ul>
+                            <li>Marque : <strong>Chic Ombre</strong></li>
+                            <strong>Caractéristiques :</strong>
+                            <li>Monture : Plastique léger et durable, offrant un confort optimal.</li>
+                            <li>Verres : Verres dégradés sombres, offrant une protection UV 400 pour une sécurité maximale.</li>
+                            <li>Design : Forme cat-eye tendance, qui flatte tous les types de visages.</li>
+                            <li>Poids : Légères pour un port prolongé sans inconfort.</li>
+                            <li>Entretien : Livrées avec un étui de protection et un chiffon de nettoyage pour un entretien facile.</li>
+                            <strong>Pourquoi choisir les lunettes de soleil Chic Ombre ?</strong>
+                            <li>Style intemporel : Parfaites pour toutes les occasions, que ce soit à la plage, en ville ou lors d'un événement.</li>
+                            <li>Polyvalence : S'adaptent facilement à toutes vos tenues, du décontracté au chic.</li>
+                            <li>Cadeau idéal : Emballage élégant, parfait pour offrir à vos amis ou à votre famille.</li>
+                        </ul>
+                    `
+                },
+
+                blueWater:{
+                    nom:'BlueWater',
+                    image: 'bluewater-sweden-8u8roj5KKDU-unsplash.jpg',
+                    prix: 'Prix: 299 €',
+                    description: `
+                        <p>Découvrez le purificateur d'eau <strong>BlueWater</strong>, conçu pour vous offrir une eau pure et saine directement à votre robinet. Grâce à sa technologie avancée de filtration, il élimine les impuretés et les contaminants, vous garantissant une qualité d'eau optimale pour toute la famille.Découvrez le purificateur d'eau BlueWater, conçu pour vous offrir une eau pure et saine directement à votre robinet. Grâce à sa technologie avancée de filtration, il élimine les impuretés et les contaminants, vous garantissant une qualité d'eau optimale pour toute la famille.</p>
+                        <ul>
+                            <li>Marque : <strong>BlueWater</strong></li>
+                            <strong>Caractéristiques :</strong>
+                            <li>Filtration avancée : Système de filtration multi-étapes qui élimine les bactéries, les virus et les produits chimiques.</li>
+                            <li>Capacité : Purifie jusqu'à 1500 litres d'eau avant de nécessiter un changement de filtre.</li>
+                            <li>Design compact : S'intègre facilement dans n'importe quelle cuisine avec son design moderne et élégant.</li>
+                            <li>Facilité d'utilisation : Boutons simples pour l'activation et le contrôle de l'état de filtrage.</li>
+                            <li>Entretien : Indicateur de service pour vous rappeler quand il est temps de remplacer le filtre.</li>
+                            <strong>Pourquoi choisir le purificateur d'eau BlueWater ?</strong>
+                            <li>Santé et sécurité : Assurez-vous que votre famille consomme de l'eau propre et sans contaminants.</li>
+                            <li>Économie : Réduit le besoin d'acheter des bouteilles d'eau, ce qui est meilleur pour l'environnement et votre portefeuille.</li>
+                            <li>Satisfaction garantie : Produit soutenu par une garantie de 2 ans pour une tranquillité d'esprit.</li>
+                        </ul>
+                    `
+                },
+
+                freshkeeper:{
+                    nom: 'FreshKeeper',
+                    image: '_273fdfeb-f524-4609-88c5-a53c9a5a9bb3.jpeg',
+                    prix: 'Prix: 899 €',
+                    description: ` 
+                         <p>Découvrez le réfrigérateur <strong>FreshKeeper</strong>, conçu pour garder vos aliments frais plus longtemps. Avec son design élégant et ses fonctionnalités avancées, il est l'ajout parfait à toute cuisine moderne.</p>
+                         <ul>
+                            <li>Marque :<strong>FreshKeeper</strong></li>
+                            <strong>Caractéristiques :</strong>
+                            <li>Capacité : 450 litres, offrant amplement d'espace pour tous vos aliments et boissons.</li>
+                            <li>Technologie de refroidissement : Système de refroidissement à circulation d'air pour une température uniforme sur tous les étagères.</li>
+                            <li>Économie d'énergie : Classe énergétique A++, réduisant votre consommation d'énergie tout en préservant l'environnement.</li>
+                            <li>Compartiment à légumes : Tiroirs spéciaux pour garder vos fruits et légumes frais et croquants.</li>
+                            <li>Éclairage LED : Éclairage intérieur LED pour une meilleure visibilité et une consommation d'énergie réduite.</li>
+                            <strong>Pourquoi choisir le réfrigérateur FreshKeeper ?</strong>
+                            <li>Design moderne : Finitions en acier inoxydable qui s'intègrent parfaitement dans n'importe quelle cuisine.</li>
+                            <li>Fonctionnalité : Étagères ajustables pour s'adapter à vos besoins de stockage.</li>
+                            <li>Facilité d'entretien : Système de dégivrage automatique pour un entretien minimal.</li>
+                         </ul>
+                    `
+                },
+
+                cuisinemoderne:{
+                    nom: 'Cuisine Moderne',
+                    image: 'istockphoto-171589331-612x612.webp',
+                    prix: 'Prix: 3 499 €',
+                    description: `
+                        <p>Transformez votre cuisine avec l'ensemble Cuisine Moderne, qui allie fonctionnalité et design élégant. Composé d'appareils en acier inoxydable, cet ensemble est conçu pour répondre à tous vos besoins culinaires.</p>
+                        <ul>
+                            <li>Marque :<strong> Cuisine Moderne  </strong></li>
+                            strong>Contenu de l'ensemble :</strong>
+                            <ol>
+                            <li>Réfrigérateur : Grand volume avec distributeur d'eau et de glaçons.</li>
+                            <li>Four encastrable : Multifonction avec plusieurs modes de cuisson.</li>
+                            <li>Lave-vaisselle : Efficace et silencieux, avec des programmes personnalisés.</li>
+                            <li>Plaque de cuisson : À gaz avec commandes intuitives.</li>
+                            <li>Micro-ondes : Pratique pour réchauffer et cuire rapidement.</li>
+                            <li>Lave-linge : Économique en énergie, avec plusieurs cycles de lavage.</li>
+                            </ol>
+                            <strong>Caractéristiques :</strong>
+                            <li>Design élégant : Fini en acier inoxydable pour un look moderne.</li>
+                            <li>Technologie avancée : Équipements dotés de fonctionnalités intelligentes pour une utilisation simplifiée.</li>
+                            <li>Efficacité énergétique : Classe énergétique A++ pour réduire votre consommation.</li>
+                            <li>Facilité d'entretien : Surfaces résistantes aux taches et faciles à nettoyer.</li>
+                            <strong>Pourquoi choisir l'ensemble Cuisine Moderne ?</strong>
+                            <li>Polyvalence : Idéal pour toutes les cuisines, des plus petites aux plus spacieuses.</li>
+                            <li>Performance : Appareils conçus pour durer et offrir des performances optimales.</li>
+                            <li>Garantie : Garantie de 3 ans sur tous les appareils pour une tranquillité d'esprit.</li>
+                        </ul>
+                    `
+                },
+
+                lumineux:{
+                    nom: 'Lumineux',
+                    image:'christian-kaindl-4uD9w-pxBTA-unsplash.jpg',
+                    prix: 'Prix: 899 €',
+                    description: ` 
+                                     <p>Découvrez le canapé <strong>Lumineux</strong>, un meuble moderne et accueillant qui illuminera votre salon. Avec son design épuré et son cuir clair, il offre à la fois confort et style.</p>
+                     <ul>
+                         <li><strong>Marque :</strong> Lumineux</li>
+                         <strong>Caractéristiques :</strong>
+                         <ol>
+                             <li><strong>Matériaux de qualité :</strong> Cuir synthétique doux et durable, facile à entretenir.</li>
+                             <li><strong>Confort optimal :</strong> Rembourrage en mousse pour un soutien agréable lors de vos moments de détente.</li>
+                             <li><strong>Dimensions :</strong> 200 cm de large, parfait pour les petits et grands espaces.</li>
+                             <li><strong>Style contemporain :</strong> Lignes fluides et minimalistes qui s'adaptent à tous les décors.</li>
+                             <li><strong>Base en métal :</strong> Pieds en acier inoxydable pour une stabilité accrue et un look moderne.</li>
+                         </ol>
+                         <strong>Pourquoi choisir le canapé Lumineux ?</strong>
+                         <ul>
+                             <li><strong>Polyvalence :</strong> Idéal pour les salons modernes, les studios ou les espaces de vie ouverts.</li>
+                             <li><strong>Facilité d'entretien :</strong> Résistant aux taches et facile à nettoyer pour un usage quotidien.</li>
+                             <li><strong>Garantie :</strong> Inclus une garantie de 2 ans pour une tranquillité d'esprit.</li>
+                         </ul>
+                     </ul>
+                    `
+                },
+
+                elegance:{
+                    nom: 'Elegance',
+                    image:'hal-gatewood-Vfml26Iy4mI-unsplash.jpg',
+                    prix: 'Prix: 1 299 €',
+                    description: `
+                           <p>Découvrez le canapé <strong>Elegance</strong>, un meuble intemporel qui allie confort et sophistication. Fabriqué en cuir de haute qualité, il apporte une touche d'élégance à votre salon tout en offrant un espace de détente inégalé.</p>
+                            <ul>
+                                <li><strong>Marque :</strong> Elegance</li>
+                                <li><strong>Prix :</strong> 1 299 €</li>
+                                <strong>Caractéristiques :</strong>
+                                <ol>
+                                    <li><strong>Matériaux premium :</strong> Cuir véritable avec un design capitonné pour une allure luxueuse.</li>
+                                    <li><strong>Confort :</strong> Rembourrage en mousse haute densité pour un soutien optimal.</li>
+                                    <li><strong>Dimensions :</strong> 220 cm de large, idéal pour accueillir toute la famille.</li>
+                                    <li><strong>Entretien facile :</strong> Cuir résistant aux taches et facile à nettoyer.</li>
+                                    <li><strong>Style classique :</strong> Design intemporel qui s'adapte à tous les décors intérieurs.</li>
+                                </ol>
+                                <strong>Pourquoi choisir le canapé Elegance ?</strong>
+                                <ul>
+                                    <li><strong>Durabilité :</strong> Conçu pour résister à l'épreuve du temps tout en conservant son esthétique.</li>
+                                    <li><strong>Polyvalence :</strong> S'intègre parfaitement dans un salon moderne ou traditionnel.</li>
+                                    <li><strong>Garantie :</strong> Soutenu par une garantie de 5 ans pour une tranquillité d'esprit.</li>
+                                </ul>
+                            </ul>
+                                `  
+                },
+                
+                lg:{
+                    nom: 'LG',
+                    image:'istockphoto-157603055-612x612.webp',
+                    prix: 'Prix: 550 €',
+                    description: `
+                                     <p>Le réfrigérateur <strong>LG DoorCooling+ GN-B422SQCL</strong> combine innovation, efficacité et design pour répondre à vos besoins de conservation des aliments. Idéal pour les familles, ce réfrigérateur offre un grand espace de stockage et une technologie de refroidissement avancée.</p>
+        <ul>
+            <li><strong>Marque :</strong> LG</li>
+            <strong>Caractéristiques principales :</strong>
+            <ol>
+                <li><strong>Type :</strong> Réfrigérateur combiné (congélateur en haut, réfrigérateur en bas).</li>
+                <li><strong>Capacité totale :</strong> 387 litres (275 litres pour le réfrigérateur et 112 litres pour le congélateur).</li>
+                <li><strong>Technologie de refroidissement :</strong></li>
+                <ul>
+                    <li>DoorCooling+™ : assure un refroidissement uniforme grâce à des ventilateurs supplémentaires situés sur la porte.</li>
+                    <li>Multi Air Flow : distribution optimale de l’air froid pour une conservation optimale des aliments.</li>
+                </ul>
+                <li><strong>Efficacité énergétique :</strong> Classe A++, garantissant une faible consommation d'énergie.</li>
+                <li><strong>Design :</strong> Acier inoxydable brossé pour un look moderne et élégant, avec un système de poignées verticales pour une prise en main facile.</li>
+                <li><strong>Technologie Inverter Linear Compressor :</strong> réduit les fluctuations de température, prolonge la durée de vie des aliments et assure une plus grande durabilité de l’appareil.</li>
+                <li><strong>Système No Frost :</strong> évite la formation de givre dans le congélateur, réduisant ainsi le besoin de dégivrage manuel.</li>
+                <li><strong>Éclairage LED :</strong> puissant et économe, il offre une excellente visibilité à l'intérieur tout en consommant moins d’énergie.</li>
+            </ol>
+            <strong>Avantages :</strong>
+            <ul>
+                <li><strong>Fiabilité et durabilité :</strong> Grâce au compresseur linéaire Inverter, ce réfrigérateur est conçu pour durer plus longtemps tout en économisant de l'énergie.</li>
+                <li><strong>Capacité optimale :</strong> Avec un large espace pour le stockage des aliments frais et surgelés, ce modèle convient parfaitement aux familles nombreuses ou à ceux qui aiment stocker en grande quantité.</li>
+                <li><strong>Confort et innovation :</strong> Le DoorCooling+ garantit que tous les recoins du réfrigérateur reçoivent un refroidissement homogène, tandis que le système Multi Air Flow préserve la fraîcheur de vos aliments.</li>
+            </ul>
+            <strong>Pourquoi choisir ce modèle ?</strong>
+            <p>Le LG DoorCooling+ GN-B422SQCL offre un excellent rapport qualité-prix. Son design moderne s'adapte à tous les styles de cuisines, tandis que sa technologie avancée assure une conservation optimale des aliments. De plus, sa classe énergétique A++ permet de réaliser des économies sur la facture d'électricité tout en étant respectueux de l'environnement.</p>
+            <p>C’est le choix idéal pour les utilisateurs à la recherche d’un réfrigérateur robuste, innovant et économique.</p>
+        </ul>          
+                    ` 
+                },
+
+                propretéplus:{
+                    nom: 'Propreté Plus',
+                    image:'istockphoto-1358299579-612x612.webp',
+                    prix: 'Prix: 599 €',
+                    description: `
+                            <p>Le lave-linge <strong>Propreté Plus</strong> est conçu pour offrir une efficacité maximale tout en préservant la qualité de vos vêtements. Avec son design moderne et ses fonctionnalités avancées, il devient un indispensable de votre buanderie.</p>
+        <ul>
+            <li><strong>Marque :</strong> Propreté Plus</li>
+            <li><strong>Prix :</strong> 499€</li>
+            <strong>Caractéristiques :</strong>
+            <ol>
+                <li><strong>Capacité :</strong> 8 kg, idéale pour les familles.</li>
+                <li><strong>Énergie :</strong> Classe énergétique A++ pour des économies sur votre facture d'électricité.</li>
+                <li><strong>Programmes de lavage :</strong></li>
+                <ul>
+                    <li>Lavage rapide en 30 minutes.</li>
+                    <li>Programmes délicats pour les tissus sensibles.</li>
+                    <li>Option de prélavage pour les vêtements très sales.</li>
+                </ul>
+                <li><strong>Technologie :</strong> Système de détection automatique de la charge pour un lavage optimal.</li>
+            </ol>
+            <strong>Avantages :</strong>
+            <ul>
+                <li><strong>Silencieux :</strong> Fonctionnement ultra-silencieux, parfait pour les appartements.</li>
+                <li><strong>Facilité d'utilisation :</strong> Panneau de commande intuitif avec affichage numérique.</li>
+                <li><strong>Entretien simplifié :</strong> Bac à lessive amovible et facile à nettoyer.</li>
+            </ul>
+            <strong>Pourquoi choisir le lave-linge Propreté Plus ?</strong>
+            <p><strong>Performance :</strong> Résultats de lavage impeccables à chaque utilisation.</p>
+            <p><strong>Durabilité :</strong> Fabriqué avec des matériaux de haute qualité pour une longue durée de vie.</p>
+            <p><strong>Garantie :</strong> Garantie de 2 ans pour une tranquillité d'esprit.</p>
+        </ul>
+                    `
+                },
+
+                scandihome:{
+                    nom: 'ScandiHome',
+                    image:'istockphoto-1250026682-612x612.webp',
+                    prix: 'Prix: 89,99 €',
+                    description: `
+                               <p>Apportez une touche nordique à votre intérieur avec la table basse <strong>ScandiHome</strong>. Son design épuré et moderne, typique du style scandinave, s'intègre parfaitement à tous les espaces de vie.</p>
+        <ul>
+            <li><strong>Marque :</strong> ScandiHome</li>
+            <li><strong>Prix :</strong> 199€</li>
+            <strong>Caractéristiques :</strong>
+            <ol>
+                <li><strong>Design Scandinave :</strong> Esthétique épurée avec une forme triangulaire adoucie pour un look original et moderne.</li>
+                <li><strong>Matériaux de Qualité :</strong></li>
+                <ul>
+                    <li><strong>Plateau :</strong> Bois MDF laqué blanc, résistant aux éraflures et facile à entretenir.</li>
+                    <li><strong>Pieds :</strong> Bois massif (chêne ou hêtre), offrant une stabilité solide et un contraste naturel élégant avec le plateau blanc.</li>
+                </ul>
+                <li><strong>Dimensions :</strong></li>
+                <ul>
+                    <li>Hauteur : 45 cm</li>
+                    <li>Longueur : 90 cm</li>
+                    <li>Largeur : 60 cm</li>
+                </ul>
+                <li><strong>Facilité d'Assemblage :</strong> Se monte en quelques minutes grâce aux instructions simples et aux outils fournis.</li>
+                <li><strong>Polyvalence :</strong> Parfaite pour un salon moderne, une chambre ou un bureau minimaliste.</li>
+            </ol>
+            <strong>Avantages :</strong>
+            <ul>
+                <li>Compacte et élégante, idéale pour les petits espaces tout en restant fonctionnelle.</li>
+                <li>Facilité d'entretien : un simple coup de chiffon suffit pour la maintenir impeccable.</li>
+                <li>Durabilité : Matériaux robustes pour une longue durée de vie.</li>
+            </ul>
+            <p><strong>Pourquoi choisir la table basse ScandiHome ?</strong> Cette table basse est le choix parfait pour ceux qui cherchent à ajouter une touche de style nordique à leur intérieur sans compromettre la qualité ou la fonctionnalité.</p>
+        </ul>
+                    `
+                },
+
+                confortluxe:{
+                    nom: 'Confort Luxe',
+                    image:'istockphoto-175454174-612x612.webp',
+                    prix: 'Prix: 349 €',
+                    description: `
+<p>Le fauteuil <strong>Confort Luxe</strong> combine élégance et confort dans un design contemporain. Idéal pour ajouter une touche sophistiquée à n'importe quel espace de vie, il offre un confort incomparable grâce à ses matériaux de haute qualité.</p>
+        <ul>
+            <li><strong>Marque :</strong> Confort Luxe</li>
+            <strong>Caractéristiques :</strong>
+            <ol>
+                <li><strong>Dimensions :</strong> 80 cm x 80 cm x 75 cm</li>
+                <li><strong>Matériaux :</strong> Revêtement en simili cuir noir et structure en métal chromé</li>
+                <li><strong>Style :</strong> Design moderne avec des lignes épurées et un rembourrage généreux</li>
+            </ol>
+            <strong>Avantages :</strong>
+            <ul>
+                <li><strong>Confort optimal :</strong> Rembourrage épais et soutien lombaire pour un confort exceptionnel.</li>
+                <li><strong>Facile à entretenir :</strong> Surface résistante aux taches et facile à nettoyer.</li>
+                <li><strong>Polyvalent :</strong> S'intègre parfaitement dans les salons, bureaux ou espaces de détente.</li>
+            </ul>
+            <p><strong>Pourquoi choisir le fauteuil Confort Luxe ?</strong></p>
+            <ul>
+                <li><strong>Esthétique raffinée :</strong> Apporte une touche de sophistication à votre intérieur.</li>
+                <li><strong>Durabilité :</strong> Conçu pour résister à une utilisation quotidienne tout en conservant son allure.</li>
+                <li><strong>Montage simple :</strong> Instructions incluses pour un assemblage rapide et sans effort.</li>
+            </ul>
+                    `
+                },
+
+                chicrelax:{
+                    nom: 'Chic Relax',
+                    image:'istockphoto-869078270-612x612.webp',
+                    prix: 'Prix: 299 €',
+                    description: `
+                            <p>Le fauteuil <strong>Chic Relax</strong> allie confort et style audacieux, idéal pour tout intérieur contemporain. Avec son design ergonomique et ses couleurs vives, il devient rapidement la pièce maîtresse de votre salon.</p>
+        <ul>
+            <li><strong>Marque :</strong> Chic Relax</li>
+            <strong>Caractéristiques :</strong>
+            <ol>
+                <li><strong>Dimensions :</strong> 85 cm x 85 cm x 90 cm</li>
+                <li><strong>Matériaux :</strong> Revêtement en tissu doux orange et base en bois de hêtre</li>
+                <li><strong>Style :</strong> Design moderne avec des coussins rembourrés pour un confort maximal</li>
+            </ol>
+            <strong>Avantages :</strong>
+            <ul>
+                <li><strong>Confort supérieur :</strong> Rembourrage généreux pour une expérience d'assise agréable.</li>
+                <li><strong>Facile à entretenir :</strong> Tissu résistant et lavable pour un entretien simplifié.</li>
+                <li><strong>Design unique :</strong> Couleur vive et forme originale apportant du dynamisme à votre intérieur.</li>
+            </ul>
+            <p><strong>Pourquoi choisir le fauteuil Chic Relax ?</strong></p>
+            <ul>
+                <li><strong>Élégance contemporaine :</strong> Un meuble qui attire l'œil et rehausse votre décoration.</li>
+                <li><strong>Robustesse :</strong> Fabriqué avec des matériaux de qualité pour une durabilité accrue.</li>
+                <li><strong>Assemblage rapide :</strong> Instructions claires pour un montage facile et rapide.</li>
+            </ul>
+                    `
+                },
+
+                hydrangeaéclat:{
+                    nom: 'Hydrangea Éclat',
+                    image:'istockphoto-155161126-612x612.webp',
+                    prix: 'Prix: 29,90 €',
+                    description: `
+                        <p>L'<strong>Hydrangea Éclat</strong> est une magnifique plante d'intérieur qui apporte une touche de couleur et de fraîcheur à votre espace. Ses fleurs roses délicates, bordées de blanc, et son feuillage luxuriant en font un choix parfait pour égayer votre maison.</p>
+        <ul>
+            <li><strong>Marque :</strong> Hydrangea Éclat</li>
+            <strong>Caractéristiques :</strong>
+            <ol>
+                <li><strong>Type de plante :</strong> Hortensia (Hydrangea)</li>
+                <li><strong>Couleur des fleurs :</strong> Rose avec des bordures blanches</li>
+                <li><strong>Pot :</strong> En plastique de couleur verte, léger et moderne</li>
+            </ol>
+            <strong>Avantages :</strong>
+            <ul>
+                <li><strong>Fleurissement prolongé :</strong> Profitez de fleurs éclatantes pendant plusieurs mois.</li>
+                <li><strong>Facile d'entretien :</strong> Nécessite un arrosage modéré et une exposition à la lumière indirecte.</li>
+                <li><strong>Purifie l'air :</strong> Contribue à améliorer la qualité de l'air intérieur.</li>
+            </ul>
+            <p><strong>Pourquoi choisir l'Hydrangea Éclat ?</strong></p>
+            <ul>
+                <li><strong>Esthétique attrayante :</strong> Idéale pour les salons, bureaux ou comme cadeau.</li>
+                <li><strong>Durabilité :</strong> Plante robuste qui s'adapte bien à différents environnements.</li>
+                <li><strong>Emballage soigné :</strong> Livrée dans un pot élégant, prête à être exposée.</li>
+            </ul>
+                     `
+                },
+
+                verteévasion:{
+                    nom: 'Verte Évasion',
+                    image:'annie-spratt-JruJFy08KB8-unsplash.jpg',
+                    prix: 'Prix: 49,90 €',
+                    description: `
+                        <p>L'<strong>ensemble de plantes Verte Évasion</strong> est parfait pour apporter une touche de verdure à votre maison. Ce duo de plantes d'intérieur, accompagné de pots au design moderne, s'intègre aisément dans tout type de décoration.</p>
+        <ul>
+            <li><strong>Marque :</strong> Verte Évasion</li>
+            <strong>Caractéristiques :</strong>
+            <ol>
+                <li><strong>Plantes incluses :</strong></li>
+                <ul>
+                    <li><strong>Zamioculcas zamiifolia (ZZ Plant) :</strong> Connue pour sa robustesse et sa facilité d'entretien.</li>
+                    <li><strong>Monstera deliciosa :</strong> Appréciée pour ses grandes feuilles découpées et son aspect tropical.</li>
+                </ul>
+                <li><strong>Pots :</strong> Un pot blanc et un pot rose, en céramique, avec un design épuré.</li>
+            </ol>
+            <strong>Avantages :</strong>
+            <ul>
+                <li><strong>Facilité d'entretien :</strong> Idéales pour les débutants, ces plantes nécessitent peu d'eau et s'adaptent à divers niveaux de lumière.</li>
+                <li><strong>Purification de l'air :</strong> Ces plantes contribuent à améliorer la qualité de l'air intérieur.</li>
+                <li><strong>Style moderne :</strong> Les pots élégants ajoutent une touche décorative à votre espace.</li>
+            </ul>
+            <p><strong>Pourquoi choisir l'ensemble Verte Évasion ?</strong></p>
+            <ul>
+                <li><strong>Idéal pour tous les intérieurs :</strong> Parfait pour les salons, bureaux ou chambres.</li>
+                <li><strong>Cadeau parfait :</strong> Une idée de cadeau originale pour les amateurs de plantes.</li>
+                <li><strong>Durabilité :</strong> Plantes robustes qui prospèrent avec un minimum de soins.</li>
+            </ul>
+                     `
+                },
+
+                terraforce:{
+                    nom: 'TerraForce',
+                    image:'DALL·E 2024-08-27 10.35.57 - A sturdy shovel with a durable metal blade and a strong wooden handle, designed for heavy-duty digging and li.webp',
+                    prix: 'Prix: 39,90 €',
+                    description: `
+                          <p><strong>La pelle TerraForce</strong> est l'outil parfait pour tous vos travaux de jardinage. Conçue pour allier robustesse et ergonomie, elle facilite le creusage, le retournement et le déplacement de la terre.</p>
+        <ul>
+            <li><strong>Marque :</strong> TerraForce</li>
+            <strong>Caractéristiques :</strong>
+            <ul>
+                <li><strong>Matériaux :</strong> Lame en acier inoxydable, manche en bois de hêtre.</li>
+                <li><strong>Dimensions :</strong> Longueur totale de 120 cm, largeur de la lame de 25 cm.</li>
+                <li><strong>Poids :</strong> 1,5 kg, légère et facile à manier.</li>
+            </ul>
+            <strong>Avantages :</strong>
+            <ul>
+                <li><strong>Durabilité :</strong> La lame en acier résistant à la corrosion garantit une longue durée de vie.</li>
+                <li><strong>Confort d'utilisation :</strong> Le manche ergonomique offre une prise en main agréable, réduisant la fatigue pendant l'utilisation.</li>
+                <li><strong>Polyvalence :</strong> Parfaite pour le jardinage, l'aménagement paysager et même les projets de construction.</li>
+            </ul>
+            <p><strong>Pourquoi choisir la pelle TerraForce ?</strong></p>
+            <ul>
+                <li><strong>Efficacité :</strong> Conçue pour optimiser vos efforts lors des travaux de jardinage.</li>
+                <li><strong>Esthétique :</strong> Un design moderne qui s'intègre parfaitement dans votre atelier ou garage.</li>
+                <li><strong>Garantie :</strong> Garantie de 2 ans contre tout défaut de fabrication.</li>
+            </ul>
+                    `
+                },
+
+
+                terrarake: {
+    nom: 'TerraRake',
+    image: 'DALL·E 2024-08-27 10.35.12 - A sturdy rake with a strong metal head and a durable wooden handle, ideal for heavy-duty gardening work. The .webp',
+    prix: 'Prix: 29,90 €',
+    description: `
+        <p><strong>Le râteau TerraRake</strong> est l'outil parfait pour entretenir votre jardin. Conçu pour faciliter le ratissage et le nettoyage des feuilles, il allie robustesse et confort d'utilisation.</p>
+        <ul>
+            <li><strong>Marque :</strong> TerraRake</li>
+            <strong>Caractéristiques :</strong>
+            <ul>
+                <li><strong>Matériaux :</strong> Tête en acier inoxydable, manche en bois de hêtre.</li>
+                <li><strong>Dimensions :</strong> Largeur de la tête de 40 cm, longueur totale de 150 cm.</li>
+                <li><strong>Poids :</strong> 1,2 kg, léger et facile à manœuvrer.</li>
+            </ul>
+            <strong>Avantages :</strong>
+            <ul>
+                <li><strong>Durabilité :</strong> La construction en acier inoxydable résiste à la corrosion et aux intempéries.</li>
+                <li><strong>Confort d'utilisation :</strong> Le manche ergonomique permet une prise en main agréable, réduisant la fatigue.</li>
+                <li><strong>Efficacité :</strong> Les dents flexibles permettent de ramasser facilement les feuilles et débris.</li>
+            </ul>
+            <p><strong>Pourquoi choisir le râteau TerraRake ?</strong></p>
+            <ul>
+                <li><strong>Polyvalence :</strong> Idéal pour le jardinage, l'aménagement paysager et le nettoyage des espaces extérieurs.</li>
+                <li><strong>Design moderne :</strong> Un look élégant qui s'intègre dans votre matériel de jardinage.</li>
+                <li><strong>Garantie :</strong> Garantie de 2 ans contre tout défaut de fabrication.</li>
+            </ul>
+    `
+},
+
+gardenpro: {
+    nom: 'GardenPro',
+    image: 'istockphoto-2027778015-612x612.webp',
+    prix: 'Prix: 24,90 €',
+    description: `
+        <p><strong>L'ensemble GardenPro</strong> comprend une petite pelle et un cultivateur, parfaits pour les jardiniers amateurs et professionnels. Ces outils sont conçus pour faciliter le travail du sol et le jardinage en pot.</p>
+        <ul>
+            <li><strong>Marque :</strong> GardenPro</li>
+            <strong>Caractéristiques :</strong>
+            <ul>
+                <li><strong>Matériaux :</strong> Lames en acier revêtu, manches en bois ergonomique.</li>
+                <li><strong>Dimensions :</strong> Pelle de 30 cm, cultivateur de 25 cm.</li>
+                <li><strong>Poids :</strong> 0,8 kg, léger et facile à manipuler.</li>
+            </ul>
+            <strong>Avantages :</strong>
+            <ul>
+                <li><strong>Durabilité :</strong> Les lames en acier résistant assurent une longue durée de vie.</li>
+                <li><strong>Confort d'utilisation :</strong> Les manches ergonomiques réduisent la fatigue lors de l'utilisation prolongée.</li>
+                <li><strong>Précision :</strong> Idéal pour travailler dans des espaces restreints et pour les plantations délicates.</li>
+            </ul>
+            <p><strong>Pourquoi choisir l'ensemble GardenPro ?</strong></p>
+            <ul>
+                <li><strong>Polyvalence :</strong> Parfait pour le jardinage en pot, les fleurs et les légumes.</li>
+                <li><strong>Design moderne :</strong> Un look élégant qui s'intègre parfaitement dans votre matériel de jardinage.</li>
+                <li><strong>Garantie :</strong> Garantie de 1 an contre tout défaut de fabrication.</li>
+            </ul>
+    `
+},
+
+éclatnaturel: {
+    nom: 'Éclat Naturel',
+    image: 'DALL·E 2024-08-25 21.43.30 - A single skincare product prominently displayed, such as a sleek glass bottle of serum, placed on a clean, min.webp',
+    prix: 'Prix: 49,90 €',
+    description: `
+        <p><strong>L'ensemble Éclat Naturel</strong> comprend deux sérums et une crème hydratante, formulés avec des ingrédients naturels pour revitaliser et hydrater votre peau. Idéal pour tous les types de peau, cet ensemble est conçu pour apporter éclat et douceur.</p>
+        <ul>
+            <li><strong>Marque :</strong> Éclat Naturel</li>
+            <strong>Caractéristiques :</strong>
+            <ul>
+                <li><strong>Ingrédients :</strong> Extraits de plantes, acide hyaluronique, vitamines C et E.</li>
+                <li><strong>Contenance :</strong> 30 ml pour chaque sérum, 50 ml pour la crème.</li>
+                <li><strong>Texture :</strong> Légère et non grasse, facilement absorbée par la peau.</li>
+            </ul>
+            <strong>Avantages :</strong>
+            <ul>
+                <li><strong>Hydratation intense :</strong> Les sérums pénètrent profondément pour une hydratation durable.</li>
+                <li><strong>Éclat naturel :</strong> Aide à uniformiser le teint et à réduire les signes de fatigue.</li>
+                <li><strong>Formule douce :</strong> Convient aux peaux sensibles, sans parabènes ni sulfates.</li>
+            </ul>
+            <p><strong>Pourquoi choisir l'ensemble Éclat Naturel ?</strong></p>
+            <ul>
+                <li><strong>Résultats visibles :</strong> Une peau plus lumineuse et revitalisée en quelques semaines.</li>
+                <li><strong>Engagement écologique :</strong> Produits non testés sur les animaux et emballages recyclables.</li>
+                <li><strong>Garantie satisfaction :</strong> Remboursement sous 30 jours si vous n'êtes pas satisfait.</li>
+            </ul>
+    `
+},
+
+gucciguiltypourfemme: {
+    nom: 'Gucci Guilty pour Femme',
+    image: 'andrey-ilkevich-7aUb9PSKmc8-unsplash.jpg',
+    prix: 'Prix: 89,90 €',
+    description: `
+        <p><strong>Le parfum Guilty pour Femme</strong> de Gucci est une fragrance audacieuse et envoûtante, conçue pour la femme moderne qui ose être elle-même. Avec ses notes florales et boisées, ce parfum incarne la sensualité et la confiance.</p>
+        <ul>
+            <li><strong>Marque :</strong> Gucci</li>
+            <strong>Caractéristiques :</strong>
+            <ul>
+                <li><strong>Notes de tête :</strong> Mandarine, poivre rose.</li>
+                <li><strong>Notes de cœur :</strong> Pivoine, lilas.</li>
+                <li><strong>Notes de fond :</strong> Patchouli, ambre.</li>
+            </ul>
+            <strong>Avantages :</strong>
+            <ul>
+                <li><strong>Longue tenue :</strong> Formule conçue pour durer toute la journée.</li>
+                <li><strong>Flacon élégant :</strong> Un design chic qui embellira votre coiffeuse.</li>
+                <li><strong>Idéal pour toutes occasions :</strong> Parfait pour le quotidien ou les soirées spéciales.</li>
+            </ul>
+            <p><strong>Pourquoi choisir Guilty pour Femme ?</strong></p>
+            <ul>
+                <li><strong>Expression de soi :</strong> Un parfum qui reflète votre personnalité unique.</li>
+                <li><strong>Cadeau parfait :</strong> Idéal pour offrir à une personne spéciale.</li>
+                <li><strong>Satisfaction garantie :</strong> Remboursement sous 30 jours si vous n'êtes pas satisfait.</li>
+            </ul>
+    `
+},
+
+sauvageparfumdior: {
+    nom: 'Sauvage Parfum Dior',
+    image: 'pavlo-t-56YB6Ycu1C4-unsplash.jpg',
+    prix: 'Prix: 110 €',
+    description: `
+        <p><strong>Dior Sauvage</strong> est un parfum qui incarne l'esprit de la nature sauvage et l'élégance intemporelle. Loin des conventions, il est conçu pour les hommes qui osent être audacieux et authentiques.</p>
+        <ul>
+            <li><strong>Marque :</strong> Dior</li>
+            <strong>Caractéristiques :</strong>
+            <ul>
+                <li><strong>Notes de Tête :</strong> Bergamote de Calabre, qui offre une fraîcheur éclatante et pétillante.</li>
+                <li><strong>Notes de Cœur :</strong> Épices chaudes, ajoutant une profondeur et une complexité au parfum.</li>
+                <li><strong>Notes de Fond :</strong> Ambre et vanille, pour une chaleur enveloppante et sensuelle.</li>
+            </ul>
+            <strong>Packaging :</strong>
+            <p>Le flacon arbore un design moderne et épuré, avec une finition en verre noir et un dégradé bleu, symbolisant le ciel et la terre. Son aspect robuste reflète la force et la virilité.</p>
+            <p><strong>Pourquoi Choisir Sauvage ?</strong></p>
+            <ul>
+                <li><strong>Durabilité :</strong> Une tenue exceptionnelle qui dure toute la journée.</li>
+                <li><strong>Polyvalence :</strong> Parfait pour toutes les occasions, que ce soit pour une sortie décontractée ou un événement formel.</li>
+                <li><strong>Impact :</strong> Un parfum qui attire les compliments et laisse une impression mémorable.</li>
+            </ul>
+            <p><strong>Dior Sauvage Parfum</strong> est bien plus qu'un simple parfum ; c'est une déclaration de style et de personnalité. Osez l'authenticité et laissez-vous séduire par cette fragrance emblématique.</p>
+    `
+},
+
+             guccimémoireduneodeur:{
+                         nom: "Gucci Mémoire d'une Odeur",
+                         image: 'anna-keibalo-iu4FHgqxOzI-unsplash.jpg',
+                         prix: 'Prix: 100 €',
+                         description: `
+                               <p><strong>Gucci Mémoire d'une Odeur</strong> est un parfum unique qui transcende les genres et les époques. Il évoque des souvenirs et des émotions, offrant une expérience olfactive inoubliable.</p>
+                               <ul>
+                                  <li>Marque : <strong>Gucci</strong></li>
+                                  <strong>Caractéristiques :</strong>
+                                  <li>Notes de tête : Camomille, menthe</li>
+                                  <li>Notes de cœur : Jasmin, bois de cèdre</li>
+                                  <li>Notes de fond : Musc, ambre</li>
+                                  <strong>Points Forts :</strong>
+                                  <li>Fragrance unisexe : Conçu pour être porté par tous, indépendamment du genre.</li>
+                                  <li>Flacon raffiné : Son design élégant et moderne reflète l'esthétique luxueuse de Gucci.</li>
+                                  <li>Polyvalent : Idéal pour toutes les occasions, qu'il s'agisse d'une journée décontractée ou d'une soirée élégante.</li>
+                               </ul>
+                               <strong>Pourquoi Choisir Mémoire d'une Odeur ?</strong>
+                               <p>Optez pour Gucci Mémoire d'une Odeur si vous souhaitez une fragrance qui évoque des souvenirs et des émotions, tout en ajoutant une touche de sophistication à votre quotidien.</p>
+                               `                 
+                           },
+
+                           saltetstone:{
+                              nom: "Salt & Stone",
+                              image: 'valeriia-miller-sBqXnldQ9ak-unsplash.jpg',
+                              prix: 'Prix: 30 €',
+                              description: `
+                                       <p>Le Gel Douche Bergamot & Hinoki de <strong>Salt & Stone</strong> est conçu pour offrir une expérience de nettoyage luxueuse tout en hydratant la peau. Sa formule douce et naturelle nettoie efficacement tout en préservant l'hydratation.</p>
+                                       <ul>
+                                           <li>Marque : <strong>Salt & Stone</strong></li>
+                                           <strong>Caractéristiques :</strong>
+                                           <li>Ingrédients clés : Huile essentielle de bergamote, extrait de hinoki</li>
+                                           <li>Texture : Gel léger et moussant</li>
+                                           <li>Parfum : Frais et boisé, avec des notes d'agrumes</li>
+                                           <strong>Points Forts :</strong>
+                                           <li>Formule naturelle : Fabriqué avec des ingrédients biologiques et sans produits chimiques agressifs.</li>
+                                           <li>Hydratation : Aide à maintenir l'hydratation de la peau, la laissant douce et souple.</li>
+                                           <li>Écologique : Emballage durable et respectueux de l'environnement.</li>
+                                           <strong>Pourquoi Choisir Salt & Stone ?</strong>
+                                           <p>Ce gel douche est parfait pour ceux qui recherchent un produit de soin de la peau à la fois efficace et respectueux de l'environnement. Son parfum agréable et ses ingrédients naturels en font un incontournable de la routine de douche.</p>
+                                           <p>Optez pour le Gel Douche Bergamot & Hinoki de <strong>Salt & Stone</strong> pour une expérience de douche rafraîchissante et revitalisante, tout en prenant soin de votre peau et de la planète.</p>
+                                      </ul>
+                                  `
+                           },
+
+                           curology:{
+                              nom: 'Curology',
+                              image: 'curology-j7pKVQrTUsM-unsplash.jpg',
+                              prix: 'Prix: 20 €',
+                              description: `
+                                 <ul>
+                                    <li>Marque : <strong>Curology</strong></li>
+                                    <strong>Produits Inclus :</strong>
+                                    <ol>
+                                    <li><strong>The Cleanser</strong></li>
+                                    <ul>
+                                    <li>Description : Un nettoyant doux qui élimine les impuretés et prépare la peau pour les soins suivants. Formulé pour convenir à tous les types de peau.</li>
+                                    <li>Contenance : 80 ml (2.7 fl oz)</li>
+                                    </ul>
+                                    <li><strong>The Rich Moisturizer</strong></li>
+                                    <ul>
+                                    <li>Description : Une crème hydratante riche qui nourrit et hydrate la peau en profondeur. Idéale pour les peaux sèches ou déshydratées.</li>
+                                    <li>Contenance : 50 ml (1.7 fl oz)</li>
+                                    </ul>
+                                    </ol>
+                                    <strong>Caractéristiques Générales :</strong>
+                                    <li>Formules Personnalisées : Curology propose des produits adaptés aux besoins spécifiques de votre peau, après une consultation en ligne.</li>
+                                    <li>Ingrédients Actifs : Utilisation d'ingrédients de qualité, souvent issus de recherches dermatologiques, pour traiter divers problèmes de peau comme l'acné, la sécheresse ou le vieillissement cutané.</li>
+                                    <li>Sans Cruauté : Tous les produits sont sans cruauté et ne sont pas testés sur les animaux.</li>
+                                    </ul>  
+                                    <strong>Pourquoi Choisir Curology ?</strong>
+                                    <p><strong>Curology</strong> se démarque par son approche personnalisée des soins de la peau. Grâce à une consultation en ligne, vous pouvez recevoir des recommandations spécifiques basées sur votre type de peau et vos préoccupations. Les produits sont conçus pour être simples à utiliser tout en offrant des résultats visibles.</p>
+                                    <p>La gamme de soins Curology, avec son nettoyant doux et sa crème hydratante riche, est parfaite pour ceux qui recherchent une routine de soins efficace et personnalisée. Offrez à votre peau le meilleur avec Curology, tout en profitant d'une expérience de soins adaptée à vos besoins individuels.</p>                             
+                              `
+                           },
+
+                           colorpop:{
+                              nom: 'ColorPop',
+                              image: 'istockphoto-529952559-612x612.webp',
+                              prix: 'Prix: 35 €',
+                              description: `
+                                   <p>La palette de fards à paupières <strong>ColorPop</strong> est un incontournable pour les passionnés de maquillage. Avec ses 36 teintes éclatantes, elle offre une variété de couleurs allant des nuances douces aux teintes audacieuses, parfaites pour tous les looks.</p>
+                                   <ul>
+                                       <li>Marque : <strong>ColorPop</strong></li>
+                                       <strong>Caractéristiques :</strong>
+                                       <li>Nombre de Teintes : 36 teintes, incluant des finis mats, satinés et pailletés.</li>
+                                       <li>Formulation : Texture veloutée qui s'applique facilement et se mélange sans effort.</li>
+                                       <li>Pigmentation : Exceptionnelle, offrant une couleur riche avec une seule application.</li>
+                                       <li>Durabilité : Formule longue tenue, résistante à l'eau et à la sueur, garantissant un maquillage impeccable toute la journée.</li>
+                                       <li>Utilisation : Parfaite pour les débutants et les maquilleurs professionnels, idéale pour créer des looks variés.</li>
+                                       <strong>Outils Inclus :</strong>
+                                       <li>Pinceaux de Maquillage : Comprend un pinceau estompeur et un pinceau applicateur pour une application précise et un mélange parfait.</li>
+                                       </ul>
+                                       <strong>Pourquoi Choisir ColorPop ?</strong>
+                                       <p><strong>ColorPop</strong> se distingue par ses produits de haute qualité à des prix abordables. Cette palette est parfaite pour ceux qui souhaitent explorer leur créativité tout en ayant accès à des couleurs tendance. Que vous souhaitiez un look naturel pour le quotidien ou un maquillage glamour pour une soirée, cette palette saura répondre à toutes vos envies.</p>
+                                       <p>Ajoutez la palette de fards à paupières <strong>ColorPop</strong> à votre collection de maquillage et laissez libre cours à votre imagination. Avec ses couleurs vibrantes et sa formulation de qualité, vous êtes prête à créer des looks impressionnants qui feront tourner les têtes.</p>
+                              `
+                           },
+
+                           luxelip:{
+                              nom: 'LuxeLip',
+                              image: 'brittney-weng-CSquI0aw_Rg-unsplash.jpg',
+                              prix: 'Prix: 15 €',
+                              description: `
+                                         <p><strong>Le baume exfoliant à lèvres LuxeLip</strong> est conçu pour offrir une expérience de soin ultime. Sa formule douce élimine les peaux mortes tout en hydratant et nourrissant vos lèvres, laissant une sensation de douceur et de confort.</p>
+        <ul>
+            <li><strong>Marque :</strong> LuxeLip</li>
+            <strong>Caractéristiques :</strong>
+            <ul>
+                <li><strong>Formulation :</strong> Enrichie en ingrédients naturels tels que le sucre, l'huile de coco et le beurre de karité pour une exfoliation efficace et hydratante.</li>
+                <li><strong>Texture :</strong> Crème légère qui fond sur les lèvres, facilitant l'application.</li>
+                <li><strong>Bienfaits :</strong> Exfolie en douceur, hydrate intensément et laisse un fini lisse et doux.</li>
+                <li><strong>Utilisation :</strong> Convient à tous les types de peau, idéal avant l'application de rouge à lèvres ou pour un soin quotidien.</li>
+            </ul>
+            <strong>Emballage :</strong>
+            <p>Contenance : 15 ml, dans un pot en verre recyclable pour un look élégant et éco-responsable.</p>
+            <p><strong>Pourquoi Choisir LuxeLip ?</strong></p>
+            <ul>
+                <li>LuxeLip se démarque par son engagement envers des ingrédients naturels et efficaces.</li>
+                <li>Ce baume exfoliant est parfait pour ceux qui souhaitent prendre soin de leurs lèvres tout en profitant d'un produit agréable à utiliser.</li>
+                <li>Particulièrement recommandé pour les lèvres sèches ou gercées, offrant un soin apaisant et réparateur.</li>
+            </ul>
+            <p>Ajoutez le baume exfoliant à lèvres LuxeLip à votre routine de soins pour des lèvres douces et revitalisées. Avec sa formule nourrissante et son efficacité prouvée, vous serez prêt à afficher des lèvres éclatantes de santé et de beauté.</p>
+                              `
+                           },
+
+                           everdrop:{
+                                nom: 'Everdrop',
+                                image: 'everdrop-gmbh-tos0a8Fh3lc-unsplash.jpg',
+                                prix: 'Prix: 18,99 €',
+                                description: `
+    <p><strong>Le gel douche Everdrop</strong> est une solution innovante pour ceux qui recherchent un soin corporel à la fois efficace et respectueux de l'environnement. Avec sa formule naturelle, il offre une expérience de nettoyage douce tout en nourrissant la peau.</p>
+        <ul>
+            <li><strong>Marque :</strong> Everdrop</li>
+            <strong>Caractéristiques :</strong>
+            <ul>
+                <li><strong>Type de Produit :</strong> Gel douche et poudre de lavage corporel.</li>
+                <li><strong>Ingrédients :</strong> Formulé avec des extraits de citron, bois de cèdre et lavande, pour un parfum frais et apaisant.</li>
+                <li><strong>Certifications :</strong> Certifié COSMOS NATURAL, garantissant des ingrédients d'origine naturelle et une fabrication respectueuse de l'environnement.</li>
+                <li><strong>Utilisation :</strong> La poudre se transforme en gel lors du mélange avec de l'eau, offrant une texture légère et agréable.</li>
+                <li><strong>Emballage :</strong> Flacon recyclable et sachet éco-responsable, réduisant l'impact environnemental.</li>
+            </ul>
+            <p><strong>Pourquoi Choisir Everdrop ?</strong></p>
+            <ul>
+                <li>Everdrop se distingue par son engagement envers la durabilité et la qualité.</li>
+                <li>Ce gel douche est parfait pour ceux qui souhaitent allier plaisir et respect de l'environnement.</li>
+                <li>Sa formulation naturelle convient à tous les types de peau, même les plus sensibles.</li>
+            </ul>
+            <p>Ajoutez le gel douche Everdrop à votre routine quotidienne pour un moment de bien-être. Avec ses ingrédients naturels et son parfum envoûtant, il transformera votre douche en une véritable expérience sensorielle tout en prenant soin de la planète.</p>
+                                 `
+                           },
+
+                           violetglass:{
+                                nom: 'Violet Glass',
+                                image: 'pmv-chamara-KqHNWdP4pWg-unsplash.jpg',
+                                prix: 'Prix: 24,99 €',
+                                description: `
+                                    <p><strong>Le flacon cosmétique Violet Glass</strong> est conçu pour préserver la qualité de vos produits de soin tout en ajoutant une touche d'élégance à votre routine de beauté. Fabriqué en verre violet, il protège les ingrédients sensibles à la lumière tout en offrant un design moderne et esthétique.</p>
+                                    <ul>
+                                        <li><strong>Marque :</strong> Violet Glass</li>
+                                        <strong>Caractéristiques :</strong>
+                                        <ul>
+                                            <li><strong>Matériau :</strong> Verre violet de haute qualité, qui bloque les rayons UV pour protéger les formulations.</li>
+                                            <li><strong>Capacité :</strong> Disponible en plusieurs tailles, idéal pour les sérums, huiles et lotions.</li>
+                                            <li><strong>Design :</strong> Équipé d'un bouchon pompe ergonomique pour une utilisation facile et précise.</li>
+                                            <li><strong>Écologique :</strong> 100% recyclable, contribuant à une routine de beauté durable.</li>
+                                            <li><strong>Utilisation :</strong> Parfait pour les produits naturels ou bio, garantissant une conservation optimale.</li>
+                                        </ul>
+                                        <p><strong>Pourquoi Choisir Violet Glass ?</strong></p>
+                                        <ul>
+                                            <li>Allie fonctionnalité et esthétique pour une solution élégante et efficace de stockage de produits de soin.</li>
+                                            <li>Protection des ingrédients contre les rayons UV, prolongeant leur durée de vie.</li>
+                                            <li>Design moderne et durable, idéal pour une routine de beauté écologique.</li>
+                                        </ul>
+                                        <p>Investissez dans le flacon cosmétique Violet Glass pour une expérience de soin haut de gamme. Avec sa protection UV et son design raffiné, il est le choix idéal pour tous les amateurs de cosmétiques soucieux de la qualité et de l'environnement.</p>
+                                      `
+                           },
+
+                           mossetfern:{
+                            nom: 'Moss & Fern',
+                            image: 'mockup-free-PbGC2COjWgA-unsplash.jpg',
+                            prix: 'Prix: 19,99 €',
+                            description: `
+                                       <p><strong>Le flacon et la boîte Moss & Fern</strong> sont conçus pour offrir une solution élégante et fonctionnelle pour vos produits de soin. Avec un design minimaliste et une attention particulière aux détails, ce set est idéal pour les marques qui souhaitent se démarquer tout en respectant l'environnement.</p>
+                                       <ul>
+                                           <li><strong>Marque :</strong> Moss & Fern</li>
+                                           <strong>Caractéristiques :</strong>
+                                           <ul>
+                                               <li><strong>Matériau :</strong> Flacon en verre noir, offrant une protection optimale contre la lumière et préservant la qualité des formulations.</li>
+                                               <li><strong>Capacité :</strong> 50 ml, parfait pour les sérums, huiles ou lotions.</li>
+                                               <li><strong>Design :</strong> Équipé d'un bouchon hermétique et d'une boîte assortie pour un emballage soigné.</li>
+                                               <li><strong>Écologique :</strong> 100% recyclable, contribuant à une approche durable de l'emballage.</li>
+                                               <li><strong>Personnalisation :</strong> Espace disponible pour l'étiquetage personnalisé, permettant d'adapter le flacon à votre marque.</li>
+                                           </ul>
+                                           <p><strong>Pourquoi Choisir Moss & Fern ?</strong></p>
+                                           <ul>
+                                               <li>Moss & Fern allie esthétique et praticité, offrant un flacon qui non seulement protège vos produits, mais aussi attire l'œil.</li>
+                                               <li>Idéal pour les entrepreneurs souhaitant lancer une ligne de soins naturels ou bio, tout en mettant en avant leur engagement envers la durabilité.</li>
+                                           </ul>
+                                           <p>Optez pour le flacon et la boîte Moss & Fern pour une présentation élégante de vos produits de beauté. Avec son design raffiné et sa fonctionnalité, ce set est un choix idéal pour tous ceux qui souhaitent offrir une expérience haut de gamme à leurs clients.</p>
+                            `
+                           },
+
+                           jomalonelondon:{  
+                            nom: 'Jo Malone London',
+                            image: 'hyunwon-jang-t8ueo1LnzEU-unsplash.jpg',
+                            prix: 'Prix: 75,00 €',
+                            description: `
+                           <p><strong>Le parfum Blackberry & Bay</strong> de Jo Malone est une fragrance raffinée qui capture l'essence de la nature. Avec ses notes fruitées et herbacées, ce parfum est parfait pour ceux qui recherchent une expérience olfactive unique et élégante.</p>
+                           <ul>
+                               <li><strong>Marque :</strong> Jo Malone London</li>
+                               <strong>Caractéristiques :</strong>
+                               <ul>
+                                   <li><strong>Type de Produit :</strong> Cologne</li>
+                                   <li><strong>Notes de Tête :</strong> Baies juteuses, offrant une première impression fraîche et dynamique.</li>
+                                   <li><strong>Notes de Cœur :</strong> Feuilles de laurier, ajoutant une profondeur herbacée et aromatique.</li>
+                                   <li><strong>Notes de Fond :</strong> Vétiver, apportant une touche terreuse et boisée.</li>
+                                   <li><strong>Flacon :</strong> Flacon en verre élégant de 30 ml, avec un bouchon en métal poli pour une touche de luxe.</li>
+                                   <li><strong>Utilisation :</strong> Idéal pour un usage quotidien ou pour des occasions spéciales, ce parfum s'adapte à toutes les situations.</li>
+                               </ul>
+                               <p><strong>Pourquoi Choisir Jo Malone - Blackberry & Bay ?</strong></p>
+                               <ul>
+                                   <li>Jo Malone est synonyme de qualité et d'élégance.</li>
+                                   <li>Ce parfum est parfait pour ceux qui apprécient les fragrances délicates et sophistiquées.</li>
+                                   <li>Un excellent choix pour offrir en cadeau.</li>
+                               </ul>
+                               <p>Optez pour le parfum Blackberry & Bay de Jo Malone pour une touche de fraîcheur et d'élégance. Avec ses notes soigneusement équilibrées, ce parfum est un incontournable pour toute collection de fragrances.</p>
+                                    `
+                                  
+                               },
+
+                               aromaluxe: {
+                                    nom: 'Aroma Luxe',
+                                    image: 'tron-le-warqmZejUn4-unsplash.jpg',
+                                    prix: 'Prix: 19,99 €',
+                                    description: `
+                                        <p><strong>Aroma Luxe</strong> propose une gamme d'huiles essentielles de qualité supérieure, extraites de plantes de la plus haute qualité, cultivées à Saïgon, Vietnam. Chaque mélange est conçu pour apporter bien-être et équilibre à votre quotidien.</p>
+        
+                                        <strong>Caractéristiques des Produits :</strong>
+                                        <ul>
+                                            <li><strong>Lavande & Feuilles :</strong> Un mélange apaisant qui favorise la relaxation et le bien-être. Utilisation : Idéal pour les diffuseurs ou les bains relaxants.</li>
+                                            <li><strong>Basilic & Menthe :</strong> Un mélange frais et revigorant qui stimule les sens. Utilisation : Parfait pour la cuisine ou comme parfum d'ambiance.</li>
+                                            <li><strong>Jasmin Blanc & Géranium :</strong> Un mélange floral et doux qui équilibre l'esprit et le corps. Utilisation : Excellent pour les massages ou les soins de la peau.</li>
+                                            <li><strong>Orange & Épices :</strong> Un mélange chaleureux qui évoque des souvenirs de convivialité. Utilisation : Idéal pour créer une ambiance festive.</li>
+                                        </ul>
+
+                                        <p><strong>Pourquoi Choisir Aroma Luxe ?</strong></p>
+                                        <ul>
+                                            <li><strong>Qualité Supérieure :</strong> Nos huiles essentielles sont extraites de plantes de la plus haute qualité, cultivées à Saïgon, Vietnam.</li>
+                                            <li><strong>Polyvalence :</strong> Utilisables en diffusion, en aromathérapie ou en cosmétique.</li>
+                                            <li><strong>Engagement Éthique :</strong> Nous garantissons une production respectueuse de l'environnement.</li>
+                                        </ul>
+
+                                        <p>Transformez votre quotidien avec les huiles essentielles <strong>Aroma Luxe</strong> et profitez des bienfaits de la nature à chaque goutte !</p>
+                                    `
+                                },
+
+                                berrybliss:{
+                                    nom: 'Berry Bliss',
+                                    image: 'supliful-supplements-on-demand-571ysEZSMFU-unsplash.jpg',
+                                    prix: 'Prix: 14,99 €',
+                                    description: `
+                                        <p><strong>Berry Bliss</strong> propose de délicieuses gummies au goût de framboise, conçues pour satisfaire vos envies de sucré tout en améliorant votre bien-être.</p>
+        <ul>
+            <li><strong>Saveur :</strong> Délicieuses gummies au goût de framboise, idéales pour satisfaire vos envies de sucré tout en prenant soin de votre bien-être.</li>
+            <li><strong>Ingrédients Naturels :</strong> Fabriquées à partir d'extraits de fruits et de plantes, sans colorants ni arômes artificiels.</li>
+            <li><strong>Bienfaits :</strong> Enrichies en vitamines et antioxydants, nos gummies aident à renforcer le système immunitaire et à améliorer l'énergie quotidienne.</li>
+            <li><strong>Sans Gluten :</strong> Convient aux personnes ayant des restrictions alimentaires.</li>
+        </ul>
+        <p><strong>Pourquoi Choisir Berry Bliss ?</strong></p>
+        <ul>
+            <li><strong>Goût Exceptionnel :</strong> Chaque gummy est un véritable délice qui rend la prise de vitamines agréable.</li>
+            <li><strong>Praticité :</strong> Faciles à emporter, parfaites pour les déplacements ou à déguster à tout moment de la journée.</li>
+            <li><strong>Engagement Éthique :</strong> Produits sans cruauté, respectueux de l'environnement et fabriqués avec des ingrédients de qualité supérieure.</li>
+        </ul>
+        <p>Transformez votre routine de santé avec les gummies Berry Bliss et savourez chaque bouchée tout en prenant soin de vous !</p>
+                                    `
+                                },
+
+
+                                dailyc:{
+                                    nom: 'Daily-C',
+                                    image: 'duc-van-TMrKHQRvO4E-unsplash.jpg',
+                                    prix: 'Prix: 2,50 €',
+                                    description: ` 
+                                            <p><strong>Daily-C Lemon</strong> est une boisson rafraîchissante et revitalisante, riche en vitamine C pour renforcer votre système immunitaire et vous hydrater tout au long de la journée.</p>
+                                            <ul>
+                                                <li><strong>Contenu en Vitamine C :</strong> Chaque bouteille contient 1000 mg de vitamine C, idéale pour booster votre immunité.</li>
+                                                <li><strong>Saveur Citron :</strong> Un goût frais et acidulé qui revitalise et désaltère.</li>
+                                                <li><strong>Ingrédients Naturels :</strong> Fabriquée à partir d'extraits naturels de citron, sans colorants ni conservateurs artificiels.</li>
+                                                <li><strong>Pratique :</strong> Format léger et facile à transporter, parfait pour une consommation à tout moment de la journée.</li>
+                                            </ul>
+                                            <p><strong>Pourquoi Choisir Daily-C Lemon ?</strong></p>
+                                            <ul>
+                                                <li><strong>Énergie et Vitalité :</strong> Un excellent moyen d'augmenter votre apport en vitamine C tout en vous désaltérant.</li>
+                                                <li><strong>Idéal pour Tous :</strong> Convient à toute la famille, un choix sain pour les enfants et les adultes.</li>
+                                                <li><strong>Engagement Qualité :</strong> Produit par Lotte, une marque reconnue pour son engagement envers la qualité et l'innovation.</li>
+                                            </ul>
+                                            <p>Ajoutez <strong>Daily-C Lemon</strong> à votre routine quotidienne et profitez d'une boisson délicieuse qui prend soin de votre santé !</p>                                    
+                                    `
+                                },
+
+                                activelife: {
+                                     nom: 'ActiveLife',
+                                     image: 'istockphoto-636191848-612x612.webp',
+                                     prix: 'Prix: 34,99 €',
+                                     description: `
+                                         <p><strong>ActiveLife</strong> vous propose un ensemble complet pour votre entraînement à domicile, combinant confort, durabilité et écologie pour vous aider à atteindre vos objectifs de fitness.</p>
+                                         <ul>
+                                             <li><strong>Tapis de Yoga ActiveLife :</strong> Dimensions de 183 cm x 61 cm et épaisseur de 8 mm, fabriqué en TPE antidérapant, pour un confort optimal et respectueux de l'environnement.</li>
+                                             <li><strong>Haltères ActiveLife :</strong> Poids de 1,5 kg chacun, avec un revêtement en vinyle pour une prise en main confortable et un design compact parfait pour le renforcement musculaire.</li>
+                                             <li><strong>Corde à Sauter ActiveLife :</strong> Longueur ajustable et poignées antidérapantes, idéale pour les exercices de cardio et d'endurance.</li>
+                                             <li><strong>Briques de Yoga ActiveLife :</strong> Dimensions de 23 cm x 10 cm x 7,5 cm, fabriquées en mousse EVA, parfaites pour soutenir vos postures de yoga.</li>
+                                         </ul>
+                                         <p><strong>Pourquoi Choisir ActiveLife ?</strong></p>
+                                         <ul>
+                                             <li><strong>Ensemble Complet :</strong> Tout ce dont vous avez besoin pour un entraînement efficace et équilibré, à domicile.</li>
+                                             <li><strong>Qualité Supérieure :</strong> ActiveLife garantit des équipements de fitness durables et adaptés à tous les niveaux.</li>
+                                             <li><strong>Engagement Écologique :</strong> Matériaux respectueux de l'environnement, un choix conscient pour votre bien-être et celui de la planète.</li>
+                                         </ul>
+                                         <p>Transformez votre routine d'entraînement avec <strong>ActiveLife</strong> et atteignez vos objectifs de fitness tout en profitant d'un équipement de qualité supérieure !</p>
+                                     `
+                                 },
+
+                                 fitpro:{
+                                     nom: 'FitPro',
+                                     image: 'istockphoto-1371680911-612x612.webp',
+                                     prix: 'Prix : 29,99 € pour le tapis de yoga et 15,99 € pour les haltères',
+                                     description: `
+                                             <ul>
+                                                <li>Marque : <strong>FitPro</strong></li>
+                                                <strong>Caractéristiques des Produits :</strong>
+                                                <ol>
+                                                <li><strong>Tapis de Yoga FitPro</strong></li>
+                                                <ul>
+                                                <li>Dimensions : 183 cm x 61 cm, offrant un espace suffisant pour toutes vos postures.</li>
+                                                <li>Épaisseur : 6 mm, pour un confort optimal et une excellente absorption des chocs.</li>
+                                                <li>Matériaux : Fabriqué en PVC écologique, sans BPA, antidérapant et facile à nettoyer.</li>
+                                                <li>Couleur : Disponible en bleu vibrant, ajoutant une touche de style à votre routine d'exercice.</li>
+                                                </ul>
+                                                <li><strong>Haltères FitPro</strong></li>
+                                                <ul>
+                                                <li>Poids : 1 kg chacun, parfaits pour les séances d'entraînement à domicile.</li>
+                                                <li>Matériaux : Revêtement en néoprène pour une prise en main confortable et une durabilité accrue.</li>
+                                                <li>Design : Compact et ergonomique, idéal pour le renforcement musculaire et les exercices de tonification.</li>
+                                                </ul>
+                                                </ol>
+                                                <strong>Pourquoi Choisir FitPro ?</strong>
+                                                <li>Polyvalence : Idéal pour le yoga, le pilates, la musculation et les entraînements à domicile.</li>
+                                                <li>Qualité Assurée : FitPro s'engage à fournir des équipements de fitness de haute qualité pour tous les niveaux.</li>
+                                                <li>Engagement Écologique : Produits conçus avec des matériaux respectueux de l'environnement.</li>
+                                             </ul>
+                                             <p>Transformez votre expérience d'entraînement avec <strong>FitPro</strong> et atteignez vos objectifs de fitness tout en profitant du confort et de la qualité !</p>
+                                     `
+                                 },
+
+                                 zenflex: {
+    nom: 'ZenFlex',
+    image: 'istockphoto-1248661954-612x612.webp',
+    prix: 'Prix: 24,99 €',
+    description: `
+        <ul>
+            <li>Marque : <strong>ZenFlex</strong></li>
+            <strong>Caractéristiques du Produit :</strong>
+            <ol>
+                <li><strong>Tapis de Yoga ZenFlex</strong></li>
+                <ul>
+                    <li>Dimensions : 183 cm x 61 cm, offrant un espace adéquat pour toutes vos poses de yoga et exercices de fitness.</li>
+                    <li>Épaisseur : 6 mm, conçu pour un confort optimal avec une excellente absorption des chocs.</li>
+                    <li>Matériaux : Fabriqué en PVC écologique, sans produits chimiques nocifs, garantissant une surface antidérapante pour une meilleure stabilité.</li>
+                    <li>Couleur : Rose vibrant, ajoutant une touche de couleur et de motivation à votre pratique.</li>
+                    <li>Transport : Équipé de sangles de transport, il est facile à rouler et à transporter, parfait pour les séances en extérieur ou en studio.</li>
+                </ul>
+            </ol>
+            <strong>Pourquoi Choisir ZenFlex ?</strong>
+            <li>Confort et Performance : Son épaisseur et son matériau offrent un excellent soutien pour toutes vos postures.</li>
+            <li>Design Pratique : Léger et facile à transporter, il convient à tous les niveaux de pratique, que vous soyez débutant ou expert.</li>
+            <li>Engagement Écologique : ZenFlex privilégie des matériaux respectueux de l’environnement, pour une pratique de yoga consciente et responsable.</li>
+        </ul>
+        <p>Transformez votre expérience de yoga avec <strong>ZenFlex</strong> et atteignez vos objectifs de bien-être tout en profitant d'un équipement de qualité supérieure !</p>
+    `
+},
+                 
+haltèresactivelife: {
+    nom: 'Haltères ActiveLife',
+    image: 'istockphoto-173926553-612x612.webp',
+    prix: 'Prix: 19,99 €',
+    description: `
+        <ul>
+            <li>Marque : <strong>ActiveLife</strong></li>
+            <strong>Caractéristiques du Produit :</strong>
+            <ol>
+                <li><strong>Haltères ActiveLife 1,5 kg</strong></li>
+                <ul>
+                    <li>Poids : 1,5 kg chacun, idéal pour les entraînements de renforcement musculaire.</li>
+                    <li>Matériaux : Revêtement en vinyle durable, garantissant une prise en main confortable et une excellente adhérence.</li>
+                    <li>Design : Compact et ergonomique, facilitant leur utilisation pour une variété d'exercices.</li>
+                    <li>Couleur : Rouge vif, ajoutant une touche dynamique à votre équipement de fitness.</li>
+                </ul>
+            </ol>
+            <strong>Pourquoi Choisir Haltères ActiveLife ?</strong>
+            <li>Polyvalence : Parfait pour les exercices à domicile, que ce soit pour des séances de musculation, de cardio ou de réhabilitation.</li>
+            <li>Facilité d'utilisation : Léger et facile à manipuler, idéal pour tous les niveaux de condition physique, des débutants aux plus expérimentés.</li>
+            <li>Esthétique : Leur design attrayant et coloré apporte une motivation supplémentaire à vos séances d'entraînement.</li>
+        </ul>
+        <p>Transformez votre routine de fitness avec les <strong>Haltères ActiveLife</strong> et atteignez vos objectifs de santé et de bien-être tout en vous amusant !</p>
+    `
+},
+
+
+haltèresProFit: {
+    nom: 'Haltères ProFit',
+    image: 'istockphoto-185285227-612x612.webp',  
+    prix: 'Prix: 39,99 €',
+    description: `
+        <ul>
+            <li>Marque : <strong>ProFit</strong></li>
+            <strong>Caractéristiques du Produit :</strong>
+            <ol>
+                <li><strong>Haltères ProFit</strong></li>
+                <ul>
+                    <li>Poids : Disponible en différentes options (de 2 kg à 10 kg), adaptés à tous les niveaux d'entraînement.</li>
+                    <li>Matériaux : Fabriqués en acier robuste avec un revêtement en caoutchouc pour une durabilité accrue et une protection du sol.</li>
+                    <li>Design : Forme ergonomique avec une prise en main confortable, permettant une utilisation prolongée sans inconfort.</li>
+                    <li>Couleur : Noir élégant, s’intégrant facilement dans n’importe quel espace de fitness.</li>
+                </ul>
+            </ol>
+            <strong>Pourquoi Choisir ProFit ?</strong>
+            <li>Polyvalence : Idéaux pour la musculation, le cardio et les exercices de réhabilitation, parfaits pour une utilisation à domicile ou en salle de sport.</li>
+            <li>Performance : Conçus pour offrir une résistance optimale, permettant de progresser efficacement dans vos entraînements.</li>
+            <li>Sécurité : Le revêtement en caoutchouc réduit le risque de glissement et protège vos surfaces.</li>
+        </ul>
+        <p>Améliorez votre routine d'entraînement avec les <strong>Haltères ProFit</strong> et atteignez vos objectifs de remise en forme avec style et efficacité !</p>
+    `
+},
+
+
+profootball: {
+    nom: 'ProFootball',
+    image: 'istockphoto-1137996375-612x612.webp',  // Remplacez par l'image réelle
+    prix: 'Prix: 29,99 €',
+    description: `
+        <ul>
+            <li>Marque : <strong>ProFootball</strong></li>
+            <strong>Caractéristiques du Produit :</strong>
+            <ol>
+                <li><strong>Ballon de Football ProFootball</strong></li>
+                <ul>
+                    <li>Dimensions : Taille officielle 5, idéale pour les matchs professionnels et les entraînements.</li>
+                    <li>Matériaux : Fabriqué en cuir synthétique de haute qualité, offrant une excellente durabilité et une résistance à l'eau.</li>
+                    <li>Design : Motif classique noir et blanc, facilement identifiable, qui respecte les normes des compétitions officielles.</li>
+                    <li>Poids : 410-450 grammes, conforme aux standards des ballons de football.</li>
+                </ul>
+            </ol>
+            <strong>Pourquoi Choisir le Ballon ProFootball ?</strong>
+            <li>Performance : Conçu pour offrir un contrôle et une précision optimaux lors des passes et des tirs.</li>
+            <li>Polyvalence : Parfait pour les matchs en extérieur comme en intérieur, adapté aux joueurs de tous niveaux.</li>
+            <li>Sécurité : Revêtement doux qui réduit le risque de blessures lors des contacts.</li>
+        </ul>
+        <p>Améliorez vos performances sur le terrain avec le <strong>Ballon de Football ProFootball</strong>. Que vous soyez un joueur amateur ou professionnel, ce ballon vous accompagnera dans toutes vos aventures sportives !</p>
+    `
+},
+
+ballonadidas: {
+    nom: 'Ballon Adidas',
+    image: 'peter-glaser-qWs_Wa1JrKM-unsplash.jpg',  // Remplacez par l'image réelle
+    prix: 'Prix: 39,99 €',
+    description: `
+        <ul>
+            <li>Marque : <strong>Adidas</strong></li>
+            <strong>Caractéristiques du Produit :</strong>
+            <ol>
+                <li><strong>Ballon de Football Adidas Tango</strong></li>
+                <ul>
+                    <li>Dimensions : Taille officielle 5, idéale pour les matchs professionnels et les entraînements.</li>
+                    <li>Matériaux : Fabriqué en cuir synthétique de haute qualité, offrant une excellente durabilité et une résistance à l'eau, avec un revêtement texturé pour un meilleur contrôle.</li>
+                    <li>Design : Motif dynamique avec des couleurs vives, inspiré des ballons emblématiques, garantissant une visibilité optimale sur le terrain.</li>
+                    <li>Poids : 410-450 grammes, conforme aux standards des compétitions officielles.</li>
+                </ul>
+            </ol>
+            <strong>Pourquoi Choisir le Ballon Adidas Tango ?</strong>
+            <li>Performance : Conçu pour offrir une excellente aérodynamique, ce ballon permet des passes précises et des tirs puissants.</li>
+            <li>Polyvalence : Parfait pour les matchs en extérieur comme en intérieur, adapté aux joueurs de tous niveaux, des amateurs aux professionnels.</li>
+            <li>Sécurité : Revêtement doux qui réduit le risque de blessures lors des contacts et améliore le confort de jeu.</li>
+        </ul>
+        <p>Améliorez votre jeu avec le <strong>Ballon de Football Adidas Tango</strong>. Que vous soyez en train de jouer un match amical ou de vous entraîner pour la compétition, ce ballon est conçu pour répondre à tous vos besoins sportifs !</p>
+    `
+},
+
+chaussuresadidas: {
+    nom: 'Chaussures Adidas',
+    image: 'istockphoto-178457302-612x612.webp',  
+    prix: 'Prix: 89,99 €',
+    description: `
+        <ul>
+            <li>Marque : <strong>Adidas</strong></li>
+            <strong>Caractéristiques du Produit :</strong>
+            <ol>
+                <li><strong>Chaussures de Football Adidas Copa</strong></li>
+                <ul>
+                    <li>Matériaux : Fabriquées en cuir synthétique de haute qualité, offrant un excellent confort et une grande durabilité.</li>
+                    <li>Design : Style épuré et élégant, en blanc, qui permet de se démarquer sur le terrain tout en étant classique.</li>
+                    <li>Semelle : Semelle extérieure en TPU avec des crampons coniques pour une adhérence optimale sur les terrains en herbe.</li>
+                    <li>Confort : Doublure douce et rembourrage au niveau de la cheville pour un maintien optimal et une sensation de confort pendant le jeu.</li>
+                </ul>
+            </ol>
+            <strong>Pourquoi Choisir les Chaussures Adidas Copa ?</strong>
+            <li>Performance : Conçues pour offrir un excellent contrôle du ballon et une réactivité accrue lors des mouvements.</li>
+            <li>Polyvalence : Adaptées à tous les types de joueurs, que ce soit pour les entraînements ou les matchs, sur terrain naturel ou synthétique.</li>
+            <li>Durabilité : Résistantes à l'usure, ces chaussures sont idéales pour les joueurs réguliers qui cherchent à allier performance et longévité.</li>
+        </ul>
+        <p>Améliorez votre jeu avec les <strong>Chaussures de Football Adidas Copa</strong>. Que vous soyez un joueur amateur ou professionnel, ces chaussures vous donneront la confiance nécessaire pour performer à votre meilleur niveau sur le terrain !</p>
+    `
+},
+
+chaussuresnike: {
+    nom: 'Chaussures Nike',
+    image: 'istockphoto-671028562-612x612.webp',  
+    prix: 'Prix : 99,99 €',
+    description: `
+        <ul>
+            <li>Marque : <strong>Nike</strong></li>
+            <strong>Caractéristiques du Produit :</strong>
+            <ol>
+                <li><strong>Chaussures de Football Nike Phantom</strong></li>
+                <ul>
+                    <li>Matériaux : Construites en cuir synthétique de haute qualité, offrant une sensation de confort et de légèreté.</li>
+                    <li>Design : Couleur noire élégante avec des accents verts fluo, garantissant une visibilité et un style distinctif sur le terrain.</li>
+                    <li>Semelle : Semelle extérieure en TPU dotée de crampons coniques et en forme de lame pour une traction optimale sur tous types de terrains.</li>
+                    <li>Confort : Doublure intérieure rembourrée et tige flexible pour un ajustement parfait et un soutien accru.</li>
+                </ul>
+            </ol>
+            <strong>Pourquoi Choisir les Chaussures Nike Phantom ?</strong>
+            <li>Performance : Idéales pour les joueurs cherchant à améliorer leur vitesse et leur agilité, ces chaussures offrent un excellent contrôle du ballon.</li>
+            <li>Polyvalence : Adaptées à tous les niveaux de jeu, que ce soit pour des matchs compétitifs ou des entraînements.</li>
+            <li>Durabilité : Conçues pour résister aux rigueurs du jeu, elles sont parfaites pour les joueurs réguliers.</li>
+        </ul>
+        <p>Élevez votre performance sur le terrain avec les <strong>Chaussures de Football Nike Phantom</strong>. Que vous soyez un attaquant rapide ou un milieu de terrain créatif, ces chaussures vous donneront la confiance nécessaire pour briller à chaque match !</p>
+    `
+},
+
+puma: {
+    nom: 'Puma',
+    image: 'istockphoto-1475387990-612x612.webp',  
+    prix: 'Prix : 79,99 €',
+    description: `
+        <ul>
+            <li>Marque : <strong>Puma</strong></li>
+            <strong>Caractéristiques du Produit :</strong>
+            <ol>
+                <li><strong>Chaussures de Football Puma Future</strong></li>
+                <ul>
+                    <li>Matériaux : Confectionnées en cuir synthétique doux, offrant confort et flexibilité pour un ajustement parfait.</li>
+                    <li>Design : Élégantes et minimalistes, en blanc avec une semelle en caoutchouc marron, elles allient style et fonctionnalité.</li>
+                    <li>Semelle : Semelle extérieure en caoutchouc avec un motif de traction optimisé pour une adhérence accrue sur le terrain.</li>
+                    <li>Confort : Doublure intérieure rembourrée pour un confort tout au long du jeu, réduisant la fatigue des pieds.</li>
+                </ul>
+            </ol>
+            <strong>Pourquoi Choisir les Chaussures Puma Future ?</strong>
+            <li>Performance : Conçues pour les joueurs qui recherchent à la fois rapidité et agilité, ces chaussures offrent un excellent contrôle du ballon.</li>
+            <li>Polyvalence : Parfaites pour les matchs sur terrain en herbe ou synthétique, ainsi que pour les entraînements.</li>
+            <li>Durabilité : Fabriquées pour résister à l'usure, idéales pour les joueurs assidus.</li>
+        </ul>
+        <p>Optez pour les <strong>Chaussures de Football Puma Future</strong> et améliorez votre performance sur le terrain. Avec leur design raffiné et leur confort supérieur, elles vous permettront de donner le meilleur de vous-même à chaque match !</p>
+    `
+},
+
+reebok: {
+    nom: 'Reebok',
+    image: 'istockphoto-1436061606-612x612.webp',  
+    prix: 'Prix : 89,99 €',
+    description: `
+        <ul>
+            <li>Marque : <strong>Reebok</strong></li>
+            <strong>Caractéristiques du Produit :</strong>
+            <ol>
+                <li><strong>Sneakers Reebok Classic</strong></li>
+                <ul>
+                    <li>Matériaux : Fabriquées en mesh respirant avec des renforts en synthétique pour un soutien optimal et une légèreté accrue.</li>
+                    <li>Design : Un mélange de rose, violet et bleu qui apporte une touche de fraîcheur et de modernité à votre tenue.</li>
+                    <li>Semelle : Semelle en EVA pour un amorti supérieur, offrant confort et absorption des chocs à chaque pas.</li>
+                    <li>Confort : Doublure intérieure douce et semelle rembourrée pour un confort durable lors de vos activités quotidiennes.</li>
+                </ul>
+            </ol>
+            <strong>Pourquoi Choisir les Sneakers Reebok Classic ?</strong>
+            <li>Style : Parfaites pour les amateurs de mode, ces sneakers s'adaptent à toutes les occasions, que ce soit pour le sport ou pour un look décontracté.</li>
+            <li>Polyvalence : Idéales pour la course, la gym ou simplement pour un usage quotidien, elles sont conçues pour s'adapter à votre style de vie actif.</li>
+            <li>Durabilité : Construites pour résister à l'usure, elles sont parfaites pour les utilisateurs réguliers.</li>
+        </ul>
+        <p>Optez pour les <strong>Sneakers Reebok Classic</strong> et alliez style et confort dans votre quotidien. Avec leur design audacieux et leur performance, elles deviendront rapidement un incontournable de votre garde-robe !</p>
+    `
+},
+
+wilson: {
+    nom: 'Wilson',
+    image: 'istockphoto-172147072-612x612.webp', 
+    prix: 'Prix : 39,99 €',
+    description: `
+        <ul>
+            <li>Marque : <strong>Wilson</strong></li>
+            <strong>Caractéristiques du Produit :</strong>
+            <ol>
+                <li><strong>Ballon de Basket Wilson Evolution</strong></li>
+                <ul>
+                    <li>Matériaux : Fabriqué en cuir composite, ce ballon offre une excellente adhérence et une sensation agréable au toucher.</li>
+                    <li>Design : Couleur orange vif avec des lignes noires contrastantes, garantissant une visibilité optimale sur le terrain.</li>
+                    <li>Taille : Taille officielle (7) pour les joueurs adultes, parfait pour les matchs et les entraînements.</li>
+                    <li>Performance : Conçu pour un usage intérieur, il assure un rebond constant et une grande précision lors des tirs.</li>
+                </ul>
+            </ol>
+            <strong>Pourquoi Choisir le Ballon Wilson Evolution ?</strong>
+            <li>Qualité Supérieure : Recommandé par de nombreux joueurs professionnels, il est idéal pour les compétitions et les loisirs.</li>
+            <li>Confort de Jeu : Sa texture unique permet une manipulation facile et un contrôle accru, même lors des mouvements rapides.</li>
+            <li>Durabilité : Construit pour résister à l'usure, ce ballon est parfait pour une utilisation régulière sur le terrain.</li>
+        </ul>
+        <p>Optez pour le <strong>ballon de basket Wilson Evolution</strong> et améliorez votre jeu avec un équipement de qualité. Que vous soyez débutant ou joueur confirmé, ce ballon est un choix incontournable pour tous les passionnés de basketball !</p>
+    `
+},
+
+babolat: {
+    nom: 'Babolat',
+    image: 'istockphoto-1505246595-612x612.webp',  
+    prix: 'Prix : 89,99 €',
+    description: `
+        <ul>
+            <li>Marque : <strong>Babolat</strong></li>
+            <strong>Caractéristiques du Produit :</strong>
+            <ol>
+                <li><strong>Raquette de Tennis Babolat Boost</strong></li>
+                <ul>
+                    <li>Matériaux : Fabriquée en graphite léger, offrant une excellente maniabilité et une grande durabilité.</li>
+                    <li>Design : Esthétique moderne avec des accents de bleu et un cadre noir élégant, alliant performance et style.</li>
+                    <li>Taille : Taille standard, adaptée aux joueurs de tous niveaux, du débutant au joueur intermédiaire.</li>
+                    <li>Poids : Légère (environ 260 g), facilitant les mouvements rapides et le contrôle lors des échanges.</li>
+                </ul>
+            </ol>
+            <strong>Pourquoi Choisir la Raquette Babolat Boost ?</strong>
+            <li>Facilité de Jeu : Conçue pour offrir un bon compromis entre puissance et contrôle, idéale pour les joueurs qui souhaitent améliorer leur technique.</li>
+            <li>Confort : Son grip ergonomique assure une prise en main agréable, réduisant les risques de fatigue lors des longues sessions de jeu.</li>
+            <li>Polyvalence : Parfaite pour les entraînements et les matchs, elle convient à différents styles de jeu, que vous soyez un joueur d'attaque ou de fond de court.</li>
+        </ul>
+        <p>Optez pour la <strong>raquette de tennis Babolat Boost</strong> et élevez votre jeu à un niveau supérieur. Avec sa combinaison de légèreté, de confort et de performance, elle est l'outil idéal pour tous les passionnés de tennis !</p>
+    `
+},
+
+winmau: {
+    nom: 'Winmau',
+    image: 'istockphoto-181875530-612x612.webp',  
+    prix: 'Prix : 49,99 €',
+    description: `
+        <ul>
+            <li>Marque : <strong>Winmau</strong></li>
+            <strong>Caractéristiques du Produit :</strong>
+            <ol>
+                <li><strong>Cible de Fléchettes Winmau Blade 5</strong></li>
+                <ul>
+                    <li>Matériaux : Fabriquée en sisal naturel, offrant une durabilité exceptionnelle et une auto-réparation des trous.</li>
+                    <li>Design : Conception professionnelle avec des segments bien définis, facilitant la visibilité et l'alignement des fléchettes.</li>
+                    <li>Dimensions : Taille standard de 45 cm de diamètre, conforme aux normes de compétition.</li>
+                    <li>Système de montage : Équipée d'un système de fixation facile, permettant une installation rapide et sécurisée.</li>
+                </ul>
+            </ol>
+            <strong>Pourquoi Choisir la Cible Winmau Blade 5 ?</strong>
+            <li>Qualité Professionnelle : Recommandée par les joueurs de fléchettes professionnels, elle est idéale pour les compétitions et les entraînements.</li>
+            <li>Précision : Les segments étroits réduisent le risque de rebond, augmentant ainsi vos chances de marquer des points.</li>
+            <li>Esthétique : Son design élégant et moderne s'intègre parfaitement dans n'importe quel espace de jeu, que ce soit à la maison ou dans un club.</li>
+        </ul>
+        <p>Améliorez votre jeu de fléchettes avec la <strong>cible Winmau Blade 5</strong>. Que vous soyez un joueur amateur ou un compétiteur chevronné, cette cible vous offrira des heures de plaisir et de défi !</p>
+    `
+},
+
+harrows: {
+    nom: 'Harrows',
+    image: 'istockphoto-899732010-612x612.webp',  
+    prix: 'Prix : 29,99 €',  
+    description: `
+        <ul>
+            <li>Marque : <strong>Harrows</strong></li>
+            <strong>Caractéristiques du Produit :</strong>
+            <ol>
+                <li><strong>Fléchette Harrows Silver</strong></li>
+                <ul>
+                    <li>Matériau : Corps en laiton de haute qualité, offrant un bon équilibre entre poids et durabilité.</li>
+                    <li>Poids : Disponible en plusieurs poids (18g, 20g, 22g), permettant de choisir selon votre style de lancer.</li>
+                    <li>Ailettes : Ailettes en nylon de 100 microns, conçues pour une meilleure stabilité en vol.</li>
+                    <li>Grip : Poignée texturée pour un contrôle optimal, même lors des lancers les plus intenses.</li>
+                </ul>
+            </ol>
+            <strong>Pourquoi Choisir la Fléchette Harrows Silver ?</strong>
+            <li>Performance : Optimisée pour une précision maximale, idéale pour les joueurs de tous niveaux.</li>
+            <li>Confort : La conception ergonomique permet une prise en main confortable, réduisant la fatigue lors des longues sessions de jeu.</li>
+            <li>Polyvalence : Convient aussi bien pour les jeux récréatifs que pour les compétitions.</li>
+            <strong>Avantages :</strong>
+            <li>Durabilité : Fabriquée avec des matériaux résistants, cette fléchette est conçue pour durer.</li>
+            <li>Facilité d'utilisation : Parfaite pour les débutants tout en répondant aux exigences des joueurs expérimentés.</li>
+            <li>Esthétique : Son design élégant et moderne attire l'œil et s'intègre parfaitement dans votre équipement de fléchettes.</li>
+        </ul>
+        <p>Améliorez votre jeu avec la <strong>fléchette Harrows Silver</strong>. Que vous soyez un joueur occasionnel ou un compétiteur sérieux, cette fléchette vous aidera à atteindre vos objectifs et à vous amuser tout en jouant !</p>
+    `
+},
+
+
+luxtech: {
+    nom: 'LuxTech',
+    image: 'DALL·E 2024-08-25 00.49.47 - A stylish and elegant smartwatch with a sleek design, featuring a metallic case, a round touchscreen d.webp',  
+    prix: 'Prix : 349,00 €',  
+    description: `
+        <ul>
+            <li>Marque : <strong>LuxTech</strong></li>
+            <li>Modèle : <strong>Élégance Smart Pro</strong></li>
+            <strong>Caractéristiques Principales :</strong>
+            <ol>
+                <li><strong>Boîtier :</strong> Acier inoxydable poli avec finitions premium, résistant aux rayures.</li>
+                <li><strong>Bracelet :</strong> Cuir véritable, interchangeable, disponible en plusieurs couleurs (noir, marron, bleu marine).</li>
+                <li><strong>Écran :</strong> AMOLED 1,4 pouces avec une résolution HD, offrant des couleurs vives et une excellente lisibilité même en plein soleil.</li>
+                <li><strong>Autonomie :</strong> Jusqu’à 7 jours avec une seule charge.</li>
+                <li><strong>Connectivité :</strong> Bluetooth 5.0, Wi-Fi intégré, compatible avec Android et iOS.</li>
+                <li><strong>Étanchéité :</strong> Résistance à l’eau jusqu’à 50 mètres (5 ATM).</li>
+                <li><strong>Suivi de la santé :</strong> Fréquence cardiaque en continu, suivi du sommeil, oxymètre, suivi du stress.</li>
+                <li><strong>Fonctionnalités sportives :</strong> Suivi de plus de 100 activités physiques avec des statistiques en temps réel, GPS intégré pour le suivi des parcours de course, randonnée, vélo, etc.</li>
+                <li><strong>Notifications intelligentes :</strong> Réception des appels, messages, notifications de réseaux sociaux directement sur la montre.</li>
+                <li><strong>Commande vocale :</strong> Compatible avec Google Assistant et Siri pour une gestion sans effort.</li>
+            </ol>
+            <strong>Pourquoi Opter pour la LuxTech Élégance Smart Pro ?</strong>
+            <li><strong>Design intemporel :</strong> Un look élégant qui convient à toutes les tenues, de l’habit de bureau aux sorties nocturnes.</li>
+            <li><strong>Technologie avancée :</strong> Restez connecté avec une montre qui vous offre les dernières innovations en matière de suivi de santé et de notifications intelligentes.</li>
+            <li><strong>Autonomie exceptionnelle :</strong> Une batterie longue durée qui vous permet de rester connecté sans avoir à vous soucier de la recharge quotidienne.</li>
+            <strong>Disponibilité :</strong>
+            <li>Disponible dès maintenant sur le site officiel de LuxTech, ainsi que chez les revendeurs partenaires comme Amazon, Fnac et Darty.</li>
+            <li>Livraison gratuite et garantie de 2 ans.</li>
+        </ul>
+        <p>Optez pour l’élégance moderne avec la <strong>LuxTech Élégance Smart Pro</strong> et transformez votre quotidien avec une montre qui incarne le meilleur de la mode et de la technologie.</p>
+    `
+}
+
+
+
+            };
+
+            const produit = produits[produitId];
+            if (produit) {
+                document.getElementById('productName').textContent = produit.nom;
+                document.getElementById('productImage').src = produit.image;
+                document.getElementById('productPrice').textContent = produit.prix;
+                document.getElementById('productDescription').innerHTML = produit.description;
+            } else {
+                document.getElementById('productDetails').textContent = 'Produit non trouvé';
+            }
+        }
+    </script>
+</head>
+<body onload="displayProductDetails()">
+    <h1>SenJaba</h1>
+    <a href="Accueil.html">Accueil</a>
+    <a href="Catégories.html">Catégories</a>
+    <a href="Connexion.html">Connexion</a>
+    <a href="Contact.html">Contact</a>
+    
+    <meta name="description" content="Formation HTML"/>
+    <h2>Bienvenue chez SenJaba - Votre partenaire technologique de confiance</h2>
+    <header>
+        <h3><a href="Électronique.html">Électronique</a></h3>
+        <h3><a href="Vêtements et accessoires.html">Vêtements et accessoires</a></h3>
+        <h3><a href="Maison et Jardin.html">Maison et Jardin</a></h3>
+        <h3><a href="Beauté et santé.html">Beauté et santé</a></h3>
+        <h3><a href="Sport et loisir.html">Sport et loisir</a></h3>
+    </header>
+
+    <h1 id="productName"></h1>
+    <img id="productImage" src="" alt="Image du produit" >
+    <p id="productPrice"></p>
+    <div id="productDescription"></div>
+    <a href="Catégories.html">Retour à la page des catégories</a><br><br>
+   
+
+    <!-- Section des catégories -->
+    <div class="categories">
+        <h2>CATEGORIES</h2>
+        <ul>
+            <li><a href="Électronique.html">Électronique</a></li>
+            <li><a href="Vêtements et accessoires.html">Vêtements et accessoires</a></li>
+            <li><a href="Maison et Jardin.html">Maison et Jardin</a></li>
+            <li><a href="Beauté et santé.html">Beauté et santé</a></li>
+            <li><a href="Sport et loisir.html">Sport et loisir</a></li>
+        </ul>
+    </div>
+
+    <div class="Coordonnées du vendeur">
+        <h2>Coordonnées du vendeur</h2>
+            <ul>
+                <li>Prénom : Boubacar</li>
+                <li> Nom : DIALLO</li>
+                <li>Contact : 78 574 35 06</li>
+            </ul>
+    </div>
+
+    <!-- Menu de navigation -->
+    <div class="menu">
+        <ul>
+            <li><a href="Accueil.html">Accueil</a></li>
+            <li><a href="Catégories.html">Catégories</a></li>
+            <li><a href="Connexion.html">Connexion</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+            
+        </ul>
+    </div>
+
+</body>
+</html>

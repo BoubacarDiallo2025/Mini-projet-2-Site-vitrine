@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vêtements et accessoires</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>SenJaba</h1>
+    <nav>
+        <a href="Accueil.html">Accueil</a>
+        <a href="Catégories.html">Catégories</a>
+        <a href="Connexion.html">Connexion</a>
+        <a href="Contact.html">Contact</a>
+    </nav>
+
+    <meta name="description" content="Formation HTML"/>
+    <h2>Bienvenue chez SenJaba - Votre partenaire technologique de confiance</h2>
+    <header>
+        <h3><a href="Électronique.html">Électronique</a></h3>
+        <h3><a href="Vêtements et accessoires.html">Vêtements et accessoires</a></h3>
+        <h3><a href="Maison et Jardin.html">Maison et jardin</a></h3>
+        <h3><a href="Beauté et santé.html">Beauté et santé</a></h3>
+        <h3><a href="Sport et loisir.html">Sport et loisir</a></h3>
+    </header>
+
+    <h4>Vêtements et accessoires</h4>
+
+    <aside class="filters">
+        <h2>Filtres</h2>
+        <form id="filterForm" onsubmit="applyFilters(event)">
+            <div>
+                <label for="priceRange">Plage de prix :</label>
+                <input type="range" id="priceRange" name="priceRange" min="0" max="2000" step="10" value="0" oninput="updatePriceValue(this.value)">
+                <span id="priceValue">0 - 2000</span>
+            </div>
+            <div>
+                <label for="brand">Marque :</label>
+                <select id="brand" name="brand">
+                    <option value="">Toutes</option>
+                    <option value="sneakersmodernes">Sneakers Modernes</option>
+                    <option value="sneakersabc">Sneakers ABC</option>
+                    <option value="lessneakersgucci">Les Sneakers Gucci</option>
+                    <option value="sneakersgucci">Sneakers Gucci</option>
+                    <option value="blazergucci">Blazer Gucci</option>
+                    <option value="éléganceroyale">Élégance Royale</option>
+                    <option value="urbanflair">UrbanFlair</option>
+                    <option value="diorangeles">DIORANGELES</option>
+                    <option value="modearabe">Mode Arabe</option>
+                    <option value="elegancehijab">Elegance Hijab</option>
+                    <option value="ankaraessence">Ankara Essence</option>
+                    <option value="vintagecraft">Vintage Craft</option>
+                    <option value="luxeauréole">Luxe Auréole</option>
+                    <option value="élégancesportive">Élégance Sportive</option>
+                    <option value="chicombre">Chic Ombre</option>
+                </select>
+            </div>
+            <button type="submit">Appliquer les filtres</button>
+        </form>
+    </aside>
+
+    <script>
+        function updatePriceValue(value) {
+            document.getElementById('priceValue').textContent = value + ' - 2000';
+        }
+
+        function applyFilters(event) {
+            event.preventDefault(); // Empêche le rechargement de la page
+            const priceRange = document.getElementById('priceRange').value;
+            const brand = document.getElementById('brand').value;
+
+            // Logique pour filtrer les produits
+            const products = document.querySelectorAll('.product-item');
+            products.forEach(product => {
+                const productPrice = parseFloat(product.getAttribute('data-price'));
+                const productBrand = product.getAttribute('data-brand');
+
+                if ((productPrice <= priceRange) && (brand === "" || productBrand === brand)) {
+                    product.style.display = 'block'; // Affiche le produit
+                } else {
+                    product.style.display = 'none'; // Cache le produit
+                }
+            });
+        }
+    </script>
+
+    <section class="product-list">
+        <table>
+            <tr>
+                <th><h4><a href="produit.html?produit=sneakersmodernes">Sneakers Modernes</a></h4></th>
+                <th><h4><a href="produit.html?produit=sneakersabc">Sneakers ABC</a></h4></th>
+                <th><h4><a href="produit.html?produit=lessneakersgucci">Les Sneakers Gucci</a></h4></th>
+                <th><h4><a href="produit.html?produit=sneakersgucci">Sneakers Gucci</a></h4></th>
+                <th><h4><a href="produit.html?produit=blazergucci">Blazer Gucci</a></h4></th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="product-item" data-price="89.99" data-brand="sneakersmodernes">
+                        <img src="DALL·E 2024-08-24 18.25.26 - A stylish and trendy pair of sneakers named 'ABC', designed for both comfort and fashion-forward individuals. The.webp" alt="Produit 1"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="99.99" data-brand="sneakersabc">
+                        <img src="DALL·E 2024-08-25 20.11.00 - A pair of trendy sneakers called ABC, featuring a sleek and modern design. The sneakers have a clean and minim.webp" alt="Produit 2"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="650.00" data-brand="lessneakersgucci">
+                        <img src="404937_KU210_8960.jpg" alt="Produit 3"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="750.00" data-brand="sneakersgucci">
+                        <img src="max-anderson-0fv6PAfj4p4-unsplash.jpg" alt="Produit 4"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="1800.00" data-brand="blazergucci">
+                        <img src="OIP (1).jpeg" alt="Produit 5"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><p>Prix: 89,99 €</p></td>
+                <td><p>Prix: 99,99 €</p></td>
+                <td><p>Prix: 650,00 €</p></td>
+                <td><p>Prix: 750,00 €</p></td>
+                <td><p>Prix: 1 800,00 €</p></td>
+            </tr>
+            <tr>
+                <th><h4><a href="produit.html?produit=éléganceroyale">Élégance Royale</a></h4></th>
+                <th><h4><a href="produit.html?produit=urbanflair">UrbanFlair</a></h4></th>
+                <th><h4><a href="produit.html?produit=diorangeles">DIORANGELES</a></h4></th>
+                <th><h4><a href="produit.html?produit=modearabe">Mode Arabe</a></h4></th>
+                <th><h4><a href="produit.html?produit=elegancehijab">Elegance Hijab</a></h4></th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="product-item" data-price="1200.00" data-brand="éléganceroyale">
+                        <img src="DALL·E 2024-08-27 12.03.45 - Elegant ceremonial clothing, featuring a formal suit for men with a tuxedo, bowtie, and polished shoes alongsi.webp" alt="Produit 6"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="35.99" data-brand="urbanflair">
+                        <img src="DALL·E 2024-08-27 12.11.21 - A stylish and modern T-shirt displayed against a clean background. The T-shirt has a simple, minimalis.webp" alt="Produit 7"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="350.00" data-brand="diorangeles">
+                        <img src="OIP.jpeg" alt="Produit 8"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="150.00" data-brand="modearabe">
+                        <img src="Muslim-Abaya-Arab-Robes-for-women-round-collar-Ladies-Robe-with-Embroidery-muslim-women-dress-TH902.webp" alt="Produit 9"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="49.99" data-brand="elegancehijab">
+                        <img src="DALL·E 2024-08-27 23.10.35 - A beautifully folded hijab placed neatly on a surface, with intricate fabric details visible. The hija.webp" alt="Produit 10"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><p>Prix: 1 200 €</p></td>
+                <td><p>Prix: 35,99 €</p></td>
+                <td><p>Prix: 350 €</p></td>
+                <td><p>Prix: 150 €</p></td>
+                <td><p>Prix: 49,99 €</p></td>
+            </tr>
+            <tr>
+                <th><h4><a href="produit.html?produit=ankaraessence">Ankara Essence</a></h4></th>
+                <th><h4><a href="produit.html?produit=vintagecraft">Vintage Craft</a></h4></th>
+                <th><h4><a href="produit.html?produit=luxeauréole">Luxe Auréole</a></h4></th>
+                <th><h4><a href="produit.html?produit=élégancesportive">Élégance Sportive</a></h4></th>
+                <th><h4><a href="produit.html?produit=chicombre">Chic Ombre</a></h4></th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="product-item" data-price="69.99" data-brand="ankaraessence">
+                        <img src="R.png" alt="Produit 11"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="149.99" data-brand="vintagecraft">
+                        <img src="OIP (5).jpeg" alt="Produit 12"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="250.00" data-brand="luxeauréole">
+                        <img src="istockphoto-1279696100-612x612.webp" alt="Produit 13"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="25.00" data-brand="élégancesportive">
+                        <img src="istockphoto-497040301-612x612.webp" alt="Produit 14"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-item" data-price="45.00" data-brand="chicombre">
+                        <img src="R (1).jpeg" alt="Produit 15"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><p>Prix: 69,99 €</p></td>
+                <td><p>Prix: 149,99 €</p></td>
+                <td><p>Prix: 250 €</p></td>
+                <td><p>Prix: 25 €</p></td>
+                <td><p>Prix: 45 €</p></td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Section des catégories -->
+    <div class="categories">
+        <h2>CATEGORIES</h2>
+        <ul>
+            <li><a href="Électronique.html">Électronique</a></li>
+            <li><a href="Vêtements et accessoires.html">Vêtements et accessoires</a></li>
+            <li><a href="Maison et Jardin.html">Maison et jardin</a></li>
+            <li><a href="Beauté et santé.html">Beauté et santé</a></li>
+            <li><a href="Sport et loisir.html">Sport et loisir</a></li>
+        </ul>
+    </div>
+
+    <!-- Menu de navigation -->
+    <div class="menu">
+        <ul>
+            <li><a href="Accueil.html">Accueil</a></li>
+            <li><a href="Catégories.html">Catégories</a></li>
+            <li><a href="Connexion.html">Connexion</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </div>
+        
+</body>
+</html>

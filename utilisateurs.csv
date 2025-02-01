@@ -1,0 +1,6 @@
+identifiant,mot_de_passe,role
+admin,admin123,administrateur
+vendeur1,password1,vendeur
+vendeur2,password,vendeur
+vendeur3,password3,vendeur
+
